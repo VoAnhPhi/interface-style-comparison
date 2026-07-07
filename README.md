@@ -10,9 +10,9 @@ The project is built as a visual reference tool: choose a style, inspect its per
 - Sticky style rail for quick navigation.
 - Selected style showcase with visual DNA, positioning, best-fit use cases, and risks.
 - Interactive style preview with `Section`, `Components`, and `Tokens` modes.
-- Component comparison panel showing the same UI pattern across styles.
-- Token comparison table for color, radius, shadow, and density.
-- Use-case recommendation panel for choosing a style based on product goals.
+- Full-screen token atlas for scanning color, type, radius, shadow, spacing, and motion.
+- Full-screen use-case guide for choosing a style based on product goals.
+- Surface decision guide with selectable product surfaces and ranked style recommendations.
 - Responsive layout for desktop and mobile exploration.
 
 ## Included Styles
@@ -79,7 +79,7 @@ src/
 Key files:
 
 - `src/data/designStyles.ts` stores the research data for each design style.
-- `src/App.tsx` renders the style gallery, showcase, comparison panels, and interaction state.
+- `src/App.tsx` renders the style gallery, selected showcase, token atlas, use-case guide, surface decision guide, and interaction state.
 - `src/App.css` contains the visual system and style-specific preview treatments.
 
 ## Research Data Model
