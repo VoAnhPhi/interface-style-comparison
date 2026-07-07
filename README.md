@@ -1,19 +1,18 @@
 # UI Style Comparison Research
 
-A React Vite research project for comparing UI/UX design styles with interactive previews, design tokens, component examples, and use-case recommendations.
+A React Vite research project for comparing UI/UX design styles with fast scanning, focused research dossiers, design tokens, and use-case recommendations.
 
-The project is built as a visual reference tool: choose a style, inspect its personality, compare tokens, and see how the same interface patterns shift across different design directions.
+The project is built as a visual reference workspace: search or filter styles, inspect one style deeply, compare token and fit signals, and keep the page scalable as more styles are added.
 
 ## Features
 
-- Style gallery with multiple UI/UX directions.
-- Sticky style rail for quick navigation.
-- Selected style showcase with visual DNA, positioning, best-fit use cases, and risks.
-- Interactive style preview with `Section`, `Components`, and `Tokens` modes.
-- Full-screen token atlas for scanning color, type, radius, shadow, spacing, and motion.
-- Full-screen use-case guide for choosing a style based on product goals.
-- Surface decision guide with selectable product surfaces and ranked style recommendations.
-- Responsive layout for desktop and mobile exploration.
+- App-shell research layout with a compact style catalog, dossier, decision rail, and comparison table.
+- Search and tag filtering so the catalog can scale to many more styles.
+- Focused research dossier with `Overview`, `Tokens`, and `Patterns` tabs.
+- Compact style preview that keeps visual examples scannable without crowding the page.
+- Surface fit matrix for landing pages, dashboards, portfolios, apps, docs, and experimental visuals.
+- Comparison table for density, visual tone, best-fit use cases, and primary risks.
+- Responsive layout for desktop and mobile research flows.
 
 ## Included Styles
 
@@ -79,7 +78,7 @@ src/
 Key files:
 
 - `src/data/designStyles.ts` stores the research data for each design style.
-- `src/App.tsx` renders the style gallery, selected showcase, token atlas, use-case guide, surface decision guide, and interaction state.
+- `src/App.tsx` renders the research shell, style catalog, dossier tabs, decision rail, comparison table, and interaction state.
 - `src/App.css` contains the visual system and style-specific preview treatments.
 
 ## Research Data Model
