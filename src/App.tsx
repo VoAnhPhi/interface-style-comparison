@@ -7,8 +7,10 @@ import {
   type PointerEvent as ReactPointerEvent,
 } from "react";
 import { designStyles, recommendations, type DesignStyle, type FitLevel } from "./data/designStyles";
+import { ResearchDossier } from "./components/dossiers/ResearchDossier";
+import { FontAwesomeIcon } from "./components/icons/FontAwesomeIcon";
+import { StylePreview } from "./components/StylePreview";
 
-type DossierTab = "overview" | "tokens" | "patterns";
 type SurfaceId = keyof DesignStyle["suitability"];
 
 const surfaceLabels: Record<SurfaceId, string> = {
@@ -43,12 +45,6 @@ const fitTone: Record<FitLevel, string> = {
   Low: "low",
 };
 
-const tabs: Array<{ id: DossierTab; label: string }> = [
-  { id: "overview", label: "Overview" },
-  { id: "tokens", label: "Tokens" },
-  { id: "patterns", label: "Patterns" },
-];
-
 const tagFilters = ["All", ...Array.from(new Set(designStyles.flatMap((style) => style.tags))).sort()];
 const surfaces = Object.keys(surfaceLabels) as SurfaceId[];
 
@@ -62,35 +58,6 @@ function getTopSurfaces(style: DesignStyle) {
 function getBestFitLabel(style: DesignStyle) {
   const top = getTopSurfaces(style).filter((item) => fitScore[item.fit] >= 2);
   return top.length ? top.map((item) => surfaceLabels[item.surface]).join(", ") : "Accent only";
-}
-
-function StylePreview({ style }: { style: DesignStyle }) {
-  return (
-    <div className={`style-preview preview-${style.id}`} aria-hidden="true">
-      <div className="preview-sidebar">
-        <span />
-        <span />
-        <span />
-      </div>
-      <div className="preview-body">
-        <div className="preview-head">
-          <strong>{style.name.split(" ")[0]}</strong>
-          <span />
-        </div>
-        <div className="preview-chart">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="preview-grid">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-    </div>
-  );
 }
 
 function FitDots({ style }: { style: DesignStyle }) {
@@ -187,157 +154,6 @@ function StyleCatalog({
   );
 }
 
-function QuickFacts({ style }: { style: DesignStyle }) {
-  return (
-    <div className="quick-facts">
-      <article>
-        <span>Best for</span>
-        <p>{style.recommendedFor.slice(0, 3).join(", ")}</p>
-      </article>
-      <article>
-        <span>Avoid for</span>
-        <p>{style.avoidFor.slice(0, 2).join(", ")}</p>
-      </article>
-      <article>
-        <span>Research note</span>
-        <p>{style.summary}</p>
-      </article>
-    </div>
-  );
-}
-
-function OverviewTab({ style }: { style: DesignStyle }) {
-  return (
-    <div className="dossier-grid">
-      <section className="read-block">
-        <h3>Why it works</h3>
-        <ul>
-          {style.strengths.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-      <section className="read-block">
-        <h3>Risks</h3>
-        <ul>
-          {[...style.weaknesses, ...style.accessibilityRisks.slice(0, 1)].map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </section>
-      <section className="read-block wide">
-        <h3>Use cases</h3>
-        <div className="tag-cloud">
-          {style.useCases.map((item) => (
-            <span key={item}>{item}</span>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function TokensTab({ style }: { style: DesignStyle }) {
-  const tokenRows = [
-    ["Typography", style.tokenRecipe.typography],
-    ["Radius", style.tokenRecipe.radius],
-    ["Shadow", style.tokenRecipe.shadow],
-    ["Border", style.tokenRecipe.border],
-    ["Spacing", style.tokenRecipe.spacing],
-    ["Motion", style.tokenRecipe.motion],
-  ];
-
-  return (
-    <div className="tokens-view">
-      <div className="swatch-row">
-        {style.tokenRecipe.colors.map((color) => (
-          <span key={color} style={{ background: color }} title={color} />
-        ))}
-      </div>
-      <dl className="token-list">
-        {tokenRows.map(([label, value]) => (
-          <div key={label}>
-            <dt>{label}</dt>
-            <dd>{value}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
-  );
-}
-
-function PatternsTab({ style }: { style: DesignStyle }) {
-  return (
-    <div className="patterns-view">
-      <section>
-        <h3>Common patterns</h3>
-        <ol>
-          {style.commonPatterns.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ol>
-      </section>
-      <section>
-        <h3>Style anatomy</h3>
-        <ol>
-          {style.characteristics.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ol>
-      </section>
-    </div>
-  );
-}
-
-function ResearchDossier({ activeMode, style }: { activeMode: "fast" | "deep" | "compare"; style: DesignStyle }) {
-  const [activeTab, setActiveTab] = useState<DossierTab>("overview");
-  const visibleTab = activeMode === "compare" ? "tokens" : activeTab;
-
-  return (
-    <section className="dossier-panel" aria-labelledby="dossier-title">
-      <div className="dossier-header">
-        <div>
-          <p>Research dossier</p>
-          <h2 id="dossier-title">{style.name}</h2>
-        </div>
-        <div className="style-tags">
-          {style.tags.slice(0, 3).map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-        </div>
-      </div>
-
-      <QuickFacts style={style} />
-
-      <div className="dossier-tabs" role="tablist" aria-label="Dossier sections">
-        {tabs.map((tab) => (
-          <button
-            aria-selected={visibleTab === tab.id}
-            className={visibleTab === tab.id ? "is-active" : ""}
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            role="tab"
-            type="button"
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      <div className="dossier-body">
-        <div className="preview-stage">
-          <StylePreview style={style} />
-        </div>
-        <div className="dossier-content" role="tabpanel">
-          {visibleTab === "overview" && <OverviewTab style={style} />}
-          {visibleTab === "tokens" && <TokensTab style={style} />}
-          {visibleTab === "patterns" && <PatternsTab style={style} />}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function SurfaceFitMatrix({ style }: { style: DesignStyle }) {
   return (
     <div className="surface-matrix">
@@ -371,7 +187,10 @@ function DecisionRail({ style }: { style: DesignStyle }) {
         <h3>Recommended use cases</h3>
         <ul className="check-list">
           {style.recommendedFor.concat(style.useCases).slice(0, 5).map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>
+              <FontAwesomeIcon name="circle-check" size={15} />
+              <span>{item}</span>
+            </li>
           ))}
         </ul>
       </section>
@@ -639,7 +458,17 @@ function App() {
 
     return designStyles.filter((style) => {
       const matchesTag = activeTag === "All" || style.tags.includes(activeTag);
-      const searchable = [style.name, style.summary, ...style.tags, ...style.feeling, ...style.useCases].join(" ").toLowerCase();
+      const searchable = [
+        style.name,
+        style.summary,
+        style.classification,
+        ...style.tags,
+        ...style.feeling,
+        ...style.useCases,
+        ...style.realWorldExamples.map((example) => example.label),
+      ]
+        .join(" ")
+        .toLowerCase();
       return matchesTag && (!normalizedQuery || searchable.includes(normalizedQuery));
     });
   }, [activeTag, query]);
