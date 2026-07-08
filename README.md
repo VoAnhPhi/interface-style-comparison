@@ -8,7 +8,9 @@ The project is built as a visual reference workspace: search or filter styles, i
 
 - App-shell research layout with a compact style catalog, dossier, decision rail, and comparison table.
 - Search and tag filtering so the catalog can scale to many more styles.
-- Focused research dossier with `Overview`, `Tokens`, and `Patterns` tabs.
+- Focused research dossier with `Overview`, `Tokens`, `Patterns`, and `Examples` tabs.
+- Examples tab with real-world references, component anatomy, layout examples,
+  implementation notes, and do/don't guidance.
 - Compact style preview that keeps visual examples scannable without crowding the page.
 - Surface fit matrix for landing pages, dashboards, portfolios, apps, docs, and experimental visuals.
 - Comparison table for density, visual tone, best-fit use cases, and primary risks.
@@ -18,12 +20,17 @@ The project is built as a visual reference workspace: search or filter styles, i
 
 - Modern SaaS
 - Minimal / Clean
+- Flat Design
 - Enterprise / Admin
 - Editorial / Portfolio
 - Glassmorphism
 - Neo-brutalism
 - Material / Fluent-like
 - Neumorphism
+- Skeuomorphism / Realistic UI
+- Claymorphism / Soft 3D
+- Dark Futuristic / Neon Tech
+- Web 2.0 Gloss / Frutiger Aero
 
 ## Tech Stack
 

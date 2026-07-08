@@ -1,0 +1,150 @@
+{
+  "policy": {
+    "storage": "Local files under public/style-assets; do not hotlink production dossier imagery.",
+    "preferredSources": ["Unsplash", "Pexels", "Generated raster assets"],
+    "licenseNote": "Record source URL, author when available, license, and retrieval date before using downloaded images.",
+    "brandScreenshotRule": "Do not use screenshots from referenced products as primary UI imagery. Mention products in copy only unless a license explicitly allows the screenshot.",
+    "requiredForCompletion": "Every style must have one local downloaded or generated image asset before its visual dossier pass can be marked complete."
+  },
+  "plannedAssets": [
+    {
+      "id": "modern-saas-product-gradient-frame",
+      "styleId": "modern-saas",
+      "kind": "generated-background",
+      "status": "available",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "polished modern SaaS dashboard gradient product frame soft white indigo cyan",
+      "localPath": "public/style-assets/modern-saas/modern-saas-product-gradient-frame.png"
+    },
+    {
+      "id": "minimal-clean-paper-desk",
+      "styleId": "minimal-clean",
+      "kind": "photo-or-texture",
+      "status": "available",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "minimal clean white desk paper editor workspace soft natural light",
+      "localPath": "public/style-assets/minimal/minimal-clean-paper-desk.png"
+    },
+    {
+      "id": "enterprise-admin-data-grid",
+      "styleId": "enterprise-admin",
+      "kind": "generated-background",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "enterprise admin data grid dashboard control room abstract blue gray interface",
+      "localPath": "public/style-assets/enterprise/"
+    },
+    {
+      "id": "editorial-case-study-photo",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "planned",
+      "sourcePreference": "Unsplash or Pexels",
+      "searchPrompt": "editorial architecture studio portfolio monochrome workspace",
+      "localPath": "public/style-assets/editorial/"
+    },
+    {
+      "id": "glass-gradient-backdrop",
+      "styleId": "glassmorphism",
+      "kind": "generated-background",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "abstract premium blue violet gradient blurred lights glassmorphism background",
+      "localPath": "public/style-assets/glass/"
+    },
+    {
+      "id": "neo-brutal-poster-texture",
+      "styleId": "neo-brutalism",
+      "kind": "texture",
+      "status": "planned",
+      "sourcePreference": "Generated raster or Pexels texture",
+      "searchPrompt": "bold poster paper ink texture high contrast neo brutalism yellow black",
+      "localPath": "public/style-assets/neo-brutal/"
+    },
+    {
+      "id": "material-fluent-surface-stack",
+      "styleId": "material-fluent",
+      "kind": "generated-background",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "clean layered material design fluent surface stack abstract component states",
+      "localPath": "public/style-assets/material-fluent/"
+    },
+    {
+      "id": "neumorphism-soft-surface",
+      "styleId": "neumorphism",
+      "kind": "texture",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "soft monochrome neumorphism raised inset surface texture light gray",
+      "localPath": "public/style-assets/neumorphism/"
+    },
+    {
+      "id": "flat-design-geometric-panels",
+      "styleId": "flat-design",
+      "kind": "generated-background",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "flat design geometric solid color panels simple app interface blue white",
+      "localPath": "public/style-assets/flat/"
+    },
+    {
+      "id": "skeuomorphic-paper-texture",
+      "styleId": "skeuomorphism",
+      "kind": "texture",
+      "status": "planned",
+      "sourcePreference": "Generated raster or Pexels texture",
+      "searchPrompt": "subtle cream paper texture close up realistic material UI",
+      "localPath": "public/style-assets/skeuomorphic/"
+    },
+    {
+      "id": "clay-soft-3d-object",
+      "styleId": "claymorphism",
+      "kind": "generated-object",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "soft 3D pastel rounded abstract UI object transparent background",
+      "localPath": "public/style-assets/clay/"
+    },
+    {
+      "id": "dark-tech-grid-backdrop",
+      "styleId": "dark-futuristic",
+      "kind": "generated-background",
+      "status": "planned",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "dark futuristic neon grid abstract interface background",
+      "localPath": "public/style-assets/dark-tech/"
+    },
+    {
+      "id": "web20-aqua-gloss-texture",
+      "styleId": "web20-gloss",
+      "kind": "texture",
+      "status": "planned",
+      "sourcePreference": "Generated raster or Pexels/Unsplash water sky texture",
+      "searchPrompt": "aqua glossy water sky abstract frutiger aero texture",
+      "localPath": "public/style-assets/web20/"
+    }
+  ],
+  "downloadedAssets": [
+    {
+      "id": "modern-saas-product-gradient-frame",
+      "styleId": "modern-saas",
+      "kind": "generated-background",
+      "status": "available",
+      "source": "User-provided generated raster image from Codex clipboard.",
+      "localPath": "public/style-assets/modern-saas/modern-saas-product-gradient-frame.png",
+      "dimensions": "1586x992",
+      "retrievalDate": "2026-07-07"
+    },
+    {
+      "id": "minimal-clean-paper-desk",
+      "styleId": "minimal-clean",
+      "kind": "generated-raster",
+      "status": "available",
+      "source": "Locally generated raster asset for the Minimal/Clean dossier.",
+      "localPath": "public/style-assets/minimal/minimal-clean-paper-desk.png",
+      "dimensions": "1400x900",
+      "retrievalDate": "2026-07-08"
+    }
+  ]
+}
