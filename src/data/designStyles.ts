@@ -1,4 +1,10 @@
 export type FitLevel = "High" | "Medium" | "Low" | "Use carefully";
+export type StyleClassification = "production-safe" | "expressive" | "experimental" | "historical-reference" | "system-language";
+
+export type StyleExample = {
+  label: string;
+  detail: string;
+};
 
 export type DesignStyle = {
   id: string;
@@ -14,6 +20,15 @@ export type DesignStyle = {
   recommendedFor: string[];
   avoidFor: string[];
   tags: string[];
+  classification: StyleClassification;
+  realWorldExamples: StyleExample[];
+  componentExamples: StyleExample[];
+  layoutExamples: StyleExample[];
+  implementationNotes: string[];
+  doDont: {
+    do: string[];
+    dont: string[];
+  };
   suitability: {
     landing: FitLevel;
     dashboard: FitLevel;
@@ -49,6 +64,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Landing", "Dashboard", "Product app"],
     avoidFor: ["Very dense admin tools"],
     tags: ["Landing", "Dashboard", "Product"],
+    classification: "production-safe",
+    realWorldExamples: [
+      { label: "Stripe", detail: "Polished product surfaces, restrained brand color, strong CTA hierarchy, and modular checkout/product examples." },
+      { label: "Linear", detail: "Premium dark/light SaaS execution with crisp labels, soft depth, and product-first storytelling." },
+      { label: "Vercel", detail: "Developer-facing minimal polish, high typography discipline, and subtle product chrome." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "46px primary button, soft radius, confident brand fill, subtle hover lift, and strong focus ring." },
+      { label: "Card", detail: "Outlined or lightly elevated surface with 16-20px radius, 20-24px padding, and restrained tint." },
+      { label: "Input", detail: "44-48px field, quiet border, rounded corners, clear placeholder hierarchy, and visible focus state." },
+    ],
+    layoutExamples: [
+      { label: "Product hero", detail: "Large headline, one clear CTA, and a dashboard or workflow mock that shows the product early." },
+      { label: "Feature grid", detail: "Compact feature cards with short labels, small visuals, and one consistent spacing rhythm." },
+      { label: "Pricing/demo page", detail: "Works well for trust blocks, integration rows, customer proof, and app screenshots." },
+    ],
+    implementationNotes: [
+      "Use semantic tokens for surfaces, borders, primary color, focus ring, and elevation.",
+      "Keep gradients and shadows as accents; polish should come from spacing, hierarchy, and consistency.",
+      "Build from the same component anatomy as Minimal/Clean so it can scale into app UI.",
+    ],
+    doDont: {
+      do: ["Use one or two brand accents intentionally", "Keep body text on solid or very calm surfaces", "Make product screenshots or previews legible"],
+      dont: ["Stack glow, gradient, shadow, and glass on the same element", "Let secondary text fall below contrast comfort", "Turn every section into a floating card"],
+    },
     suitability: {
       landing: "High",
       dashboard: "Medium",
@@ -82,6 +122,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Product app", "Docs", "Portfolio"],
     avoidFor: ["Campaigns that need strong visual punch"],
     tags: ["Product", "Portfolio", "Accessible"],
+    classification: "production-safe",
+    realWorldExamples: [
+      { label: "GitHub", detail: "Readable productivity surfaces with restrained chrome, clear affordances, and durable interaction patterns." },
+      { label: "Notion Help", detail: "Text-first documentation with quiet hierarchy and low decoration." },
+      { label: "Apple product pages", detail: "High whitespace discipline and typography-led product explanation." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Solid primary or neutral outline, no gradient, 8-12px radius, and direct hover/focus states." },
+      { label: "Card", detail: "White or neutral surface, hairline border, optional tiny shadow, and typography doing most hierarchy work." },
+      { label: "Input", detail: "Simple outlined field with clear label, visible focus ring, and no decorative inset treatment." },
+    ],
+    layoutExamples: [
+      { label: "Docs page", detail: "Strong content column, useful side navigation, and calm dividers instead of decorative panels." },
+      { label: "Productivity app", detail: "List/detail or editor layout with low ornament and high scan quality." },
+      { label: "Portfolio index", detail: "Project list, clean thumbnails, and strong typographic rhythm without heavy visual effects." },
+    ],
+    implementationNotes: [
+      "Let whitespace, contrast, and type scale carry hierarchy before adding effects.",
+      "Use slightly stronger focus and active states than the visual style might initially suggest.",
+      "This is the best baseline to compare other styles against because the component anatomy stays visible.",
+    ],
+    doDont: {
+      do: ["Use clear borders for controls", "Keep text contrast high", "Make empty space intentional and aligned"],
+      dont: ["Make affordances so quiet they look inert", "Depend on placeholder text as labels", "Remove focus states for visual purity"],
+    },
     suitability: {
       landing: "Medium",
       dashboard: "Medium",
@@ -115,6 +180,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Dashboard", "Product app"],
     avoidFor: ["Portfolio", "Brand-heavy landing pages"],
     tags: ["Dashboard", "Admin", "Data"],
+    classification: "production-safe",
+    realWorldExamples: [
+      { label: "Atlassian", detail: "Operational product surfaces with disciplined spacing, semantic status, and predictable controls." },
+      { label: "IBM Carbon", detail: "Enterprise-grade layering, dense forms/tables, and themeable system foundations." },
+      { label: "GitHub Projects", detail: "Task and table workflows where scan speed matters more than visual drama." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "36-40px control, 6-8px radius, obvious disabled/pressed states, and semantic variants." },
+      { label: "Table", detail: "Strong row rhythm, sticky headers when useful, visible sort/filter affordances, and status badges." },
+      { label: "Form field", detail: "Label, helper text, error text, and validation state are all explicit." },
+    ],
+    layoutExamples: [
+      { label: "Admin console", detail: "Sidebar, filter bar, table/list body, and right-side detail or settings panel." },
+      { label: "Settings workflow", detail: "Grouped sections with clear dividers, compact controls, and predictable save/cancel actions." },
+      { label: "Dashboard", detail: "KPI row, charts, tables, and alerts with restrained status color." },
+    ],
+    implementationNotes: [
+      "Prioritize density controls, semantic status tokens, and keyboard/focus clarity.",
+      "Use borders and shell layers more than large shadows.",
+      "Polish comes from alignment and information hierarchy, not expressive decoration.",
+    ],
+    doDont: {
+      do: ["Use compact but readable spacing", "Keep table states visible", "Reserve color for status and primary actions"],
+      dont: ["Shrink controls below usable targets without a compact-mode reason", "Use marketing-style cards everywhere", "Hide critical actions behind vague icons"],
+    },
     suitability: {
       landing: "Low",
       dashboard: "High",
@@ -148,6 +238,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Portfolio", "Landing"],
     avoidFor: ["Admin dashboards", "Form-heavy workflows"],
     tags: ["Portfolio", "Landing", "Brand"],
+    classification: "expressive",
+    realWorldExamples: [
+      { label: "A24", detail: "Cinematic content pacing, strong visual mood, and art-directed hierarchy." },
+      { label: "Framer gallery sites", detail: "Portfolio and agency examples where typography and composition carry the experience." },
+      { label: "Aesop", detail: "Brand-forward editorial commerce with restrained UI chrome and careful content rhythm." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Text button, quiet outline, or understated pill that does not compete with the composition." },
+      { label: "Project card", detail: "Image-led module with title, year/category, and art-directed crop rather than generic elevation." },
+      { label: "Form", detail: "Should fall back to a calmer utility treatment with readable labels and validation." },
+    ],
+    layoutExamples: [
+      { label: "Case study", detail: "Large opener, narrative sections, image breaks, and selective project metadata." },
+      { label: "Portfolio index", detail: "Typographic project list, large thumbnails, asymmetry, and generous margins." },
+      { label: "Campaign landing", detail: "Editorial hero, strong imagery, limited CTAs, and scroll-paced storytelling." },
+    ],
+    implementationNotes: [
+      "Separate display typography from utility UI typography.",
+      "Keep source order and mobile reading flow clear even when desktop layout is asymmetrical.",
+      "Use imagery and spacing as first-class tokens, not afterthought decoration.",
+    ],
+    doDont: {
+      do: ["Use expressive type scale deliberately", "Let imagery define sections", "Keep utility controls calmer than hero typography"],
+      dont: ["Apply editorial asymmetry to dense forms", "Let mobile headlines crowd the viewport", "Depend on custom fonts without readable fallbacks"],
+    },
     suitability: {
       landing: "High",
       dashboard: "Low",
@@ -181,6 +296,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Landing", "Experimental"],
     avoidFor: ["Dense dashboard", "Critical forms", "Accessibility-first production apps"],
     tags: ["Landing", "Experimental", "Accessibility Risk"],
+    classification: "experimental",
+    realWorldExamples: [
+      { label: "Apple Liquid Glass / materials", detail: "Platform-native translucency with strong accessibility constraints and content/control separation." },
+      { label: "Windows Aero / Fluent references", detail: "System chrome using transparency, blur, and light to suggest depth." },
+      { label: "Premium media hero sections", detail: "Frosted navs and overlays above imagery or gradient backdrops." },
+    ],
+    componentExamples: [
+      { label: "Glass card", detail: "Translucent surface, backdrop blur, edge highlight, and solid foreground text." },
+      { label: "Modal", detail: "More opaque than decorative glass cards, with strong boundaries and readable action row." },
+      { label: "Input", detail: "Use an opaque or semi-opaque field inside glass; fully transparent inputs are usually too weak." },
+    ],
+    layoutExamples: [
+      { label: "Hero overlay", detail: "A low-density glass panel over a rich but controlled background." },
+      { label: "Floating nav", detail: "Compact translucent chrome with solid text and clear active state." },
+      { label: "Showcase card", detail: "One or two premium cards, not a full dense form system." },
+    ],
+    implementationNotes: [
+      "Always test text contrast against the actual background behind the glass.",
+      "Support reduced transparency preferences with an opaque fallback.",
+      "Limit blur area for performance and keep z-index/layering unambiguous.",
+    ],
+    doDont: {
+      do: ["Use glass as a local appearance", "Keep foreground content solid and high contrast", "Add an opaque fallback for accessibility"],
+      dont: ["Use variable imagery behind body copy without a contrast layer", "Make every app surface translucent", "Blur dense tables or long forms"],
+    },
     suitability: {
       landing: "High",
       dashboard: "Low",
@@ -214,6 +354,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Portfolio", "Experimental", "Landing"],
     avoidFor: ["Enterprise dashboards", "Medical/finance workflows"],
     tags: ["Portfolio", "Experimental", "High Contrast"],
+    classification: "expressive",
+    realWorldExamples: [
+      { label: "Gumroad-like creator pages", detail: "Loud graphic surfaces, thick outlines, and intentionally raw product personality." },
+      { label: "Playful launch microsites", detail: "Poster-like color blocks and hard shadow modules that create instant differentiation." },
+      { label: "Creative portfolios", detail: "High-contrast typography and chunky cards for a memorable personal brand." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Bright fill, 2-3px black border, hard offset shadow, and pressed state that moves the shadow." },
+      { label: "Card", detail: "Solid slab with thick frame, sticker-like labels, and unapologetic hierarchy." },
+      { label: "Input", detail: "White or bright fill, heavy outline, conspicuous focus state, and simple validation treatment." },
+    ],
+    layoutExamples: [
+      { label: "Launch page", detail: "Poster sections, bold CTA blocks, and graphic feature modules." },
+      { label: "Portfolio", detail: "Chunky project cards, visible metadata, and direct copy." },
+      { label: "Experimental tool", detail: "Works for playful generators or creator utilities, not serious operational workflows." },
+    ],
+    implementationNotes: [
+      "Create tokens for border thickness and hard shadow offset.",
+      "Keep contrast strong; loud color does not automatically mean accessible color.",
+      "Use motion sparingly and keep it snappy rather than floaty.",
+    ],
+    doDont: {
+      do: ["Make affordances obvious", "Use hard shadow and outlines consistently", "Pair bright color with readable text"],
+      dont: ["Use random saturated colors without contrast checks", "Apply the style to serious dense workflows", "Let visual noise bury content priority"],
+    },
     suitability: {
       landing: "Medium",
       dashboard: "Low",
@@ -247,6 +412,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Product app", "Dashboard", "Forms"],
     avoidFor: ["Highly bespoke editorial pages"],
     tags: ["Product", "Dashboard", "Accessible"],
+    classification: "system-language",
+    realWorldExamples: [
+      { label: "Material 3", detail: "Semantic color roles, shape system, state layers, and documented component anatomy." },
+      { label: "Fluent 2", detail: "Token layering, spacing/radius foundations, and cross-platform product behavior." },
+      { label: "Carbon-inspired enterprise systems", detail: "Formal theme structure and reusable component rules for complex products." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Filled, tonal, outlined, and text variants with documented state layers." },
+      { label: "Card", detail: "Filled, outlined, and elevated recipes rather than one generic card treatment." },
+      { label: "Dialog", detail: "Clear title, content, action row, focus trap, inert background, and accessible dismissal behavior." },
+    ],
+    layoutExamples: [
+      { label: "Cross-platform app", detail: "Consistent components, semantic roles, app bars, lists, dialogs, and settings surfaces." },
+      { label: "Design-system demo", detail: "Token tables, component anatomy, and theme switcher examples." },
+      { label: "Accessible form flow", detail: "Full field anatomy with label, helper, error, disabled, read-only, and focus states." },
+    ],
+    implementationNotes: [
+      "Use this as an architectural reference more than a visual costume.",
+      "Model states and component anatomy explicitly before styling one-off screens.",
+      "Keep semantic tokens stable so themes can vary without changing component APIs.",
+    ],
+    doDont: {
+      do: ["Name tokens by role", "Document states before custom styling", "Use formal component variants"],
+      dont: ["Clone Material or Fluent superficially without behavior", "Override known state patterns into ambiguity", "Make every component bespoke"],
+    },
     suitability: {
       landing: "Medium",
       dashboard: "High",
@@ -280,6 +470,31 @@ export const designStyles: DesignStyle[] = [
     recommendedFor: ["Experimental"],
     avoidFor: ["Production apps", "Accessibility-first products", "Dense dashboards"],
     tags: ["Experimental", "Accessibility Risk"],
+    classification: "experimental",
+    realWorldExamples: [
+      { label: "2019 neumorphic concept shots", detail: "Soft extruded controls and inset panels that emphasize tactile novelty." },
+      { label: "Wellness or media widgets", detail: "Small, non-critical controls where soft tactility can be decorative." },
+      { label: "Lab experiments", detail: "Useful for teaching why affordance and contrast cannot depend on shadow alone." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Raised tone-on-tone pill with inset pressed state and an added focus outline for usability." },
+      { label: "Input", detail: "Inset field can look tactile, but needs visible label, text contrast, and focus border." },
+      { label: "Toggle", detail: "Small decorative control where state is also shown by color or text, not shadow only." },
+    ],
+    layoutExamples: [
+      { label: "Widget panel", detail: "A low-density player, calculator, or control cluster with large tactile surfaces." },
+      { label: "Concept portfolio", detail: "A small visual experiment rather than a complete production system." },
+      { label: "Accessibility caution demo", detail: "Good comparison point for weak non-text contrast and ambiguous states." },
+    ],
+    implementationNotes: [
+      "Use additional borders, labels, or focus outlines even if they slightly break the pure style.",
+      "Avoid using shadow as the only difference between enabled, disabled, and pressed states.",
+      "Keep it opt-in and limited to non-critical surfaces.",
+    ],
+    doDont: {
+      do: ["Add explicit focus outlines", "Use stronger text contrast than the background suggests", "Limit the style to decorative widgets"],
+      dont: ["Use it for dense dashboards or forms", "Depend on low-contrast shadows for affordance", "Hide disabled and pressed states in tone-on-tone surfaces"],
+    },
     suitability: {
       landing: "Low",
       dashboard: "Low",
@@ -297,6 +512,296 @@ export const designStyles: DesignStyle[] = [
       spacing: "Comfortable, tactile, not compact",
       density: "Low to medium",
       motion: "150-220ms soft press transitions",
+    },
+  },
+  {
+    id: "flat-design",
+    name: "Flat Design",
+    summary: "Simple shape, color, typography, and iconography with little to no simulated depth.",
+    feeling: ["direct", "scalable", "functional"],
+    characteristics: ["Flat fills", "Simple icons", "Few shadows", "Typography-led hierarchy", "Clear color blocks"],
+    commonPatterns: ["Flat nav bars", "Color-block CTAs", "Icon grids", "Pane layouts"],
+    useCases: ["Mobile apps", "Simple web apps", "Dashboards", "Design-system baselines"],
+    strengths: ["Scales well across screen sizes", "Easy to implement", "Works with responsive systems"],
+    weaknesses: ["Affordance can become weak", "Can feel dated if too plain", "Depth hierarchy needs other cues"],
+    accessibilityRisks: ["Clickable elements may look like static labels", "Color-only affordance can fail"],
+    recommendedFor: ["Product app", "Dashboard", "Mobile UI"],
+    avoidFor: ["Premium showcase pages", "Interfaces needing rich material metaphor"],
+    tags: ["Product", "Dashboard", "Historical"],
+    classification: "historical-reference",
+    realWorldExamples: [
+      { label: "Microsoft Metro", detail: "Early flat, typographic interface language focused on simple shapes and motion." },
+      { label: "iOS 7 era app UI", detail: "Widespread shift from heavy skeuomorphic realism to cleaner flat surfaces." },
+      { label: "Basic admin templates", detail: "Flat panes, solid buttons, and divider-based hierarchy." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Solid rectangular or slightly rounded color block with strong hover/focus state." },
+      { label: "Card", detail: "Flat pane with border or divider lines instead of shadow depth." },
+      { label: "Icon", detail: "Simple geometric glyphs with consistent stroke/fill treatment." },
+    ],
+    layoutExamples: [
+      { label: "Mobile settings", detail: "List groups, flat rows, clear text hierarchy, and simple active states." },
+      { label: "Dashboard shell", detail: "Flat sidebar, content panes, and color-coded status without decorative depth." },
+      { label: "Marketing block", detail: "Works for simple icon-feature sections but can lack premium impact." },
+    ],
+    implementationNotes: [
+      "Add non-color cues for interactivity: border, underline, focus ring, or state layer.",
+      "Use spacing and typography to compensate for low elevation.",
+      "Treat it as a clean baseline, not automatically as a modern premium style.",
+    ],
+    doDont: {
+      do: ["Make interactive states explicit", "Use typography and spacing for depth", "Keep icons consistent"],
+      dont: ["Make every element equally flat", "Use color as the only click cue", "Remove all hierarchy cues in pursuit of purity"],
+    },
+    suitability: {
+      landing: "Medium",
+      dashboard: "Medium",
+      portfolio: "Low",
+      productApp: "Medium",
+      docs: "Medium",
+      experimentalVisual: "Low",
+    },
+    tokenRecipe: {
+      colors: ["#ffffff", "#0078d4", "#111827", "#6b7280", "#d1d5db"],
+      typography: "Segoe/System/Inter, 14-16px body, clear label hierarchy",
+      radius: "0px / 4px / 8px",
+      shadow: "None or hairline-only separation",
+      border: "1px neutral dividers and state outlines",
+      spacing: "Compact to medium, 8-16px controls",
+      density: "Medium",
+      motion: "Direct 80-160ms color/position state changes",
+    },
+  },
+  {
+    id: "skeuomorphism",
+    name: "Skeuomorphism / Realistic UI",
+    summary: "Object-inspired UI that borrows physical materials, bevels, textures, and metaphors to signal use.",
+    feeling: ["familiar", "tactile", "nostalgic"],
+    characteristics: ["Material textures", "Beveled edges", "Inner shadows", "Object metaphors", "Layered highlights"],
+    commonPatterns: ["Realistic knobs", "Notebook panels", "Leather/metal textures", "Embossed controls"],
+    useCases: ["Specialty tools", "Audio interfaces", "Onboarding metaphors", "Nostalgia-driven products"],
+    strengths: ["Strong perceived affordance", "Memorable and tactile", "Helpful when physical metaphor clarifies function"],
+    weaknesses: ["Heavy to implement", "Can feel dated", "Hard to keep consistent across responsive layouts"],
+    accessibilityRisks: ["Texture can reduce text clarity", "Decorative realism can hide actual state", "Complex shadows can distract"],
+    recommendedFor: ["Specialty tools", "Experimental", "Onboarding"],
+    avoidFor: ["Generic SaaS", "Dense dashboards", "Fast-loading docs"],
+    tags: ["Experimental", "Historical", "Tactile"],
+    classification: "historical-reference",
+    realWorldExamples: [
+      { label: "Early iOS apps", detail: "Notes, calendar, and bookshelf metaphors used physical cues to teach interaction." },
+      { label: "Audio plugins", detail: "Knobs, meters, and rack units still benefit from familiar physical affordances." },
+      { label: "Specialized simulators", detail: "Realistic controls help when the interface maps to a real-world device." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Beveled surface with highlight, shadow, and pressed inset state." },
+      { label: "Panel", detail: "Paper, metal, leather, or instrument-like surface with layered depth." },
+      { label: "Dial/control", detail: "Physical metaphor with clear value indicator and keyboard-accessible equivalent." },
+    ],
+    layoutExamples: [
+      { label: "Audio console", detail: "Knobs, meters, sliders, and hardware-inspired grouping." },
+      { label: "Onboarding metaphor", detail: "Notebook, card, or workspace object that explains a new concept." },
+      { label: "Nostalgia promo", detail: "A themed landing or concept surface rather than a broad app default." },
+    ],
+    implementationNotes: [
+      "Use realistic effects only where the physical metaphor improves comprehension.",
+      "Keep text on quiet solid areas; avoid putting body copy over texture.",
+      "Provide standard keyboard/focus behavior even when the control looks like an object.",
+    ],
+    doDont: {
+      do: ["Use physical metaphor intentionally", "Keep state changes obvious", "Protect text readability from texture"],
+      dont: ["Apply textures to every surface", "Let realism override responsive usability", "Hide accessibility states behind decorative shadows"],
+    },
+    suitability: {
+      landing: "Low",
+      dashboard: "Low",
+      portfolio: "Medium",
+      productApp: "Low",
+      docs: "Low",
+      experimentalVisual: "Use carefully",
+    },
+    tokenRecipe: {
+      colors: ["#f7f2e8", "#e8dcc7", "#b79f79", "#2f2418", "#ffffff"],
+      typography: "Mixed UI sans plus themed display only when brand-appropriate",
+      radius: "6px / 12px / 20px, object-dependent",
+      shadow: "Layered inner and outer shadows with highlights",
+      border: "Material-colored bevel borders",
+      spacing: "Medium object-like padding",
+      density: "Medium",
+      motion: "Pressed and mechanical transitions, 120-220ms",
+    },
+  },
+  {
+    id: "claymorphism",
+    name: "Claymorphism / Soft 3D",
+    summary: "Playful soft-3D surfaces with inflated geometry, pastel color, and toy-like depth.",
+    feeling: ["playful", "friendly", "soft"],
+    characteristics: ["Large radius", "Puffed surfaces", "Pastel gradients", "Soft 3D shadows", "Rounded illustration cues"],
+    commonPatterns: ["Chunky cards", "Bubble buttons", "Soft 3D icons", "Onboarding panels"],
+    useCases: ["Playful onboarding", "Education", "Wellness", "Consumer launch pages"],
+    strengths: ["Friendly tone", "Strong visual personality", "Works well with illustration"],
+    weaknesses: ["Too whimsical for serious workflows", "Low density", "Can become childish quickly"],
+    accessibilityRisks: ["Pastel contrast failures", "Large soft forms can reduce scan efficiency", "Decorative shadows may obscure hierarchy"],
+    recommendedFor: ["Onboarding", "Consumer promo", "Experimental"],
+    avoidFor: ["Enterprise dashboards", "Finance/medical tools", "Dense forms"],
+    tags: ["Experimental", "Landing", "Playful"],
+    classification: "experimental",
+    realWorldExamples: [
+      { label: "Playful onboarding screens", detail: "Soft 3D icons and rounded panels for consumer or education products." },
+      { label: "Wellness apps", detail: "Friendly pastel surfaces that reduce perceived severity." },
+      { label: "Creative web showcases", detail: "Illustration-led promo pages with soft dimensional modules." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Chunky pill with soft depth, clear label, and a visible pressed state." },
+      { label: "Card", detail: "Inflated rounded block with pastel background and generous padding." },
+      { label: "Icon tile", detail: "Soft 3D object or glyph inside a stable rounded container." },
+    ],
+    layoutExamples: [
+      { label: "Onboarding", detail: "Low-density panels, friendly illustrations, and one action per step." },
+      { label: "Consumer hero", detail: "Large soft modules, pastel palette, and simple product promise." },
+      { label: "Feature cards", detail: "Works when each feature has a playful visual object or icon." },
+    ],
+    implementationNotes: [
+      "Keep body text on high-contrast foreground colors, not low-contrast pastel pairings.",
+      "Use large radius and soft shadows consistently so the style feels intentional.",
+      "Limit density; this style needs breathing room.",
+    ],
+    doDont: {
+      do: ["Use friendly rounded geometry", "Check contrast on pastel surfaces", "Pair with simple copy"],
+      dont: ["Use it for serious admin tools", "Crowd many clay cards into a dense grid", "Let decorative objects compete with the main action"],
+    },
+    suitability: {
+      landing: "Medium",
+      dashboard: "Low",
+      portfolio: "Medium",
+      productApp: "Low",
+      docs: "Low",
+      experimentalVisual: "Use carefully",
+    },
+    tokenRecipe: {
+      colors: ["#fde68a", "#f9a8d4", "#93c5fd", "#ffffff", "#1f2937"],
+      typography: "Rounded friendly sans, 15-18px body, bold but soft headings",
+      radius: "24px / 32px / 40px",
+      shadow: "Soft puffed depth, 0 20px 40px rgba(31,41,55,.14)",
+      border: "Usually none; use subtle edge tint where needed",
+      spacing: "Spacious, 20-40px modules",
+      density: "Low",
+      motion: "Soft scale/press, 160-240ms",
+    },
+  },
+  {
+    id: "dark-futuristic",
+    name: "Dark Futuristic / Neon Tech",
+    summary: "Dark technical canvas with luminous accents, fine grids, glow edges, and system-console energy.",
+    feeling: ["advanced", "cinematic", "technical"],
+    characteristics: ["Dark surfaces", "Neon accents", "Grid lines", "Glow edges", "Mono data labels"],
+    commonPatterns: ["AI launch hero", "Console panels", "Dark dashboards", "Signal/status chips"],
+    useCases: ["AI products", "Developer tools", "Security tools", "Launch pages"],
+    strengths: ["Strong product drama", "Good for technical positioning", "Works well for demos and command surfaces"],
+    weaknesses: ["Long-session readability can suffer", "Glow can become noisy", "Forms and tables need calmer treatment"],
+    accessibilityRisks: ["Low-contrast gray on dark", "Overuse of neon bloom", "Motion and glow may distract"],
+    recommendedFor: ["Landing", "Developer tools", "Experimental"],
+    avoidFor: ["Long-form docs", "Everyday back-office tools", "High-volume data entry"],
+    tags: ["Landing", "Product", "Experimental"],
+    classification: "expressive",
+    realWorldExamples: [
+      { label: "AI launch sites", detail: "Dark hero canvases, luminous product screenshots, and future-facing messaging." },
+      { label: "Developer tool demos", detail: "Terminal, console, and workflow panels that benefit from dark technical framing." },
+      { label: "Security dashboards", detail: "Dark operational surfaces with restrained status color and alert emphasis." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "High-contrast dark or neon CTA with clear edge, not low-contrast glow-only treatment." },
+      { label: "Card", detail: "Dark panel with subtle border, glow edge only for emphasis, and readable text hierarchy." },
+      { label: "Code/console", detail: "Mono labels, command rows, status chips, and careful color semantics." },
+    ],
+    layoutExamples: [
+      { label: "AI hero", detail: "Dark first viewport, product signal, luminous workflow preview, and one strong CTA." },
+      { label: "Command center", detail: "Console-like panels, compact metadata, and calm table/form zones." },
+      { label: "Launch page", detail: "Alternating dark sections, diagram panels, and technical proof points." },
+    ],
+    implementationNotes: [
+      "Keep most text high contrast; reserve neon for focus, state, and emphasis.",
+      "Use glow as a boundary or focal cue, not as a universal decoration.",
+      "Test mobile carefully because dark panels and grids can crowd small screens.",
+    ],
+    doDont: {
+      do: ["Use semantic status color sparingly", "Keep body text readable", "Pair sans UI with mono data labels"],
+      dont: ["Put low-contrast gray text everywhere", "Add glow to every border", "Make forms feel like decorative sci-fi panels"],
+    },
+    suitability: {
+      landing: "High",
+      dashboard: "Medium",
+      portfolio: "Medium",
+      productApp: "Medium",
+      docs: "Low",
+      experimentalVisual: "Use carefully",
+    },
+    tokenRecipe: {
+      colors: ["#0b1020", "#111827", "#22d3ee", "#a78bfa", "#e5e7eb"],
+      typography: "Modern sans plus mono accents, 14-16px body, 40px+ display",
+      radius: "12px / 16px / 24px",
+      shadow: "Glow edges and subtle dark elevation",
+      border: "rgba(255,255,255,.08) with accent focus rings",
+      spacing: "Medium to spacious, 16-40px modules",
+      density: "Low to medium",
+      motion: "Smooth reveal/status transitions, reduced-motion aware",
+    },
+  },
+  {
+    id: "web20-gloss",
+    name: "Web 2.0 Gloss / Frutiger Aero",
+    summary: "Glossy, optimistic, eco-tech nostalgia with aqua gradients, shine, transparency, and rounded gel controls.",
+    feeling: ["nostalgic", "bright", "optimistic"],
+    characteristics: ["Gloss highlights", "Aqua gradients", "Rounded gel buttons", "Transparency", "Eco-tech imagery"],
+    commonPatterns: ["Glossy nav", "Gel CTAs", "Aero panels", "Orb badges"],
+    useCases: ["Nostalgia campaigns", "Concept art", "Themed promo pages", "Retro interface studies"],
+    strengths: ["Highly recognizable", "Emotionally specific", "Useful for nostalgia and concept work"],
+    weaknesses: ["Feels dated as a default", "Visually loaded", "Hard to reconcile with modern dense UI"],
+    accessibilityRisks: ["Highlight glare can reduce readability", "Busy backgrounds harm contrast", "Gloss can obscure state differences"],
+    recommendedFor: ["Experimental", "Nostalgia promo", "Portfolio"],
+    avoidFor: ["Modern SaaS default", "Docs", "Enterprise workflows"],
+    tags: ["Experimental", "Historical", "Landing"],
+    classification: "historical-reference",
+    realWorldExamples: [
+      { label: "Windows Aero era", detail: "Transparent chrome, glossy surfaces, and optimistic early web UI language." },
+      { label: "Frutiger Aero nostalgia", detail: "Sky, water, glass, greenery, and technology-in-harmony imagery." },
+      { label: "Retro campaign sites", detail: "Themed interfaces that intentionally reference 2004-2013 web aesthetics." },
+    ],
+    componentExamples: [
+      { label: "Button", detail: "Rounded gel button with vertical gradient, inner highlight, and strong readable label." },
+      { label: "Panel", detail: "Glossy aqua or translucent card with visible edge and controlled background." },
+      { label: "Badge", detail: "Shiny orb or pill used sparingly for nostalgia, not every label." },
+    ],
+    layoutExamples: [
+      { label: "Retro promo", detail: "Bright hero, glossy CTA, optimistic imagery, and simple offer." },
+      { label: "Concept study", detail: "Side-by-side comparison of old glossy chrome versus modern flat/minimal UI." },
+      { label: "Portfolio experiment", detail: "A deliberately nostalgic visual statement with modern accessibility safeguards." },
+    ],
+    implementationNotes: [
+      "Keep gloss effects away from small text and important status labels.",
+      "Use the nostalgia intentionally; otherwise it reads as outdated rather than styled.",
+      "Control gradients and highlights so states remain distinguishable.",
+    ],
+    doDont: {
+      do: ["Use glossy highlights selectively", "Keep labels high contrast", "Frame it as nostalgic or experimental"],
+      dont: ["Use busy nature/sky imagery behind body copy", "Make every control shiny", "Use it as the default for modern productivity UI"],
+    },
+    suitability: {
+      landing: "Medium",
+      dashboard: "Low",
+      portfolio: "Medium",
+      productApp: "Low",
+      docs: "Low",
+      experimentalVisual: "Use carefully",
+    },
+    tokenRecipe: {
+      colors: ["#00aeef", "#6ee7b7", "#ffffff", "#1e3a8a", "#a7f3d0"],
+      typography: "Humanist/system sans, 14-18px body, friendly bold headings",
+      radius: "12px / 20px / 28px",
+      shadow: "Glossy inner highlights plus soft aqua shadow",
+      border: "Light translucent borders and inset highlight lines",
+      spacing: "Medium, 16-32px modules",
+      density: "Medium",
+      motion: "Gloss hover shine and direct press states, 120-200ms",
     },
   },
 ];
