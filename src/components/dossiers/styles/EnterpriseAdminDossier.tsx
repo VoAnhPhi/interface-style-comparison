@@ -53,24 +53,6 @@ export function EnterpriseAdminDossier({ renderTab, style }: DossierRendererProp
     <div className="enterprise-admin-dossier-layout">
       <section className="enterprise-admin-main" aria-label="Enterprise Admin coded UI sample">
         <header className="enterprise-admin-topbar">
-          <div>
-            <span>Operations workspace</span>
-            <h3>Policy review queue</h3>
-          </div>
-
-          <div className="enterprise-admin-actions">
-            <button className="enterprise-admin-secondary" type="button" tabIndex={-1}>
-              <FontAwesomeIcon name="download" size={15} />
-              <span>Export report</span>
-            </button>
-            <button className="enterprise-admin-primary" type="button" tabIndex={-1}>
-              <FontAwesomeIcon name="circle-check" size={15} />
-              <span>Assign owner</span>
-            </button>
-          </div>
-        </header>
-
-        <section className="enterprise-admin-hero" aria-label="Enterprise Admin visual scene">
           <div className="enterprise-admin-hero-copy">
             <span>Dense operational mode</span>
             <h3>{style.name}</h3>
@@ -79,7 +61,7 @@ export function EnterpriseAdminDossier({ renderTab, style }: DossierRendererProp
               control-room mood visible while the UI stays readable and compact.
             </p>
 
-            <div className="enterprise-admin-hero-meta" aria-label="Enterprise Admin summary metrics">
+            {/* <div className="enterprise-admin-hero-meta" aria-label="Enterprise Admin summary metrics">
               <article>
                 <span>Role</span>
                 <strong>{style.classification.replace(/-/g, " ")}</strong>
@@ -92,29 +74,18 @@ export function EnterpriseAdminDossier({ renderTab, style }: DossierRendererProp
                 <span>Density</span>
                 <strong>{style.tokenRecipe.density}</strong>
               </article>
-            </div>
+            </div> */}
           </div>
+        </header>
 
-          <div className="enterprise-admin-hero-visual">
-            <img alt="Abstract enterprise admin control room backdrop" src={enterpriseAsset} />
-            <div className="enterprise-admin-hero-overlay" aria-hidden="true">
-              <article>
-                <span>Queue</span>
-                <strong>32 open</strong>
-                <em>2 selected</em>
-              </article>
-              <article>
-                <span>Health</span>
-                <strong>184 stable</strong>
-                <em>7 escalations</em>
-              </article>
-              <article>
-                <span>Resolve</span>
-                <strong>1h 24m</strong>
-                <em>Median review</em>
-              </article>
-            </div>
-          </div>
+        <section className="enterprise-admin-kpis" aria-label="Enterprise Admin KPI row">
+          {fitLabels.map((item) => (
+            <article key={item.label}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+              <em>{style.recommendedFor[0] ?? "Dashboard"} fit</em>
+            </article>
+          ))}
         </section>
 
         <section className="enterprise-admin-toolbar" aria-label="Enterprise Admin filters">
@@ -150,16 +121,17 @@ export function EnterpriseAdminDossier({ renderTab, style }: DossierRendererProp
               <FontAwesomeIcon name="gear" size={15} />
             </button>
           </div>
-        </section>
 
-        <section className="enterprise-admin-kpis" aria-label="Enterprise Admin KPI row">
-          {fitLabels.map((item) => (
-            <article key={item.label}>
-              <span>{item.label}</span>
-              <strong>{item.value}</strong>
-              <em>{style.recommendedFor[0] ?? "Dashboard"} fit</em>
-            </article>
-          ))}
+		  <div className="enterprise-admin-actions">
+            <button className="enterprise-admin-secondary" type="button" tabIndex={-1}>
+              <FontAwesomeIcon name="download" size={15} />
+              <span>Export report</span>
+            </button>
+            <button className="enterprise-admin-primary" type="button" tabIndex={-1}>
+              <FontAwesomeIcon name="circle-check" size={15} />
+              <span>Assign owner</span>
+            </button>
+          </div>
         </section>
 
         <div className="enterprise-admin-content">
