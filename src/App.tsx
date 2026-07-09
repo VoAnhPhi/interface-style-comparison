@@ -173,6 +173,7 @@ function SurfaceFitMatrix({ style }: { style: DesignStyle }) {
 function DecisionRail({ style }: { style: DesignStyle }) {
   const matchingRecommendations = recommendations.filter((item) => item.recommendedStyle.includes(style.name.split(" ")[0])).slice(0, 2);
   const suggested = matchingRecommendations.length ? matchingRecommendations : recommendations.slice(0, 2);
+  const recommendedUseCases = Array.from(new Set([...style.recommendedFor, ...style.useCases])).slice(0, 5);
 
   return (
     <aside className="decision-panel" aria-label="Decision guide">
@@ -186,7 +187,7 @@ function DecisionRail({ style }: { style: DesignStyle }) {
       <section className="rail-section">
         <h3>Recommended use cases</h3>
         <ul className="check-list">
-          {style.recommendedFor.concat(style.useCases).slice(0, 5).map((item) => (
+          {recommendedUseCases.map((item) => (
             <li key={item}>
               <FontAwesomeIcon name="circle-check" size={15} />
               <span>{item}</span>

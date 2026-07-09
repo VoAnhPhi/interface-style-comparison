@@ -1,21 +1,33 @@
 import arrowUpRightFromSquareSvg from "../../assets/icons/fontawesome/light/arrow-up-right-from-square.svg?raw";
 import barsFilterSvg from "../../assets/icons/fontawesome/light/bars-filter.svg?raw";
+import bellSvg from "../../assets/icons/fontawesome/light/bell.svg?raw";
+import buildingSvg from "../../assets/icons/fontawesome/light/building.svg?raw";
+import chevronDownSvg from "../../assets/icons/fontawesome/light/chevron-down.svg?raw";
 import circleCheckSvg from "../../assets/icons/fontawesome/light/circle-check.svg?raw";
+import circleExclamationSvg from "../../assets/icons/fontawesome/light/circle-exclamation.svg?raw";
+import downloadSvg from "../../assets/icons/fontawesome/light/download.svg?raw";
 import fileLinesSvg from "../../assets/icons/fontawesome/light/file-lines.svg?raw";
 import gearSvg from "../../assets/icons/fontawesome/light/gear.svg?raw";
 import magnifyingGlassSvg from "../../assets/icons/fontawesome/light/magnifying-glass.svg?raw";
 import penLineSvg from "../../assets/icons/fontawesome/light/pen-line.svg?raw";
 import plusSvg from "../../assets/icons/fontawesome/light/plus.svg?raw";
+import usersSvg from "../../assets/icons/fontawesome/light/users.svg?raw";
 
 const fontAwesomeIcons = {
   "arrow-up-right-from-square": arrowUpRightFromSquareSvg,
   "bars-filter": barsFilterSvg,
+  bell: bellSvg,
+  building: buildingSvg,
+  "chevron-down": chevronDownSvg,
   "circle-check": circleCheckSvg,
+  "circle-exclamation": circleExclamationSvg,
+  download: downloadSvg,
   "file-lines": fileLinesSvg,
   gear: gearSvg,
   "magnifying-glass": magnifyingGlassSvg,
   "pen-line": penLineSvg,
   plus: plusSvg,
+  users: usersSvg,
 } as const;
 
 export type FontAwesomeIconName = keyof typeof fontAwesomeIcons;

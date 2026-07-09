@@ -15,6 +15,76 @@ function ModernSaaSReferenceImage() {
   );
 }
 
+function ModernSaaSAnatomyBoard({ style }: Pick<DossierRendererProps, "style">) {
+  const workflowItems = [
+    style.useCases[0] ?? "Product landing",
+    style.useCases[1] ?? "Demo app",
+    style.useCases[2] ?? "Developer tools",
+  ];
+  const integrations = style.tags.slice(0, 3).concat(["Tokenized UI", "Focus ring"]);
+
+  return (
+    <section className="modern-saas-product" aria-label="Modern SaaS coded UI anatomy">
+      <div className="modern-product-topbar">
+        <div>
+          <span>Product anatomy</span>
+          <strong>Code-native component board</strong>
+        </div>
+        <button type="button">Share preview</button>
+      </div>
+
+      <div className="modern-command-row">
+        <label>
+          <span>Primary workflow input</span>
+          <input readOnly tabIndex={-1} value="Launch dashboard handoff for review" />
+        </label>
+        <strong>Ready to ship</strong>
+      </div>
+
+      <div className="modern-product-grid">
+        <article className="modern-metric-card">
+          <span>Button recipe</span>
+          <strong>46px CTA</strong>
+          <em>Soft radius, confident fill</em>
+        </article>
+        <article className="modern-metric-card">
+          <span>Card system</span>
+          <strong>Layered panels</strong>
+          <em>Light border, subtle depth</em>
+        </article>
+        <article className="modern-chart-card">
+          <div>
+            <span>Signal density</span>
+            <strong>Readable visual hierarchy</strong>
+          </div>
+          <div className="modern-chart-bars" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+            <span />
+            <span />
+          </div>
+        </article>
+        <article className="modern-workflow-card">
+          {workflowItems.map((item) => (
+            <div key={item}>
+              <span aria-hidden="true" />
+              <strong>{item}</strong>
+              <em>Live</em>
+            </div>
+          ))}
+        </article>
+      </div>
+
+      <div className="modern-integration-strip" aria-label="Modern SaaS integration cues">
+        {integrations.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ModernSaaSExampleBoard({ style }: Pick<DossierRendererProps, "style">) {
   return (
     <section className="modern-saas-example-board" aria-label="Modern SaaS visual examples">
@@ -53,6 +123,8 @@ export function ModernSaaSDossier({ renderTab, style }: DossierRendererProps) {
       <section className="modern-saas-hero-panel">
         <ModernSaaSReferenceImage />
       </section>
+
+      <ModernSaaSAnatomyBoard style={style} />
 
       <aside className="modern-saas-insights">
         {notes.map((item) => (

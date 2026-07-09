@@ -29,10 +29,10 @@
       "id": "enterprise-admin-data-grid",
       "styleId": "enterprise-admin",
       "kind": "generated-background",
-      "status": "planned",
+      "status": "available",
       "sourcePreference": "Generated raster",
       "searchPrompt": "enterprise admin data grid dashboard control room abstract blue gray interface",
-      "localPath": "public/style-assets/enterprise/"
+      "localPath": "public/style-assets/enterprise/enterprise-admin-data-grid.png"
     },
     {
       "id": "editorial-case-study-photo",
@@ -145,6 +145,16 @@
       "localPath": "public/style-assets/minimal/minimal-clean-paper-desk.png",
       "dimensions": "1400x900",
       "retrievalDate": "2026-07-08"
+    },
+    {
+      "id": "enterprise-admin-data-grid",
+      "styleId": "enterprise-admin",
+      "kind": "generated-background",
+      "status": "available",
+      "source": "Locally generated raster asset for the Enterprise/Admin dossier.",
+      "localPath": "public/style-assets/enterprise/enterprise-admin-data-grid.png",
+      "dimensions": "1600x1000",
+      "retrievalDate": "2026-07-09"
     }
   ]
 }
