@@ -6,12 +6,31 @@ export type StyleExample = {
   detail: string;
 };
 
+export type ColorToken = {
+  name: string;
+  value: string;
+  description: string;
+  usage: string;
+};
+
 export type DesignStyle = {
   id: string;
   name: string;
   summary: string;
   feeling: string[];
   characteristics: string[];
+  distinguishingSignals?: string[];
+  colorTokens?: ColorToken[];
+  dossierUsage?: StyleExample[];
+  visualRuleUsage?: {
+    typography: string;
+    radius: string;
+    shadow: string;
+    border: string;
+    spacing: string;
+    density: string;
+    motion: string;
+  };
   commonPatterns: string[];
   useCases: string[];
   strengths: string[];
@@ -230,6 +249,75 @@ export const designStyles: DesignStyle[] = [
     summary: "Typography-led composition with expressive hierarchy and fewer conventional app surfaces.",
     feeling: ["expressive", "curated", "personal"],
     characteristics: ["Large headlines", "Asymmetry", "Graphic spacing", "Image-like cards", "Understated controls"],
+    distinguishingSignals: [
+      "Hierarchy comes from typography and composition rather than dense controls.",
+      "Images carry narrative meaning instead of acting as decorative thumbnails.",
+      "Whitespace creates pacing between story beats and project details.",
+      "Metadata and actions stay selective so the content remains the main subject.",
+    ],
+    colorTokens: [
+      {
+        name: "Canvas",
+        value: "#FAFAF8",
+        description: "A warm neutral base that lets imagery and type set the mood.",
+        usage: "Showcase background and quiet content areas.",
+      },
+      {
+        name: "Ink",
+        value: "#111111",
+        description: "The highest-contrast tone, reserved for the reading hierarchy.",
+        usage: "Hero headline, project facts, and text CTAs.",
+      },
+      {
+        name: "Editorial accent",
+        value: "#B42318",
+        description: "A single directional accent that adds editorial emphasis without becoming a system color.",
+        usage: "Case-study label, italic headline emphasis, and selected details.",
+      },
+      {
+        name: "Divider",
+        value: "#EAE7E1",
+        description: "A low-contrast structural tone that separates story sections quietly.",
+        usage: "Hairlines, gallery edges, and footer boundaries.",
+      },
+      {
+        name: "Muted copy",
+        value: "#6B675F",
+        description: "Secondary information stays present without competing with the narrative.",
+        usage: "Labels, journal metadata, and newsletter supporting copy.",
+      },
+    ],
+    dossierUsage: [
+      {
+        label: "Hero hierarchy",
+        detail: "A large display headline and short narrative establish the story before any dense product UI appears.",
+      },
+      {
+        label: "Image-led composition",
+        detail: "The side image and gallery act as story breaks, not decorative cards beside generic content.",
+      },
+      {
+        label: "Selective metadata",
+        detail: "Client, year, services, and role are presented as compact project facts instead of a dense specification table.",
+      },
+      {
+        label: "Quiet actions",
+        detail: "Text-first CTAs and the newsletter form support the narrative without competing with the headline or imagery.",
+      },
+      {
+        label: "Section rhythm",
+        detail: "Hairline dividers, whitespace, and a journal footer pace the page like a case-study story rather than an app dashboard.",
+      },
+    ],
+    visualRuleUsage: {
+      typography: "Newsreader display; Inter UI copy; IBM Plex Mono metadata",
+      radius: "0px sections/media; 8px utility surfaces; 999px case label",
+      shadow: "None",
+      border: "1px solid #EAE7E1; quiet text-CTA underline",
+      spacing: "12 / 24 / 32 / 44 / 48px",
+      density: "Low; 32px section padding and 12px section gap",
+      motion: "220ms ease-out; gallery image scale 1.04 on hover",
+    },
     commonPatterns: ["Magazine hero", "Project index", "Case study modules", "Text buttons"],
     useCases: ["Portfolio", "Agency sites", "Editorial landing", "Creative campaigns"],
     strengths: ["Memorable personality", "Strong storytelling", "Excellent for case studies"],
@@ -272,14 +360,14 @@ export const designStyles: DesignStyle[] = [
       experimentalVisual: "Medium",
     },
     tokenRecipe: {
-      colors: ["#fafaf9", "#111111", "#ef4444", "#f5f5f4", "#737373"],
-      typography: "Expressive display face paired with readable sans body",
-      radius: "0px / 8px / 12px",
-      shadow: "Little to none",
+      colors: ["Warm neutral base", "Ink-like contrast", "Muted secondary tone", "Single editorial accent"],
+      typography: "Expressive display scale paired with restrained utility copy",
+      radius: "Mostly square or lightly rounded",
+      shadow: "Minimal; composition carries the depth",
       border: "Graphic rules, hairlines, and section dividers",
-      spacing: "Large margins, asymmetrical rhythm",
+      spacing: "Spacious, asymmetrical, and paced around imagery",
       density: "Spacious",
-      motion: "180-260ms scroll and media transitions",
+      motion: "Subtle reveal and image transitions that support the story",
     },
   },
   {

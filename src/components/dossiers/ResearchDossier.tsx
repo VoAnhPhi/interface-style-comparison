@@ -89,35 +89,91 @@ function OverviewTab({ style }: { style: DesignStyle }) {
           ))}
         </div>
       </section>
+      {style.distinguishingSignals?.length ? (
+        <section className="read-block wide">
+          <h3>What makes it different</h3>
+          <ul>
+            {style.distinguishingSignals.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }
 
 function TokensTab({ style }: { style: DesignStyle }) {
   const tokenRows = [
-    ["Typography", style.tokenRecipe.typography],
-    ["Radius", style.tokenRecipe.radius],
-    ["Shadow", style.tokenRecipe.shadow],
-    ["Border", style.tokenRecipe.border],
-    ["Spacing", style.tokenRecipe.spacing],
-    ["Motion", style.tokenRecipe.motion],
+    { label: "Typography", description: style.tokenRecipe.typography, applied: style.visualRuleUsage?.typography },
+    { label: "Radius", description: style.tokenRecipe.radius, applied: style.visualRuleUsage?.radius },
+    { label: "Shadow", description: style.tokenRecipe.shadow, applied: style.visualRuleUsage?.shadow },
+    { label: "Border", description: style.tokenRecipe.border, applied: style.visualRuleUsage?.border },
+    { label: "Spacing", description: style.tokenRecipe.spacing, applied: style.visualRuleUsage?.spacing },
+    { label: "Density", description: style.tokenRecipe.density, applied: style.visualRuleUsage?.density },
+    { label: "Motion", description: style.tokenRecipe.motion, applied: style.visualRuleUsage?.motion },
   ];
 
   return (
     <div className="tokens-view">
-      <div className="swatch-row">
-        {style.tokenRecipe.colors.map((color) => (
-          <span key={color} style={{ background: color }} title={color} />
-        ))}
-      </div>
-      <dl className="token-list">
-        {tokenRows.map(([label, value]) => (
-          <div key={label}>
-            <dt>{label}</dt>
-            <dd>{value}</dd>
+      <section className="token-group">
+        <h3>Color roles</h3>
+        {style.colorTokens?.length ? (
+          <div className="color-token-list">
+            {style.colorTokens.map((token) => (
+              <article className="color-token-item" key={token.name}>
+                <span aria-hidden="true" className="color-token-swatch" style={{ background: token.value }} />
+                <div className="color-token-copy">
+                  <div>
+                    <strong>{token.name}</strong>
+                    <code>{token.value}</code>
+                  </div>
+                  <p>{token.description}</p>
+                  <small>Used in: {token.usage}</small>
+                </div>
+              </article>
+            ))}
           </div>
-        ))}
-      </dl>
+        ) : (
+          <div className="swatch-row">
+            {style.tokenRecipe.colors.map((color) => (
+              <span key={color} style={{ background: color }} title={color} />
+            ))}
+          </div>
+        )}
+      </section>
+
+      <section className="token-group">
+        <h3>Visual rules</h3>
+        <dl className={`token-list ${style.visualRuleUsage ? "has-applied-values" : ""}`}>
+          {tokenRows.map((row) => (
+            <div key={row.label}>
+              <dt>{row.label}</dt>
+              <dd>{row.description}</dd>
+              {row.applied ? (
+                <dd className="token-applied-value">
+                  <span>Used here</span>
+                  <strong>{row.applied}</strong>
+                </dd>
+              ) : null}
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {style.dossierUsage?.length ? (
+        <section className="token-group">
+          <h3>Used in this dossier</h3>
+          <div className="token-usage-list">
+            {style.dossierUsage.map((item) => (
+              <article key={item.label}>
+                <strong>{item.label}</strong>
+                <p>{item.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
