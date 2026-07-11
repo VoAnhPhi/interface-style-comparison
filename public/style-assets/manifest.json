@@ -38,10 +38,12 @@
       "id": "editorial-case-study-photo",
       "styleId": "editorial-portfolio",
       "kind": "photo",
-      "status": "planned",
-      "sourcePreference": "Unsplash or Pexels",
+      "status": "available",
+      "sourcePreference": "User-downloaded local photos",
       "searchPrompt": "editorial architecture studio portfolio monochrome workspace",
-      "localPath": "public/style-assets/editorial/"
+      "localPath": "public/style-assets/editorial/",
+      "assetCount": 6,
+      "provenanceNote": "Downloaded and provided locally by the user. Original source URLs, authors, and license details were not retained; do not delete or redistribute without confirming those details."
     },
     {
       "id": "glass-gradient-backdrop",
@@ -154,6 +156,72 @@
       "source": "Locally generated raster asset for the Enterprise/Admin dossier.",
       "localPath": "public/style-assets/enterprise/enterprise-admin-data-grid.png",
       "dimensions": "1600x1000",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-01",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-01.jpg",
+      "dimensions": "736x1021",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-02",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-02.jpg",
+      "dimensions": "600x1200",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-03",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-03.jpg",
+      "dimensions": "736x905",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-04",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-04.jpg",
+      "dimensions": "736x970",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-05",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-05.jpg",
+      "dimensions": "736x981",
+      "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "editorial-furniture-06",
+      "styleId": "editorial-portfolio",
+      "kind": "photo",
+      "status": "available",
+      "source": "User-downloaded local photo; original source URL and author not recorded.",
+      "license": "Unknown; confirm before redistribution or public release.",
+      "localPath": "public/style-assets/editorial/editorial-furniture-06.jpg",
+      "dimensions": "736x485",
       "retrievalDate": "2026-07-09"
     }
   ]
