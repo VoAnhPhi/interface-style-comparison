@@ -519,8 +519,8 @@ p {
 }
 
 .preview-glassmorphism {
-	color: #ffffff;
-	background: linear-gradient(135deg, #172554, #6d28d9 54%, #0e7490);
+	color: #f2f6f3;
+	background: radial-gradient(circle at 76% 20%, rgba(210, 162, 95, 0.42), transparent 28%), linear-gradient(135deg, #132a23, #192f28 54%, #214e46);
 }
 
 .preview-neo-brutalism {
@@ -3472,82 +3472,549 @@ p {
 }
 
 .dossier-glass-layout {
-	grid-template-columns: minmax(340px, 0.9fr) minmax(0, 1.1fr);
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 22px;
+	font-family: var(--font-dm-sans);
 }
 
-.glass-preview-stage {
-	position: sticky;
-	top: 102px;
-	min-height: 430px;
-	overflow: hidden;
-	border: 1px solid rgba(255, 255, 255, 0.28);
-	border-radius: var(--dossier-radius);
-	background: linear-gradient(135deg, rgba(34, 211, 238, 0.28), transparent 32%), linear-gradient(145deg, #172554, #6d28d9 54%, #0e7490);
-	padding: 22px;
-	box-shadow: var(--dossier-shadow);
+.dossier-style-glassmorphism .style-tags span {
+	border-color: rgba(242, 246, 243, 0.16);
+	background: rgba(242, 246, 243, 0.08);
+	color: #f2f6f3;
 }
 
-.glass-ambient-plane {
-	position: absolute;
-	inset: 0;
-	background:
-		linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.16), transparent), linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent);
-	opacity: 0.9;
+.dossier-style-glassmorphism .quick-facts {
+	border-color: rgba(242, 246, 243, 0.16);
 }
 
-.glass-card-main,
-.glass-card-secondary {
-	position: relative;
-	border: 1px solid rgba(255, 255, 255, 0.34);
-	border-radius: var(--dossier-radius);
-	background: rgba(255, 255, 255, 0.16);
-	color: #ffffff;
-	box-shadow: 0 18px 42px rgba(0, 0, 0, 0.2);
+.dossier-style-glassmorphism .dossier-tabs {
+	border-color: rgba(242, 246, 243, 0.16);
+	background: rgba(25, 47, 40, 0.92);
+	box-shadow: 0 10px 24px rgba(10, 29, 23, 0.16);
 	backdrop-filter: blur(18px);
 }
 
-.glass-card-main {
+.dossier-style-glassmorphism .dossier-tabs button {
+	color: rgba(242, 246, 243, 0.68);
+}
+
+.dossier-style-glassmorphism .dossier-tabs button.is-active {
+	color: #d2a25f;
+}
+
+.glass-forest-canvas {
+	--glass-base: #192f28;
+	--glass-teal: #214e46;
+	--glass-jade: #4f806f;
+	--glass-moss: #78956f;
+	--glass-amber: #d2a25f;
+	--glass-ivory: #f2f6f3;
+	position: relative;
 	display: grid;
+	gap: 16px;
+	overflow: hidden;
+	border: 1px solid rgba(210, 162, 95, 0.22);
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at 78% 4%, rgba(210, 162, 95, 0.2), transparent 28%),
+		radial-gradient(circle at 18% 70%, rgba(79, 128, 111, 0.22), transparent 34%),
+		linear-gradient(145deg, #10241e 0%, var(--glass-base) 46%, #132a23 100%);
+	box-shadow: 0 24px 56px rgba(10, 29, 23, 0.24);
+	color: var(--glass-ivory);
+	padding: 20px;
+	isolation: isolate;
+	container-type: inline-size;
+}
+
+.glass-forest-canvas::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+	background-size: 32px 32px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 70%);
+	pointer-events: none;
+	z-index: -1;
+}
+
+.glass-forest-header {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
 	gap: 18px;
-	padding: 24px;
+	padding: 4px 2px;
 }
 
-.glass-card-main span,
-.glass-card-secondary span {
-	color: rgba(255, 255, 255, 0.74);
-	font-size: 0.76rem;
-	font-weight: 760;
+.glass-forest-header > div:first-child {
+	display: grid;
+	gap: 7px;
 }
 
-.glass-card-main strong {
-	font-size: clamp(2rem, 4vw, 4rem);
-	line-height: 0.95;
+.glass-forest-kicker,
+.glass-forest-hero-copy > span,
+.glass-example-card > span {
+	color: var(--glass-amber);
+	font-family: var(--font-roboto-mono);
+	font-size: 0.68rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
-.glass-card-main p {
-	max-width: 320px;
-	color: rgba(255, 255, 255, 0.82);
-	font-size: 0.92rem;
+.glass-forest-header h3,
+.glass-forest-hero-copy strong,
+.glass-example-card h4 {
+	font-family: var(--font-newsreader);
+	font-weight: 520;
+	letter-spacing: 0;
+}
+
+.glass-forest-header h3 {
+	font-size: clamp(1.75rem, 3vw, 2.8rem);
+	line-height: 1;
+}
+
+.glass-forest-header p,
+.glass-forest-hero-copy p,
+.glass-example-card p {
+	color: rgba(242, 246, 243, 0.74);
+	font-size: 0.84rem;
 	line-height: 1.55;
 }
 
-.glass-card-secondary {
-	width: min(82%, 320px);
-	display: grid;
+.glass-forest-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
 	gap: 8px;
-	margin: 20px 0 0 auto;
-	padding: 18px;
 }
 
-.glass-card-secondary strong {
-	font-size: 1.1rem;
+.glass-forest-actions button,
+.glass-modal-panel button {
+	min-height: 38px;
+	border: 1px solid rgba(242, 246, 243, 0.18);
+	border-radius: 10px;
+	padding: 0 13px;
+	font-size: 0.76rem;
+	font-weight: 700;
+	transition:
+		transform var(--dossier-motion),
+		border-color var(--dossier-motion),
+		background-color var(--dossier-motion);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.glass-forest-actions button:hover,
+	.glass-modal-panel button:hover {
+		transform: translateY(-1px);
+	}
+}
+
+.glass-forest-primary,
+.glass-modal-panel button.is-save {
+	border-color: rgba(255, 231, 190, 0.42) !important;
+	background: linear-gradient(180deg, #e1b36f, var(--glass-amber));
+	box-shadow: 0 10px 24px rgba(210, 162, 95, 0.2);
+	color: #17241f;
+}
+
+.glass-forest-secondary,
+.glass-modal-panel button {
+	background: rgba(242, 246, 243, 0.08);
+	color: var(--glass-ivory);
+	backdrop-filter: blur(14px);
+}
+
+.glass-forest-status {
+	display: inline-flex;
+	align-items: center;
+	min-height: 38px;
+	border: 1px solid rgba(120, 149, 111, 0.3);
+	border-radius: 999px;
+	background: rgba(120, 149, 111, 0.12);
+	color: #dbe8d6;
+	padding: 0 12px;
+	font-size: 0.72rem;
+	font-weight: 700;
+}
+
+.glass-forest-hero {
+	position: relative;
+	min-height: clamp(280px, 38vw, 430px);
+	margin: 0;
+	overflow: hidden;
+	border: 1px solid rgba(242, 246, 243, 0.18);
+	border-radius: 18px;
+	background: var(--glass-base);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.glass-forest-hero::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(90deg, rgba(10, 27, 22, 0.9) 0%, rgba(25, 47, 40, 0.66) 40%, transparent 72%),
+		linear-gradient(180deg, rgba(25, 47, 40, 0.08), rgba(15, 34, 28, 0.3));
+	pointer-events: none;
+}
+
+.glass-forest-hero img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	inset: 0;
+	object-fit: cover;
+	object-position: center;
+}
+
+.glass-forest-hero-copy {
+	position: relative;
+	z-index: 1;
+	width: min(52%, 430px);
+	display: flex;
+	min-height: inherit;
+	flex-direction: column;
+	justify-content: center;
+	gap: 14px;
+	padding: clamp(24px, 5vw, 54px);
+}
+
+.glass-forest-hero-copy strong {
+	font-size: clamp(2.3rem, 5vw, 4.6rem);
+	line-height: 0.94;
+}
+
+.glass-forest-dots {
+	display: flex;
+	gap: 7px;
+	margin-top: auto;
+}
+
+.glass-forest-dots span {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: rgba(242, 246, 243, 0.28);
+}
+
+.glass-forest-dots span.is-active {
+	background: var(--glass-amber);
+}
+
+.glass-forest-tokens {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 9px;
+}
+
+.glass-forest-tokens article {
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	border: 1px solid rgba(242, 246, 243, 0.14);
+	border-radius: 14px;
+	background: rgba(242, 246, 243, 0.075);
+	padding: 10px;
+	backdrop-filter: blur(14px);
+}
+
+.glass-forest-tokens article > span {
+	width: 30px;
+	height: 30px;
+	flex: 0 0 auto;
+	border: 1px solid rgba(242, 246, 243, 0.3);
+	border-radius: 50%;
+}
+
+.glass-forest-tokens article div {
+	min-width: 0;
+	display: grid;
+	gap: 2px;
+}
+
+.glass-forest-tokens strong,
+.glass-forest-tokens code {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.glass-forest-tokens strong {
+	font-size: 0.7rem;
+}
+
+.glass-forest-tokens code {
+	color: rgba(242, 246, 243, 0.6);
+	font-family: var(--font-roboto-mono);
+	font-size: 0.62rem;
+}
+
+.glass-forest-examples {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.glass-example-card {
+	position: relative;
+	display: flex;
+	min-width: 0;
+	min-height: 260px;
+	flex-direction: column;
+	gap: 7px;
+	overflow: hidden;
+	border: 1px solid rgba(242, 246, 243, 0.16);
+	border-radius: 17px;
+	background: rgba(242, 246, 243, 0.075);
+	padding: 16px;
+	backdrop-filter: blur(16px);
+}
+
+.glass-example-navigation::before,
+.glass-example-data::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(180deg, rgba(25, 47, 40, 0.2), rgba(25, 47, 40, 0.92)),
+		url("/style-assets/glass/glass-forest-backdrop.png") center / cover;
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.glass-example-data::before {
+	background-position: 72% center;
+	opacity: 0.34;
+}
+
+.glass-example-card > * {
+	position: relative;
+	z-index: 1;
+}
+
+.glass-example-card h4 {
+	font-size: 1.15rem;
+}
+
+.glass-example-navigation nav,
+.glass-data-panel,
+.glass-modal-panel {
+	margin-top: auto;
+	border: 1px solid rgba(242, 246, 243, 0.14);
+	border-radius: 13px;
+	background: rgba(13, 34, 27, 0.74);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(18px);
+	padding: 11px;
+}
+
+.glass-example-navigation nav {
+	display: grid;
+	gap: 4px;
+}
+
+.glass-example-navigation nav > * {
+	border-radius: 8px;
+	color: rgba(242, 246, 243, 0.72);
+	padding: 7px 9px;
+	font-size: 0.7rem;
+}
+
+.glass-example-navigation nav strong {
+	background: rgba(120, 149, 111, 0.2);
+	color: var(--glass-ivory);
+}
+
+.glass-data-panel {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 5px 10px;
+}
+
+.glass-data-panel small {
+	grid-column: 1 / -1;
+	color: rgba(242, 246, 243, 0.66);
+}
+
+.glass-data-panel strong {
+	font-size: 2rem;
+	font-weight: 560;
+}
+
+.glass-data-panel em {
+	align-self: center;
+	border-radius: 999px;
+	background: rgba(120, 149, 111, 0.18);
+	color: #dbe8d6;
+	padding: 5px 7px;
+	font-size: 0.68rem;
+	font-style: normal;
+}
+
+.glass-data-line {
+	grid-column: 1 / -1;
+	height: 42px;
+	margin-top: 7px;
+	background:
+		linear-gradient(180deg, transparent, rgba(120, 149, 111, 0.1)),
+		linear-gradient(
+			135deg,
+			transparent 0 18%,
+			#78956f 19% 21%,
+			transparent 22% 38%,
+			#a0bd91 39% 41%,
+			transparent 42% 58%,
+			#78956f 59% 61%,
+			transparent 62%
+		);
+	clip-path: polygon(0 80%, 18% 50%, 38% 65%, 58% 28%, 78% 48%, 100% 10%, 100% 100%, 0 100%);
+}
+
+.glass-modal-panel {
+	display: grid;
+	gap: 10px;
+}
+
+.glass-modal-panel label {
+	display: grid;
+	gap: 6px;
+	color: rgba(242, 246, 243, 0.72);
+	font-size: 0.68rem;
+}
+
+.glass-modal-panel input {
+	min-width: 0;
+	height: 36px;
+	border: 1px solid rgba(242, 246, 243, 0.18);
+	border-radius: 8px;
+	outline: none;
+	background: rgba(242, 246, 243, 0.06);
+	color: var(--glass-ivory);
+	padding: 0 10px;
+	font-size: 0.74rem;
+}
+
+.glass-modal-panel input:focus-visible {
+	border-color: var(--glass-amber);
+	box-shadow: 0 0 0 3px rgba(210, 162, 95, 0.18);
+}
+
+.glass-modal-panel > div {
+	display: flex;
+	justify-content: flex-end;
+	gap: 7px;
+}
+
+.glass-modal-panel button {
+	min-height: 32px;
+}
+
+.glass-forest-rules {
+	display: grid;
+	grid-template-columns: 1.1fr repeat(5, minmax(0, 1fr));
+	gap: 0;
+	border: 1px solid rgba(242, 246, 243, 0.14);
+	border-radius: 14px;
+	background: rgba(242, 246, 243, 0.055);
+	backdrop-filter: blur(14px);
+	padding: 11px 0;
+}
+
+.glass-forest-rules > * {
+	display: grid;
+	align-content: center;
+	gap: 3px;
+	border-right: 1px solid rgba(242, 246, 243, 0.12);
+	padding: 2px 12px;
+	font-size: 0.65rem;
+}
+
+.glass-forest-rules > *:last-child {
+	border-right: 0;
+}
+
+.glass-forest-rules span {
+	color: rgba(242, 246, 243, 0.58);
+}
+
+.glass-forest-rules b {
+	color: var(--glass-ivory);
+	font-weight: 650;
 }
 
 .dossier-content-glass {
-	border: 1px solid rgba(255, 255, 255, 0.24);
+	border: 1px solid rgba(25, 47, 40, 0.16);
 	border-radius: var(--dossier-radius);
-	background: rgba(255, 255, 255, 0.94);
+	background: linear-gradient(117deg, rgb(26 51 44), rgb(47, 68, 61));
 	padding: 18px;
+}
+
+#dossier-glassmorphism-examples .example-list article {
+	background: none;
+}
+
+#dossier-glassmorphism-examples .example-guidance div {
+	background: rgba(242, 246, 243, 0.075);
+	backdrop-filter: blur(14px);
+}
+
+#dossier-glassmorphism-examples .example-guidance li::before, 
+.implementation-list li::before {
+	background: var(--dossier-accent);
+}
+
+#dossier-glassmorphism-examples .implementation-list li::before {
+	background: var(--dossier-accent);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+	.glass-forest-tokens article,
+	.glass-example-card,
+	.glass-example-navigation nav,
+	.glass-data-panel,
+	.glass-modal-panel,
+	.glass-forest-rules,
+	.glass-forest-secondary {
+		background: #192f28;
+	}
+}
+
+@container (max-width: 650px) {
+	.glass-forest-header {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.glass-forest-actions {
+		justify-content: flex-start;
+	}
+
+	.glass-forest-tokens {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.glass-forest-examples {
+		grid-template-columns: 1fr;
+	}
+
+	.glass-example-card {
+		min-height: 230px;
+	}
+
+	.glass-forest-rules {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		padding: 0;
+	}
+
+	.glass-forest-rules > * {
+		border-bottom: 1px solid rgba(242, 246, 243, 0.12);
+		padding: 10px 12px;
+	}
 }
 
 .brutal-poster {
@@ -4261,6 +4728,19 @@ td:last-child {
 	.minimal-clean-meta {
 		grid-template-columns: 1fr;
 	}
+
+	.glass-forest-header {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.glass-forest-actions {
+		justify-content: flex-start;
+	}
+
+	.glass-forest-tokens {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
 }
 
 @media (max-width: 640px) {
@@ -4437,6 +4917,78 @@ td:last-child {
 
 	.glass-preview-stage {
 		min-height: 340px;
+	}
+
+	.glass-forest-canvas {
+		gap: 12px;
+		border-radius: 18px;
+		padding: 12px;
+	}
+
+	.glass-forest-actions button,
+	.glass-forest-status {
+		justify-content: center;
+		text-align: center;
+	}
+
+	.glass-forest-actions {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.glass-forest-status {
+		grid-column: 1 / -1;
+	}
+
+	.glass-forest-actions button {
+		width: 100%;
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	.glass-forest-hero {
+		min-height: 360px;
+	}
+
+	.glass-forest-hero::after {
+		background: linear-gradient(180deg, rgba(10, 27, 22, 0.36), rgba(10, 27, 22, 0.92));
+	}
+
+	.glass-forest-hero img {
+		object-position: 68% center;
+	}
+
+	.glass-forest-hero-copy {
+		width: auto;
+		max-width: 100%;
+		justify-content: flex-end;
+		padding: 22px;
+	}
+
+	.glass-forest-hero-copy p,
+	.glass-forest-header p {
+		overflow-wrap: anywhere;
+	}
+
+	.glass-forest-tokens,
+	.glass-forest-examples,
+	.glass-forest-rules {
+		grid-template-columns: 1fr;
+	}
+
+	.glass-forest-rules {
+		padding: 0 12px;
+	}
+
+	.glass-forest-rules > * {
+		grid-template-columns: 1fr auto;
+		border-right: 0;
+		border-bottom: 1px solid rgba(242, 246, 243, 0.12);
+		padding: 10px 0;
+	}
+
+	.glass-forest-rules > *:last-child {
+		border-bottom: 0;
 	}
 
 	.dossier-grid {

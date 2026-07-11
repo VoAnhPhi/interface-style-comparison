@@ -49,10 +49,10 @@
       "id": "glass-gradient-backdrop",
       "styleId": "glassmorphism",
       "kind": "generated-background",
-      "status": "planned",
+      "status": "available",
       "sourcePreference": "Generated raster",
-      "searchPrompt": "abstract premium blue violet gradient blurred lights glassmorphism background",
-      "localPath": "public/style-assets/glass/"
+      "searchPrompt": "cinematic forest floor with fern, moss, deep #192f28 shadows, jade and warm amber light",
+      "localPath": "public/style-assets/glass/glass-forest-backdrop.png"
     },
     {
       "id": "neo-brutal-poster-texture",
@@ -223,6 +223,16 @@
       "localPath": "public/style-assets/editorial/editorial-furniture-06.jpg",
       "dimensions": "736x485",
       "retrievalDate": "2026-07-09"
+    },
+    {
+      "id": "glass-gradient-backdrop",
+      "styleId": "glassmorphism",
+      "kind": "generated-background",
+      "status": "available",
+      "source": "Generated with the built-in image generation tool for the Glassmorphism dossier.",
+      "localPath": "public/style-assets/glass/glass-forest-backdrop.png",
+      "dimensions": "1672x941",
+      "retrievalDate": "2026-07-11"
     }
   ]
 }

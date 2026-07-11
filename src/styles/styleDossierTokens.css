@@ -60,16 +60,16 @@
 
 .dossier-style-glassmorphism {
   --dossier-font: var(--font-dm-sans);
-  --dossier-display: var(--font-dm-sans);
+  --dossier-display: var(--font-newsreader);
   --dossier-mono: var(--font-roboto-mono);
-  --dossier-bg: #111827;
-  --dossier-surface: rgba(255, 255, 255, 0.18);
-  --dossier-ink: #ffffff;
-  --dossier-muted: rgba(255, 255, 255, 0.74);
-  --dossier-accent: #a78bfa;
-  --dossier-secondary: #22d3ee;
+  --dossier-bg: linear-gradient(145deg, #132a23, #192f28 48%, #214e46);
+  --dossier-surface: rgba(242, 246, 243, 0.1);
+  --dossier-ink: #f2f6f3;
+  --dossier-muted: rgba(242, 246, 243, 0.72);
+  --dossier-accent: #d2a25f;
+  --dossier-secondary: #4f806f;
   --dossier-radius: 24px;
-  --dossier-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  --dossier-shadow: 0 24px 70px rgba(10, 29, 23, 0.32);
   --dossier-motion: 220ms ease-out;
 }
 
