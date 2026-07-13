@@ -58,10 +58,10 @@
       "id": "neo-brutal-poster-texture",
       "styleId": "neo-brutalism",
       "kind": "texture",
-      "status": "planned",
+      "status": "available",
       "sourcePreference": "Generated raster or Pexels texture",
       "searchPrompt": "bold poster paper ink texture high contrast neo brutalism yellow black",
-      "localPath": "public/style-assets/neo-brutal/"
+      "localPath": "public/style-assets/neo-brutal/neo-brutal-poster-texture.png"
     },
     {
       "id": "material-fluent-surface-stack",

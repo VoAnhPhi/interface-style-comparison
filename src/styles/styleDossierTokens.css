@@ -77,13 +77,13 @@
   --dossier-font: var(--font-space-grotesk);
   --dossier-display: var(--font-space-grotesk);
   --dossier-mono: var(--font-ibm-mono);
-  --dossier-bg: #fff78a;
-  --dossier-surface: #ffffff;
-  --dossier-ink: #111111;
-  --dossier-muted: #292524;
-  --dossier-accent: #ff6b6b;
-  --dossier-secondary: #4d96ff;
-  --dossier-radius: 12px;
+	--dossier-bg: #fff7ed;
+	--dossier-surface: #ffffff;
+	--dossier-ink: #111111;
+	--dossier-muted: #292524;
+	--dossier-accent: #facc15;
+	--dossier-secondary: #60a5fa;
+	--dossier-radius: 4px;
   --dossier-shadow: 6px 6px 0 #111111;
   --dossier-motion: 120ms ease-out;
 }
