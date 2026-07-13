@@ -67,10 +67,28 @@
       "id": "material-fluent-surface-stack",
       "styleId": "material-fluent",
       "kind": "generated-background",
-      "status": "planned",
+      "status": "available",
       "sourcePreference": "Generated raster",
       "searchPrompt": "clean layered material design fluent surface stack abstract component states",
-      "localPath": "public/style-assets/material-fluent/"
+      "localPath": "public/style-assets/material-fluent/material-fluent-surface-stack.png"
+    },
+    {
+      "id": "material-fluent-corner-surfaces",
+      "styleId": "material-fluent",
+      "kind": "generated-decoration",
+      "status": "available",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "subtle layered surface planes pale blue lavender top-left corner decoration",
+      "localPath": "public/style-assets/material-fluent/material-fluent-corner-surfaces.png"
+    },
+    {
+      "id": "material-fluent-surface-stack-v2",
+      "styleId": "material-fluent",
+      "kind": "generated-decoration",
+      "status": "available",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "isolated five-layer lavender blue cream charcoal rounded material surface stack",
+      "localPath": "public/style-assets/material-fluent/material-fluent-surface-stack-v2.png"
     },
     {
       "id": "neumorphism-soft-surface",
