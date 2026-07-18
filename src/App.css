@@ -3477,13 +3477,16 @@ p {
 .skeuo-dossier-layout,
 .clay-dossier-layout {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+	grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.9fr);
 	gap: 22px;
 	align-items: start;
 	margin-top: 28px;
 }
 
-.neumorph-lab,
+.neumorph-hero,
+.neumorph-control-board,
+.neumorph-state-card,
+.neumorph-examples,
 .neumorph-warning,
 .dossier-content-neumorph {
 	border-radius: var(--dossier-radius);
@@ -3491,52 +3494,364 @@ p {
 	box-shadow: var(--dossier-shadow);
 }
 
-.neumorph-lab {
+.neumorph-hero {
+	grid-column: 1 / -1;
 	display: grid;
-	gap: 20px;
-	padding: 22px;
+	grid-template-columns: minmax(0, 1.15fr) minmax(270px, 0.85fr);
+	gap: 28px;
+	padding: clamp(24px, 4vw, 42px);
 }
 
-.neumorph-display {
-	border-radius: 24px;
-	background: var(--dossier-bg);
-	box-shadow:
-		inset 7px 7px 14px #cfd6de,
-		inset -7px -7px 14px #ffffff;
-	padding: 24px;
-}
-
-.neumorph-display span,
+.neumorph-kicker,
+.neumorph-board-heading > div > span,
+.neumorph-examples-heading > span,
 .neumorph-warning span {
 	color: var(--dossier-muted);
 	font-size: 0.78rem;
 	font-weight: 760;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 }
 
-.neumorph-display strong {
-	display: block;
-	margin-top: 10px;
+.neumorph-hero h3 {
+	margin-top: 12px;
 	color: var(--dossier-ink);
-	font-size: clamp(2rem, 4vw, 4rem);
-	line-height: 0.95;
+	font-size: clamp(2rem, 4vw, 3.6rem);
+	line-height: 0.98;
+	max-width: 12ch;
 }
 
-.neumorph-controls {
+.neumorph-hero-copy > p {
+	margin-top: 16px;
+	max-width: 61ch;
+	color: var(--dossier-muted);
+	line-height: 1.6;
+}
+
+.neumorph-hero-meta,
+.neumorph-action-row,
+.neumorph-board-footer,
+.neumorph-progress,
+.neumorph-player {
+	display: flex;
+	align-items: center;
+}
+
+.neumorph-hero-meta {
+	gap: 9px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+
+.neumorph-hero-meta span {
+	border: 1px solid rgba(71, 85, 105, 0.28);
+	border-radius: 999px;
+	padding: 6px 10px;
+	color: #334155;
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.neumorph-hero-forms {
+	align-self: center;
+	border-radius: 22px;
+	box-shadow: inset 7px 7px 14px #cfd6de, inset -7px -7px 14px #ffffff;
+	padding: 20px;
+}
+
+.neumorph-hero-forms label {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 14px;
+	gap: 8px;
+	color: #475569;
+	font-size: 0.82rem;
+	font-weight: 750;
 }
 
-.neumorph-controls button {
-	min-height: 58px;
-	border: 0;
-	border-radius: 18px;
-	background: var(--dossier-bg);
-	box-shadow:
-		6px 6px 12px #cfd6de,
-		-6px -6px 12px #ffffff;
+.neumorph-hero-forms input {
+	min-height: 46px;
+	border: 1px solid rgba(71, 85, 105, 0.3);
+	border-radius: 13px;
+	outline: 0;
+	background: rgba(255, 255, 255, 0.35);
+	box-shadow: inset 3px 3px 7px #cfd6de, inset -3px -3px 7px #ffffff;
+	padding: 0 13px;
 	color: var(--dossier-ink);
-	font-weight: 760;
+	font: inherit;
+}
+
+.neumorph-hero-forms input:focus-visible,
+.neumorph-state-card.is-focussafe button:focus-visible,
+.neumorph-example-grid article button:focus-visible {
+	outline: 3px solid #2563eb;
+	outline-offset: 3px;
+}
+
+.neumorph-action-row {
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.neumorph-action-row button,
+.neumorph-state-card button,
+.neumorph-more-action,
+.neumorph-skip,
+.neumorph-play,
+.neumorph-board-footer button,
+.neumorph-example-grid article button {
+	border: 1px solid transparent;
+	background: var(--dossier-bg);
+	color: var(--dossier-ink);
+	font: inherit;
+	font-weight: 750;
+	cursor: pointer;
+	transition: transform var(--dossier-motion), box-shadow var(--dossier-motion), border-color var(--dossier-motion);
+}
+
+.neumorph-action-row button:hover,
+.neumorph-state-card button:hover,
+.neumorph-skip:hover,
+.neumorph-play:hover,
+.neumorph-board-footer button:hover {
+	transform: translateY(-1px);
+}
+
+.neumorph-primary-action,
+.neumorph-quiet-action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	min-height: 43px;
+	border-radius: 13px;
+	padding: 0 14px;
+}
+
+.neumorph-primary-action {
+	box-shadow: 5px 5px 10px #cfd6de, -5px -5px 10px #ffffff;
+}
+
+.neumorph-quiet-action {
+	border-color: rgba(71, 85, 105, 0.32) !important;
+	box-shadow: inset 3px 3px 7px #cfd6de, inset -3px -3px 7px #ffffff;
+}
+
+.neumorph-control-board {
+	display: grid;
+	gap: 24px;
+	padding: clamp(22px, 3vw, 34px);
+}
+
+.neumorph-board-heading {
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.neumorph-board-heading h3,
+.neumorph-examples-heading h3 {
+	margin-top: 8px;
+	color: var(--dossier-ink);
+	font-size: clamp(1.4rem, 2.5vw, 2rem);
+	line-height: 1.1;
+}
+
+.neumorph-more-action {
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	box-shadow: 4px 4px 9px #cfd6de, -4px -4px 9px #ffffff;
+	letter-spacing: 2px;
+}
+
+.neumorph-player {
+	justify-content: center;
+	gap: clamp(16px, 4vw, 42px);
+}
+
+.neumorph-play,
+.neumorph-skip {
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	box-shadow: 7px 7px 14px #cfd6de, -7px -7px 14px #ffffff;
+}
+
+.neumorph-play {
+	width: 104px;
+	height: 104px;
+}
+
+.neumorph-play span {
+	margin-left: 6px;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	border-left: 24px solid #334155;
+}
+
+.neumorph-skip {
+	width: 48px;
+	height: 48px;
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.neumorph-progress {
+	gap: 13px;
+	color: #475569;
+	font-family: var(--dossier-mono);
+	font-size: 0.73rem;
+}
+
+.neumorph-progress > div,
+.neumorph-volume i {
+	display: block;
+	position: relative;
+	flex: 1;
+	height: 8px;
+	border-radius: 999px;
+	background: #d9e0e9;
+	box-shadow: inset 2px 2px 4px #c3ccd8, inset -2px -2px 4px #ffffff;
+}
+
+.neumorph-progress i {
+	display: block;
+	width: 41%;
+	height: 100%;
+	border-radius: inherit;
+	background: #64748b;
+}
+
+.neumorph-board-footer {
+	gap: 16px;
+	border-top: 1px solid rgba(100, 116, 139, 0.2);
+	padding-top: 18px;
+	color: var(--dossier-muted);
+	font-size: 0.86rem;
+}
+
+.neumorph-volume {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	width: 130px;
+}
+
+.neumorph-volume i { flex: 1; }
+
+.neumorph-board-footer > span { flex: 1; }
+
+.neumorph-board-footer button {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	box-shadow: 4px 4px 8px #cfd6de, -4px -4px 8px #ffffff;
+}
+
+.neumorph-state-rail {
+	display: grid;
+	gap: 16px;
+}
+
+.neumorph-state-card {
+	padding: 18px;
+}
+
+.neumorph-state-card > div {
+	display: flex;
+	gap: 12px;
+	align-items: flex-start;
+}
+
+.neumorph-state-card .fa-icon { color: #475569; }
+
+.neumorph-state-card h3 {
+	color: var(--dossier-ink);
+	font-size: 1rem;
+}
+
+.neumorph-state-card p {
+	margin-top: 5px;
+	color: var(--dossier-muted);
+	font-size: 0.82rem;
+	line-height: 1.45;
+}
+
+.neumorph-state-card button {
+	width: 100%;
+	min-height: 38px;
+	margin-top: 15px;
+	border-radius: 12px;
+	box-shadow: 4px 4px 9px #cfd6de, -4px -4px 9px #ffffff;
+	font-size: 0.78rem;
+}
+
+.neumorph-state-card.is-inset button {
+	border-color: rgba(71, 85, 105, 0.3);
+	box-shadow: inset 3px 3px 7px #cfd6de, inset -3px -3px 7px #ffffff;
+}
+
+.neumorph-state-card.is-focussafe button {
+	border: 2px solid #2563eb;
+	box-shadow: 4px 4px 9px #cfd6de, -4px -4px 9px #ffffff;
+}
+
+.neumorph-examples {
+	grid-column: 1 / -1;
+	padding: 22px;
+}
+
+.neumorph-example-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 14px;
+	margin-top: 17px;
+}
+
+.neumorph-example-grid article {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-width: 0;
+	border-radius: 16px;
+	box-shadow: 5px 5px 10px #cfd6de, -5px -5px 10px #ffffff;
+	padding: 14px;
+}
+
+.neumorph-example-grid article > .fa-icon {
+	flex: 0 0 auto;
+	color: #475569;
+}
+
+.neumorph-example-grid article > div { min-width: 0; }
+
+.neumorph-example-grid strong,
+.neumorph-example-grid span {
+	display: block;
+}
+
+.neumorph-example-grid strong { color: var(--dossier-ink); font-size: 0.87rem; }
+.neumorph-example-grid span { margin-top: 3px; color: var(--dossier-muted); font-size: 0.75rem; line-height: 1.35; }
+.neumorph-example-grid b { margin-left: auto; color: var(--dossier-muted); font-size: 1.5rem; font-weight: 400; }
+
+.neumorph-example-grid article button {
+	position: relative;
+	width: 38px;
+	height: 22px;
+	margin-left: auto;
+	border-radius: 999px;
+	background: #64748b;
+}
+
+.neumorph-example-grid article button i {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: #ffffff;
 }
 
 .neumorph-warning,
@@ -3562,6 +3877,25 @@ p {
 	color: var(--dossier-muted);
 	font-size: 0.92rem;
 	line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+	.neumorph-hero {
+		grid-template-columns: 1fr;
+		gap: 22px;
+	}
+
+	.neumorph-hero h3 { max-width: none; }
+
+	.neumorph-example-grid { grid-template-columns: 1fr; }
+
+	.neumorph-play {
+		width: 86px;
+		height: 86px;
+	}
+
+	.neumorph-board-footer { flex-wrap: wrap; }
+	.neumorph-board-footer > span { min-width: 150px; }
 }
 
 .flat-board {
