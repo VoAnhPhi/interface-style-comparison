@@ -122,12 +122,12 @@
   --dossier-font: var(--font-roboto);
   --dossier-display: var(--font-roboto);
   --dossier-mono: var(--font-roboto-mono);
-  --dossier-bg: #ffffff;
+  --dossier-bg: #f5f7f7;
   --dossier-surface: #ffffff;
-  --dossier-ink: #111827;
-  --dossier-muted: #6b7280;
-  --dossier-accent: #0078d4;
-  --dossier-secondary: #d1d5db;
+  --dossier-ink: #112b36;
+  --dossier-muted: #526b75;
+  --dossier-accent: #087e8b;
+  --dossier-secondary: #b8c9d1;
   --dossier-radius: 4px;
   --dossier-shadow: none;
   --dossier-motion: 120ms ease-out;
