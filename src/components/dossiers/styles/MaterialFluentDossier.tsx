@@ -1,4 +1,5 @@
 import type { DossierRendererProps } from "../types";
+import { FontAwesomeIcon } from "../../icons/FontAwesomeIcon";
 
 const stateItems = [
 	{ label: "Default", className: "is-default", detail: "Neutral outline and resting elevation." },
@@ -59,20 +60,26 @@ export function MaterialFluentDossier({ renderTab, style }: DossierRendererProps
 				<div className="material-board-column material-board-center">
 					<header className="material-reference-toolbar">
 						<button className="material-reference-menu" type="button" aria-label="Open navigation">
+							<FontAwesomeIcon name="bars-filter" size={16} />
 							☰
 						</button>
 						<span className="material-reference-brand" aria-hidden="true" />
 						<div className="material-reference-toolbar-actions" aria-label="Toolbar actions">
 							<button type="button" aria-label="Search">
+								<FontAwesomeIcon name="magnifying-glass" size={15} />
 								⌕
 							</button>
 							<button type="button" aria-label="Favorite">
+								<FontAwesomeIcon name="heart" size={15} />
 								♡
 							</button>
 							<button type="button" aria-label="Notifications">
+								<FontAwesomeIcon name="bell" size={15} />
 								♧
 							</button>
-							<button className="material-reference-avatar" type="button" aria-label="Account" />
+							<button className="material-reference-avatar" type="button" aria-label="Account">
+								<FontAwesomeIcon name="user" size={14} />
+							</button>
 						</div>
 					</header>
 					<div className="material-state-matrix">

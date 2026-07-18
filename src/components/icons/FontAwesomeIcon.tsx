@@ -8,10 +8,12 @@ import circleExclamationSvg from "../../assets/icons/fontawesome/light/circle-ex
 import downloadSvg from "../../assets/icons/fontawesome/light/download.svg?raw";
 import fileLinesSvg from "../../assets/icons/fontawesome/light/file-lines.svg?raw";
 import gearSvg from "../../assets/icons/fontawesome/light/gear.svg?raw";
+import heartSvg from "../../assets/icons/fontawesome/light/heart.svg?raw";
 import magnifyingGlassSvg from "../../assets/icons/fontawesome/light/magnifying-glass.svg?raw";
 import penLineSvg from "../../assets/icons/fontawesome/light/pen-line.svg?raw";
 import plusSvg from "../../assets/icons/fontawesome/light/plus.svg?raw";
 import usersSvg from "../../assets/icons/fontawesome/light/users.svg?raw";
+import userSvg from "../../assets/icons/fontawesome/light/user.svg?raw";
 
 const fontAwesomeIcons = {
   "arrow-up-right-from-square": arrowUpRightFromSquareSvg,
@@ -24,10 +26,12 @@ const fontAwesomeIcons = {
   download: downloadSvg,
   "file-lines": fileLinesSvg,
   gear: gearSvg,
+  heart: heartSvg,
   "magnifying-glass": magnifyingGlassSvg,
   "pen-line": penLineSvg,
   plus: plusSvg,
   users: usersSvg,
+  user: userSvg,
 } as const;
 
 export type FontAwesomeIconName = keyof typeof fontAwesomeIcons;

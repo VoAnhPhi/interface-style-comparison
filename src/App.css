@@ -2580,7 +2580,7 @@ p {
 	background: transparent;
 	color: #3b3a49;
 	font: inherit;
-	font-size: 1.5rem;
+	font-size: 0;
 	cursor: pointer;
 }
 .material-reference-brand {
@@ -2596,7 +2596,7 @@ p {
 	margin-left: auto;
 }
 .material-reference-toolbar-actions button {
-	font-size: 1.6rem;
+	font-size: 0;
 }
 .material-reference-avatar {
 	border-radius: 50% !important;
