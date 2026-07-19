@@ -152,14 +152,14 @@
   --dossier-font: var(--font-poppins);
   --dossier-display: var(--font-poppins);
   --dossier-mono: var(--font-ibm-mono);
-  --dossier-bg: #fdf2f8;
-  --dossier-surface: #ffffff;
-  --dossier-ink: #1f2937;
-  --dossier-muted: #6b7280;
-  --dossier-accent: #f472b6;
-  --dossier-secondary: #93c5fd;
-  --dossier-radius: 32px;
-  --dossier-shadow: 0 20px 40px rgba(31, 41, 55, 0.14);
+  --dossier-bg: #fbf4eb;
+  --dossier-surface: #fffaf4;
+  --dossier-ink: #382946;
+  --dossier-muted: #766373;
+  --dossier-accent: #f4ab86;
+  --dossier-secondary: #c7b9e9;
+  --dossier-radius: 30px;
+  --dossier-shadow: 9px 10px 22px rgba(103, 78, 98, 0.13), -7px -7px 17px rgba(255, 255, 255, 0.84);
   --dossier-motion: 220ms ease-out;
 }
 
