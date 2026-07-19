@@ -26,11 +26,25 @@ harness.db-shm
 
 # Codebase memory and local agent artifacts
 .codebase-memory/
-.agents/
+.agents/*
+!.agents/skills/
+!.agents/skills/**
 
 # Local harness docs/scripts copied into this research project
 docs/
+!docs/
+docs/*
+!docs/product/
+!docs/product/**
+!docs/design/
+!docs/design/**
+!docs/stories/
+!docs/stories/**
+!docs/AGENT_SKILLS.md
+!docs/QUALITY_GATES.md
 scripts/
+!scripts/
+!scripts/enable-project-skills.ps1
 
 # Editor / OS noise
 .DS_Store
@@ -42,5 +56,4 @@ Thumbs.db
 scripts/bin/harness-cli
 scripts/bin/harness-cli.exe
 
-#file
-SPEC2.md
+# Research specifications are project source-of-truth documents.

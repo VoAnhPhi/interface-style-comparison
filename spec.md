@@ -10,6 +10,28 @@ Two styles should **not** be promoted to first-class global themes at the star
 
 A few details were not specified in the request: Finn UI’s final brand color, whether dark mode is mandatory on day one, whether the first consumer is mostly a landing page or a dashboard, and whether compact density is needed immediately. The recommendations below therefore assume **WCAG AA as the minimum bar**, **light and dark themes eventually**, **React web + Storybook**, and a product mix of **demo landing + reusable app UI**. WCAG’s text-contrast, non-text-contrast, and focus-appearance guidance should be treated as non-negotiable guardrails for every theme.
 
+## **Research Explorer Interpretation**
+
+This brief is a research source, not a prescription that every project using a
+style must adopt the exact fonts, hex values, spacing numbers, or component
+recipes listed below. Those values are useful reference evidence; they are not
+the definition of a style.
+
+For the UI Style Research Workspace, every style explanation must separate
+three layers:
+
+1. **Style principle**: the durable visual logic, such as hierarchy,
+   composition, surface treatment, density, imagery, and control emphasis.
+2. **Demo application**: how the local dossier chooses to demonstrate that
+   logic in one concrete layout. A demo is an example, not a canonical style.
+3. **Comparative cue**: the most useful contrast with a nearby style so users
+   can understand the decision they are making.
+
+Tokens should therefore be presented as visual roles and relationships first:
+for example, contrast hierarchy, restrained versus expressive controls, or
+spacious versus compact rhythm. Exact values may be shown as local evidence,
+but the workspace must not imply that a style is invalid without them.
+
 ## **Source priority and evaluation criteria**
 
 This brief prioritizes **primary or official sources** wherever possible: Material 3 for role-based theming and motion, Fluent 2 for token architecture and spacing/radius defaults, Atlassian and Carbon for enterprise-grade foundations, Apple’s HIG for material/glass guidance, Vercel Geist for minimal developer-facing craft, Stripe Elements for component customization patterns, and Linear for high-end modern SaaS execution. Those eight references are the best first review set for Finn UI design decisions.

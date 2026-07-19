@@ -22,6 +22,21 @@ Before changing product UI or research copy, read:
 - `docs/design/research-workspace-next-effects.md`
 - `docs/AGENT_SKILLS.md`
 
+## Project skill activation
+
+The version-controlled project skills live in `.agents/skills/`. They are the
+canonical source for this repository; do not duplicate or edit a global copy.
+
+- On a new machine or after adding a local skill, run
+  `./scripts/enable-project-skills.ps1` in PowerShell. It creates safe local
+  junctions under the user's Codex skills directory, without replacing an
+  existing skill.
+- Start a new Codex task after running the script so the skills can be
+  discovered by the task runtime.
+- Read `docs/QUALITY_GATES.md` before visual dossier work. It names the
+  required design, implementation, browser-QA, review, and documentation gates
+  and the explicit runtime fallback when a local skill is unavailable.
+
 Code discovery rule:
 
 - Prefer codebase-memory MCP tools over grep/glob for code discovery:
