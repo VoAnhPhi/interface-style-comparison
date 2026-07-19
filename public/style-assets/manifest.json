@@ -112,40 +112,50 @@
       "id": "skeuomorphic-paper-texture",
       "styleId": "skeuomorphism",
       "kind": "texture",
-      "status": "planned",
-      "sourcePreference": "Generated raster or Pexels texture",
+      "status": "available",
+      "sourcePreference": "Generated raster",
       "searchPrompt": "subtle cream paper texture close up realistic material UI",
-      "localPath": "public/style-assets/skeuomorphic/"
+      "localPath": "public/style-assets/skeuomorphic/skeuomorphic-paper-texture.png"
     },
     {
       "id": "clay-soft-3d-object",
       "styleId": "claymorphism",
-      "kind": "generated-object",
-      "status": "planned",
+      "kind": "generated-background",
+      "status": "available",
       "sourcePreference": "Generated raster",
-      "searchPrompt": "soft 3D pastel rounded abstract UI object transparent background",
-      "localPath": "public/style-assets/clay/"
+      "searchPrompt": "soft 3D pastel rounded learning orbit with a protected lavender copy zone on the left",
+      "localPath": "public/style-assets/clay/clay-soft-3d-object-bloom.png"
     },
     {
       "id": "dark-tech-grid-backdrop",
       "styleId": "dark-futuristic",
-      "kind": "generated-background",
-      "status": "planned",
+      "kind": "generated-ui-layout-reference",
+      "status": "available",
       "sourcePreference": "Generated raster",
-      "searchPrompt": "dark futuristic neon grid abstract interface background",
-      "localPath": "public/style-assets/dark-tech/"
+      "searchPrompt": "Signal Grid developer operations console: dark technical workspace, command terminal, deploy controls, subtle dot grid, restrained cyan violet and lime signals",
+      "localPath": "public/style-assets/dark-tech/dark-tech-signal-grid-layout-reference.png"
     },
     {
       "id": "web20-aqua-gloss-texture",
       "styleId": "web20-gloss",
-      "kind": "texture",
-      "status": "planned",
-      "sourcePreference": "Generated raster or Pexels/Unsplash water sky texture",
-      "searchPrompt": "aqua glossy water sky abstract frutiger aero texture",
-      "localPath": "public/style-assets/web20/"
+      "kind": "generated-ui-layout-reference",
+      "status": "available",
+      "sourcePreference": "Generated raster",
+      "searchPrompt": "Web 2.0 Gloss / Frutiger Aero eco-tech promo with aqua sky, water, bubbles, gel controls, leaves, and orange CTA",
+      "localPath": "public/style-assets/web20/web20-gloss-layout-option-b-eco-tech-promo.png"
     }
   ],
   "downloadedAssets": [
+    {
+      "id": "web20-aqua-gloss-texture",
+      "styleId": "web20-gloss",
+      "kind": "generated-ui-layout-reference",
+      "status": "available",
+      "source": "Generated with the built-in image generation tool as the selected Web 2.0 Gloss / Frutiger Aero eco-tech promo reference.",
+      "localPath": "public/style-assets/web20/web20-gloss-layout-option-b-eco-tech-promo.png",
+      "dimensions": "1672x941",
+      "retrievalDate": "2026-07-20"
+    },
     {
       "id": "modern-saas-product-gradient-frame",
       "styleId": "modern-saas",
@@ -251,6 +261,36 @@
       "localPath": "public/style-assets/glass/glass-forest-backdrop.png",
       "dimensions": "1672x941",
       "retrievalDate": "2026-07-11"
+    },
+    {
+      "id": "skeuomorphic-paper-texture",
+      "styleId": "skeuomorphism",
+      "kind": "generated-texture",
+      "status": "available",
+      "source": "Generated with the built-in image generation tool for the Skeuomorphism Signal Desk dossier.",
+      "localPath": "public/style-assets/skeuomorphic/skeuomorphic-paper-texture.png",
+      "dimensions": "1536x1024",
+      "retrievalDate": "2026-07-19"
+    },
+    {
+      "id": "clay-soft-3d-object",
+      "styleId": "claymorphism",
+      "kind": "generated-background",
+      "status": "available",
+      "source": "Generated with the built-in image generation tool for the Claymorphism Bloom Studio dossier; the final image uses an opaque lavender hero backdrop to avoid chroma-key fringe on thin orbit loops.",
+      "localPath": "public/style-assets/clay/clay-soft-3d-object-bloom.png",
+      "dimensions": "1536x1024",
+      "retrievalDate": "2026-07-19"
+    },
+    {
+      "id": "dark-tech-grid-backdrop",
+      "styleId": "dark-futuristic",
+      "kind": "generated-ui-layout-reference",
+      "status": "available",
+      "source": "Generated with the built-in image generation tool as the user-selected Signal Grid layout reference for the Dark Futuristic dossier.",
+      "localPath": "public/style-assets/dark-tech/dark-tech-signal-grid-layout-reference.png",
+      "dimensions": "1672x941",
+      "retrievalDate": "2026-07-19"
     }
   ]
 }
