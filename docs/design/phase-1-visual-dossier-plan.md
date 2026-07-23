@@ -83,32 +83,32 @@ Each row is required before that style can be marked complete.
 
 ### P1.1 Modern SaaS
 
-Status: completed. The required local image asset remains wired into the
-dossier, and the open anatomy decision has been resolved by keeping the raster
-hero while restoring a separate code-native anatomy module below it.
+Status: completed. The generated image remains cataloged as a local reference
+asset, but the runtime hero is now fully code-native.
 
 - Font: Inter Variable; IBM Plex Mono for technical labels.
 - Image asset: `modern-saas-product-gradient-frame` is stored at
   `public/style-assets/modern-saas/modern-saas-product-gradient-frame.png` and
   recorded as `available` in `public/style-assets/manifest.json`.
-- Layout: the hero uses the user-provided generated Modern SaaS UI reference as
-  a single image frame. The previous extra product mockup box below the image
-  was removed, and `.modern-saas-hero-panel` no longer has its own visual
-  border/background/shadow/padding.
+- Layout: the hero is a code-native dashboard matched to the approved reference:
+  vertical app navigation, an Overview header with date/export controls, four
+  KPI cards, usage and feature analytics panels, integrations, a four-step
+  workflow, and the Why it works, Risks, and Implementation notes stack. The
+  reference raster is no longer rendered in the dossier.
 - Dossier navigation: `Overview`, `Tokens`, `Patterns`, and `Examples` render
   as stacked sections. The tab bar is full-width, sticky, and scrolls to the
   selected section instead of swapping hidden tab panels.
-- Required UI anatomy included: a separate `modern-saas-product` module now
-  provides a code-native primary workflow input, action button, metric cards,
-  chart/state card, and workflow card so the style no longer relies on the
-  raster hero alone for the anatomy checklist.
+- Required UI anatomy included: a code-native primary action, secondary
+  action, interactive workspace selection, view switcher, editable input,
+  status/state change, metric cards, usage chart, top-surfaces mix,
+  integrations, workflow state, and decision rail. All icons use the local
+  Font Awesome wrapper.
 - Examples treatment: the Modern SaaS visual example board remains below the
   stacked content.
-- Validation: `npm run build` passed on 2026-07-09 after adding the anatomy
-  board. Browser QA confirmed the hero asset still loads at natural size
-  `1586x992`, the anatomy module is present, includes an input, action button,
-  and four code-native anatomy cards, the `Examples` section remains present,
-  no horizontal overflow occurs, and console warnings/errors are clean.
+- Validation: `npm run build` passed on 2026-07-23. Browser QA at desktop
+  `1280x720` and mobile `390x844` confirmed the code-native workspace renders
+  without the raster hero, uses local Font Awesome icons, has no document/body
+  horizontal overflow, and produces no console warnings or errors.
 - Token audit (2026-07-11): migrated the dossier to the research explanation
   contract with six contextual color roles, seven visual rules showing exact
   runtime values, four local usage examples, and explicit distinguishing
@@ -346,6 +346,11 @@ principle strips. It intentionally uses no decorative shadows or gradients.
 - Visual guardrails: add clear state cues so flat does not become ambiguous.
 - Validation focus: affordance, active/focus state visibility, no accidental
   depth.
+- Browser QA update (2026-07-23): Codex Browser QA at `390x844` confirmed
+  Flat Design selection, the `Examples` tab interaction, no document or body
+  horizontal overflow, and no console warnings/errors. The phase remains open
+  until `flat-design-geometric-panels` is reconciled in the asset manifest and
+  attached or deliberately documented according to the asset gate.
 
 ### P1.10 Skeuomorphism / Realistic UI
 
@@ -462,7 +467,7 @@ Status: completed (2026-07-20).
 
 ### P1.13 Web 2.0 Gloss / Frutiger Aero
 
-Status: planned.
+Status: completed (2026-07-23).
 
 - Font: Poppins; Roboto Mono for small technical labels.
 - Image asset: `web20-aqua-gloss-texture`; must be downloaded or generated and
@@ -478,6 +483,16 @@ Status: planned.
   production style.
 - Validation focus: avoid visual overload, maintain text contrast over glossy
   backgrounds.
+- Completion evidence: the implemented **Aqua Bloom** dossier includes the
+  generated `1672x941` eco-tech reference image, glossy navigation, gel
+  primary and secondary buttons, selectable aqua/leaf/sun tiles, an inset
+  search field, and the supporting research sections.
+- Asset: `web20-gloss-layout-option-b-eco-tech-promo.png` is stored under
+  `public/style-assets/web20/` and marked `available` in the asset manifest.
+- Validation: `npm run build` passed. Codex Browser QA at desktop `1280x720`
+  and mobile `390x844` confirmed the style selection, `Examples` navigation,
+  loaded image dimensions, no document/body horizontal overflow, and no
+  console warnings or errors.
 
 ## Phase 1 Exit Criteria
 
