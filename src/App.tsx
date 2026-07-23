@@ -9,6 +9,7 @@ import {
 import { designStyles, recommendations, type DesignStyle, type FitLevel } from "./data/designStyles";
 import { ResearchDossier } from "./components/dossiers/ResearchDossier";
 import { FontAwesomeIcon } from "./components/icons/FontAwesomeIcon";
+import { LandingPage } from "./components/LandingPage";
 import { StylePreview } from "./components/StylePreview";
 
 type SurfaceId = keyof DesignStyle["suitability"];
@@ -301,7 +302,7 @@ function getScrollableTarget(target: EventTarget | null) {
   return document.scrollingElement;
 }
 
-function useTouchPointer() {
+function useTouchPointer(active: boolean) {
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false, enabled: false, pressed: false });
   const dragRef = useRef({
     active: false,
@@ -321,7 +322,7 @@ function useTouchPointer() {
     const finePointerQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
 
     const syncPointerMode = () => {
-      const enabled = finePointerQuery.matches;
+      const enabled = active && finePointerQuery.matches;
       finePointerRef.current = enabled;
       document.documentElement.classList.toggle("has-touch-cursor", enabled);
       setCursor((current) => ({ ...current, enabled, visible: enabled ? current.visible : false, pressed: false }));
@@ -334,7 +335,7 @@ function useTouchPointer() {
       document.documentElement.classList.remove("has-touch-cursor");
       finePointerQuery.removeEventListener("change", syncPointerMode);
     };
-  }, []);
+  }, [active]);
 
   const handlers = {
     onPointerMove: (event: ReactPointerEvent<HTMLElement>) => {
@@ -449,6 +450,7 @@ function useTouchPointer() {
 }
 
 function App() {
+  const [route, setRoute] = useState<"landing" | "styles">(() => window.location.pathname === "/styles" ? "styles" : "landing");
   const [selectedStyleId, setSelectedStyleId] = useState(designStyles[0].id);
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
@@ -484,7 +486,25 @@ function App() {
     setActiveMode("deep");
   };
 
-  const touchPointer = useTouchPointer();
+  const touchPointer = useTouchPointer(route === "styles");
+
+  useEffect(() => {
+    const syncRoute = () => setRoute(window.location.pathname === "/styles" ? "styles" : "landing");
+    window.addEventListener("popstate", syncRoute);
+    return () => window.removeEventListener("popstate", syncRoute);
+  }, []);
+
+  const navigate = (path: "/" | "/styles") => {
+    if (window.location.pathname !== path) {
+      window.history.pushState(null, "", path);
+    }
+    setRoute(path === "/styles" ? "styles" : "landing");
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  if (route === "landing") {
+    return <LandingPage onNavigate={navigate} />;
+  }
 
   return (
     <main className="research-shell" {...touchPointer.handlers}>
