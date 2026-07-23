@@ -1,0 +1,77 @@
+# US-004 Spec 3 Research Platform Foundation
+
+## Status
+
+planned
+
+## Lane
+
+normal
+
+## Product Contract
+
+Establish the Spec 3 domain and migration foundation before implementing new
+routes or decision-support UI. The first implementation slice must normalize
+one style while preserving the current landing, explorer, and visual dossier
+renderers.
+
+## Relevant Product Docs
+
+- `SPEC3.md`
+- `docs/product/spec-3-research-platform.md`
+- `docs/product/spec-3/README.md`
+- `docs/product/spec-3/CURRENT_STATE.md`
+- `docs/product/spec-3/ROADMAP.md`
+- `docs/product/spec-3/TASKS.md`
+- `docs/product/spec-3/SPRINT-01.md`
+
+## Acceptance Criteria
+
+- Foundation closure has an explicit task and dependency chain.
+- Domain and routing decisions are recorded before structural implementation.
+- Controlled vocabularies cover taxonomy, context, evaluation, evidence,
+  content status, and relationships needed by the first vertical slice.
+- A compatibility adapter prevents an all-at-once `DesignStyle` rewrite.
+- Modern SaaS is normalized as the first Spec 3 style record.
+- Domain invariants have automated proof.
+- Existing `/` and `/styles` behavior retains build and browser parity.
+- No Compare, Evolution, Methodology, Finder, or Report UI is implemented by
+  this story.
+
+## Design Notes
+
+- Commands: no product command in the planning pass.
+- Queries: domain validation and adapter queries arrive during implementation.
+- API: none; local TypeScript dataset remains valid for the initial phase.
+- Tables: no product database.
+- Domain rules: contextual fit, no universal winner, evidence or inference,
+  controlled evaluation levels, immutable shared scenario content.
+- UI surfaces: existing landing and `/styles` are regression surfaces only.
+
+## Validation
+
+When updating durable proof status, use numeric booleans:
+`scripts/bin/harness-cli story update --id US-004 --unit 1 --integration 1 --e2e 1 --platform 1`.
+
+| Layer | Expected proof |
+| --- | --- |
+| Unit | Vocabulary, uniqueness, source reference, compare limit, and shared-scenario invariants |
+| Integration | Modern SaaS normalized record maps through the legacy adapter |
+| E2E | Existing landing and `/styles` smoke flows |
+| Platform | Desktop and `390x844` mobile checks |
+| Release | Build, unit suite, browser smoke, and durable story verification |
+
+## Harness Delta
+
+- Added an initiative template and initiative index.
+- Added a Spec 3 initiative packet with baseline, roadmap, task ledger, and
+  Sprint 01.
+- Added a smaller living product contract derived from `SPEC3.md`.
+- Registered durable intake `#14` and story `US-004`.
+
+## Evidence
+
+- Planning audit used the codebase graph, `SPEC.md`, `SPEC2.md`, all sections
+  of `SPEC3.md`, current product docs, US-003, architecture rules, quality
+  gates, and durable matrix.
+- Feature implementation intentionally not started.

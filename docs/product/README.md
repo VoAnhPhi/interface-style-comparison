@@ -1,6 +1,7 @@
 # Product Docs
 
-This directory is intentionally generic and mostly empty in Harness v0.
+This directory contains the smaller living product contracts derived from the
+project specs and accepted behavior.
 
 When a user provides a project spec, derive smaller product contract files here
 instead of keeping one large spec as the living plan. Name files by the product
@@ -9,6 +10,14 @@ domains that actually exist in that spec, for example `overview.md`,
 
 Do not create domain files before the spec just to fill the folder. Empty
 structure is healthier than fake product truth.
+
+## Active Contracts
+
+- `ui-design-style-explorer.md`: current Foundation behavior.
+- `project-report.md`: current research-workspace status and taxonomy.
+- `spec-3-research-platform.md`: Spec 3 research, comparison, evolution, and
+  decision-support contract.
+- `spec-3/`: Spec 3 baseline, roadmap, task ledger, and sprint packet.
 
 ## Update Rule
 

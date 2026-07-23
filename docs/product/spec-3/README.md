@@ -1,0 +1,98 @@
+# Spec 3 Research Platform Initiative
+
+## Status
+
+Planning complete. Feature implementation has not started.
+
+## Source
+
+- `SPEC.md` and `SPEC2.md`: Foundation research and visual implementation.
+- `SPEC3.md`: next product chapter and primary source for this initiative.
+- Intake: `#14`, type `new_initiative`, lane `normal`.
+- Foundation story: `US-003`.
+- Spec 3 foundation story: `US-004`.
+
+## Product Outcome
+
+Evolve Interface Style Research from a visual research workspace into a
+structured research, contextual comparison, evolution, and decision-support
+system.
+
+The product should answer:
+
+1. What interface directions exist?
+2. What defines each direction?
+3. How do directions differ under the same product context?
+4. Why did they evolve?
+5. Which direction is a better fit for a specific product and constraint set?
+
+## Incremental Development Rule
+
+Spec 1 and Spec 2 are the current Foundation. Spec 3 extends that Foundation.
+
+- Preserve the existing landing, catalog, dossier renderers, local assets, and
+  accepted responsive behavior.
+- Introduce normalized research and business models beside the legacy
+  `DesignStyle` model.
+- Migrate one style at a time through an adapter.
+- Move routes to shared domain data only after the relevant data slice is
+  validated.
+- Do not rewrite all dossier renderers or all style data in one pass.
+
+## Current Phase
+
+```text
+Spec 1 + Spec 2 Foundation
+  US-003 still open
+  P1.9 asset reconciliation
+  P1.14 final sweep
+
+Spec 3
+  planning harness complete
+  implementation not started
+  next phase: Sprint 01 Foundation and Domain Contract
+```
+
+## Documents
+
+- [Current state](./CURRENT_STATE.md)
+- [Roadmap](./ROADMAP.md)
+- [Task ledger](./TASKS.md)
+- [Sprint 01](./SPRINT-01.md)
+- [Product contract](../spec-3-research-platform.md)
+- [Active story](../../stories/US-004-spec-3-research-platform-foundation.md)
+
+## Definition of Ready for Feature Implementation
+
+Feature code may begin only when:
+
+- US-003 closure tasks have an explicit disposition;
+- taxonomy, product context, evaluation, source, and relationship vocabularies
+  are accepted;
+- the incremental adapter strategy is accepted;
+- URL ownership and routing direction are recorded;
+- Sprint 01 acceptance criteria and proof commands are agreed.
+
+## Scope Boundary
+
+### Spec 3 core
+
+- Structured research domain.
+- Taxonomy and evidence.
+- Product contexts and evaluation logic.
+- Shareable routing.
+- Explorer, slug dossier, Compare, Evolution, and Methodology.
+- Canonical same-context specimens.
+
+### Spec 3 later phase
+
+- Finder recommendation engine and UI.
+- Full report route.
+
+### Future
+
+- Analytics.
+- Backend persistence.
+- Authentication and collaborative research editing.
+- User-generated research.
+- Quantitative claims presented as scientific scoring.

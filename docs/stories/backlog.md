@@ -1,7 +1,8 @@
 # Story Backlog
 
-This backlog will be populated after a user provides a project spec or selects a
-specific initiative.
+This backlog contains historical candidates. Active multi-epic planning for
+Spec 3 lives in `docs/product/spec-3/TASKS.md`; create story packets only
+when a task or bounded slice is selected.
 
 Do not create every possible story packet up front. Create story packets when
 the work is selected or when a product decision needs a durable place to land.
@@ -15,3 +16,4 @@ the work is selected or when a product decision needs a durable place to land.
 | Research copy extraction | Move high-value text from `spec.md` and `SPEC2.md` into structured data for summaries, risks, tokens, and fit notes. | unsliced |
 | Scroll and motion research | Evaluate Motion versus GSAP ScrollSmoother for subtle scroll behavior without hurting research-tool usability. | unsliced |
 | Pointer/touch interaction polish | Continue tuning desktop touch-point cursor, drag-scroll affordance, and text-selection suppression. | active |
+| Spec 3 research platform | Normalize research data, taxonomy, evidence, contextual comparison, evolution, and shareable routes. See `docs/product/spec-3/README.md`. | planned |
