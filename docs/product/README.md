@@ -18,6 +18,8 @@ structure is healthier than fake product truth.
 - `spec-3-research-platform.md`: Spec 3 research, comparison, evolution, and
   decision-support contract.
 - `spec-3/`: Spec 3 baseline, roadmap, task ledger, and sprint packet.
+  Its canonical contracts include `DOMAIN_VOCABULARY.md`,
+  `EVALUATION_AND_TESTING_RULES.md`, and `IMPLEMENTATION_PLAN.md`.
 
 ## Update Rule
 

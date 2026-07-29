@@ -24,13 +24,15 @@ research platform described by Spec 3.
 The active Foundation story is `US-003`.
 
 - P1.1-P1.8: completed.
-- P1.9 Flat Design: implementation and mobile QA exist; asset manifest
-  reconciliation remains open.
+- P1.9 Flat Design: completed with a user-accepted documented waiver for its
+  historical planned raster asset; the code-native B2 scene is the final
+  dossier evidence.
 - P1.10-P1.13: completed.
-- P1.14 final sweep: planned.
+- P1.14 final sweep: completed on 2026-07-29. Build plus desktop `1280x720`
+  and mobile `390x844` Browser QA passed for all 13 style selection and
+  `Examples` flows, with no broken images, overflow, or console warnings/errors.
 
-Spec 3 should not silently mark US-003 complete. It depends on explicit closure
-of P1.9 and P1.14.
+US-003 has current Foundation evidence and is complete.
 
 ## Current Engineering Shape
 
@@ -111,3 +113,22 @@ Refactor incrementally:
 7. Connect routes to the normalized source.
 
 Do not begin by splitting every file or rewriting every renderer.
+
+## Implementation Readiness
+
+Approved on 2026-07-29:
+
+- normalized data becomes source of truth incrementally;
+- Modern SaaS is the first normalized vertical slice;
+- a normalized-first compatibility adapter preserves legacy
+  `DesignStyle` consumers;
+- React Router owns routes and shareable URL state;
+- the canonical vocabulary is
+  `docs/product/spec-3/DOMAIN_VOCABULARY.md`;
+- the canonical proof contract is
+  `docs/product/spec-3/EVALUATION_AND_TESTING_RULES.md`;
+- the dependency-ordered work plan is
+  `docs/product/spec-3/IMPLEMENTATION_PLAN.md`.
+
+ADR 0008 and ADR 0009 are accepted. The next implementation task is
+`S3-DOM-001`.

@@ -14,10 +14,11 @@
 ## Current Position
 
 ```text
-Current sprint: pre-implementation planning complete
-Active phase: F0 Foundation closure
-Next sprint: Sprint 01 Foundation and Domain Contract
-Next implementation task after approval: S3-DOM-001
+Current sprint: Sprint 01 approved
+Active phase: Sprint 01 Foundation and Domain Contract
+Foundation closure: completed
+Architecture decisions: completed
+Next implementation task: S3-DOM-001
 ```
 
 ## Ledger
@@ -26,21 +27,21 @@ Next implementation task after approval: S3-DOM-001
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | S3-GOV-001 | Governance | Docs harness | Audit Spec 1, Spec 2, Spec 3, codebase, and durable matrix | P0 | none | completed | Baseline identifies implemented behavior, open Foundation work, and Spec 3 gaps |
 | S3-GOV-002 | Governance | Docs harness | Create initiative, roadmap, task ledger, sprint plan, and product contract | P0 | S3-GOV-001 | completed | Project phase, next task, dependencies, priorities, statuses, and future scope are visible |
-| F0-FLAT-001 | Foundation | `/styles`, Flat Design dossier | Reconcile Flat Design asset id, manifest record, and renderer use or documented waiver | P0 | none | ready | P1.9 has one accurate asset disposition and no stale planned requirement |
-| F0-SWEEP-001 | Foundation | `/styles`, all dossiers | Run P1.14 full desktop/mobile/style sweep | P0 | F0-FLAT-001 | planned | All 13 styles pass selection, tabs, images, overflow, console, and build checks |
-| F0-CLOSE-001 | Foundation | Harness | Close US-003 or record an explicit carry-forward | P0 | F0-SWEEP-001 | planned | Story and durable matrix match actual evidence |
-| S3-ADR-001 | Architecture | Shared domain and data | Decide incremental domain modules, legacy adapter boundary, and source ownership | P0 | S3-GOV-002 | ready | Accepted ADR names source-of-truth and migration boundary without rewriting renderers |
-| S3-ADR-002 | Architecture | Routing | Decide router approach, route parsing, URL ownership, and not-found behavior | P0 | S3-GOV-002 | ready | Accepted ADR supports params and query state and preserves current links |
-| S3-DOM-001 | Research | Taxonomy | Define classification, level, maturity, content status, and relationship vocabularies | P0 | S3-ADR-001 | planned | Types express Spec 3 categories and reject unsupported free-form values |
-| S3-DOM-002 | Product | Product context | Define context characteristics and canonical context records | P0 | S3-DOM-001 | planned | SaaS, Dashboard, Landing, Portfolio, E-commerce, Documentation, Mobile, and Experimental contexts are represented |
-| S3-DOM-003 | Product | Evaluation | Define criteria, controlled levels, reasoning, risks, strengths, conditions, and evidence references | P0 | S3-DOM-001 | planned | Evaluation has no mandatory decimal score and supports missing research |
+| F0-FLAT-001 | Foundation | `/styles`, Flat Design dossier | Reconcile Flat Design asset id, manifest record, and renderer use or documented waiver | P0 | none | completed | User-accepted code-native B2 scene is documented as a waiver for the historical planned raster asset |
+| F0-SWEEP-001 | Foundation | `/styles`, all dossiers | Run P1.14 full desktop/mobile/style sweep | P0 | F0-FLAT-001 | completed | 2026-07-29 build plus Browser QA at `1280x720` and `390x844` passed for all 13 styles: selection, `Examples`, image integrity, overflow, and console checks |
+| F0-CLOSE-001 | Foundation | Harness | Close US-003 or record an explicit carry-forward | P0 | F0-SWEEP-001 | completed | US-003 is complete; the durable matrix and story evidence record the final sweep |
+| S3-ADR-001 | Architecture | Shared domain and data | Decide incremental domain modules, legacy adapter boundary, and source ownership | P0 | S3-GOV-002 | completed | ADR 0008 makes normalized records source of truth incrementally and preserves renderers through a normalized-first adapter |
+| S3-ADR-002 | Architecture | Routing | Decide router approach, route parsing, URL ownership, and not-found behavior | P0 | S3-GOV-002 | completed | ADR 0009 accepts React Router, path/query ownership, stable slug routes, Compare URL normalization, and Not Found |
+| S3-DOM-001 | Research | Taxonomy | Implement the accepted Sprint 01 controlled vocabulary | P0 | S3-ADR-001 | ready | Types and runtime membership checks match `DOMAIN_VOCABULARY.md` and reject unsupported free-form values |
+| S3-DOM-002 | Product | Product context | Define product type separately from platform and usage context, plus canonical product records | P0 | S3-DOM-001 | planned | Ten product types are represented without treating mobile as a product type |
+| S3-DOM-003 | Product | Evaluation | Define the six core criteria, controlled levels, product fit, reasoning, risks, conditions, and evidence references | P0 | S3-DOM-001 | planned | No mandatory decimal score; `not-evaluated` is preserved and implementation complexity uses its own scale |
 | S3-DOM-004 | Research | Evidence | Define sources, claim type, source reference, inference label, review metadata, and content status | P0 | S3-DOM-001 | planned | Critical claims can link to a source or be marked interpretation |
 | S3-DOM-005 | Research | Evolution | Define style relationships, evolution references, and transition semantics | P0 | S3-DOM-001, S3-DOM-004 | planned | Cause, reaction, influence, relation, combination, and revival are representable |
 | S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | planned | Shared content, goal, structure, and functionality are immutable across style implementations |
 | S3-DATA-001 | Engineering | Shared data | Create normalized research module and compatibility adapter | P0 | S3-DOM-002, S3-DOM-003, S3-DOM-004, S3-DOM-005 | planned | Existing catalog and dossier can consume adapted legacy data without visual regression |
 | S3-DATA-002 | Research | Modern SaaS vertical slice | Normalize one complete style including evidence, evaluation, product fit, relationships, and versioning | P0 | S3-DATA-001, S3-SCN-001 | planned | Modern SaaS passes schema validation and renders through existing UI |
 | S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | planned | All published records satisfy required fields; incomplete sections are marked reviewed/draft honestly |
-| S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, compare limits, and scenario invariants | P0 | S3-DATA-001 | planned | Automated proof fails on invalid slug, missing reference, invalid level, or changed shared scenario |
+| S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | planned | Automated proof fails on invalid slug, missing reference, invalid level, unknown fallback, legacy overwrite, or changed shared scenario |
 | S3-ROUTE-001 | Engineering | All routes | Introduce typed route map and navigation shell | P0 | S3-ADR-002 | planned | `/` and `/styles` retain parity; not-found behavior exists |
 | S3-ROUTE-002 | Engineering | `/styles/:slug` | Add stable style detail URL and selection synchronization | P0 | S3-ROUTE-001, S3-DATA-002 | planned | Direct load, bookmark, back, forward, and unknown slug behavior work |
 | S3-EXP-001 | UX | `/styles` | Enhance search and primary classification filter from normalized data | P1 | S3-DATA-003, S3-ROUTE-001 | planned | Search covers aliases and characteristics; empty state is accessible |

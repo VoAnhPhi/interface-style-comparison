@@ -24,6 +24,11 @@ renderers.
 - `docs/product/spec-3/ROADMAP.md`
 - `docs/product/spec-3/TASKS.md`
 - `docs/product/spec-3/SPRINT-01.md`
+- `docs/product/spec-3/DOMAIN_VOCABULARY.md`
+- `docs/product/spec-3/EVALUATION_AND_TESTING_RULES.md`
+- `docs/product/spec-3/IMPLEMENTATION_PLAN.md`
+- `docs/decisions/0008-normalized-research-source-ownership.md`
+- `docs/decisions/0009-routing-and-url-ownership.md`
 
 ## Acceptance Criteria
 
@@ -37,6 +42,10 @@ renderers.
 - Existing `/` and `/styles` behavior retains build and browser parity.
 - No Compare, Evolution, Methodology, Finder, or Report UI is implemented by
   this story.
+- Normalized data owns migrated fields; legacy fallback cannot overwrite or
+  invent normalized research.
+- Product type, platform, and usage context remain separate domains.
+- Missing evaluation remains `not-evaluated`, never an implicit `moderate`.
 
 ## Design Notes
 
@@ -47,6 +56,8 @@ renderers.
 - Domain rules: contextual fit, no universal winner, evidence or inference,
   controlled evaluation levels, immutable shared scenario content.
 - UI surfaces: existing landing and `/styles` are regression surfaces only.
+- Routing decision: React Router owns paths and shareable query state; route UI
+  implementation is not part of the first domain batch.
 
 ## Validation
 

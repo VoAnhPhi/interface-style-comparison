@@ -326,7 +326,7 @@ was intentionally not attached to this layout by user direction.
 
 ### P1.9 Flat Design
 
-Status: in_progress.
+Status: completed (documented waiver).
 
 Current implementation: the selected B2 direction uses a cool canvas, ink
 text, teal/aqua interactive states, coral status, and yellow information
@@ -335,8 +335,11 @@ default/hover/selected/focus/disabled state matrix, a settings form, and three
 principle strips. It intentionally uses no decorative shadows or gradients.
 
 - Font: Roboto Variable; Roboto Mono for labels.
-- Image asset: `flat-design-geometric-panels`; must be downloaded or generated
-  and stored locally before completion.
+- Image asset: `flat-design-geometric-panels` remains a historical planned
+  manifest entry. The user has accepted the completed code-native B2 scene as
+  the final Flat Design evidence, so no runtime raster is required for this
+  dossier. This is an explicit waiver, not evidence that the planned asset was
+  created.
 - Layout: flat app screen with solid panes, icon-like blocks, simple nav, and
   active-state panels.
 - Required UI anatomy: solid primary button, flat secondary button, bordered
@@ -348,9 +351,9 @@ principle strips. It intentionally uses no decorative shadows or gradients.
   depth.
 - Browser QA update (2026-07-23): Codex Browser QA at `390x844` confirmed
   Flat Design selection, the `Examples` tab interaction, no document or body
-  horizontal overflow, and no console warnings/errors. The phase remains open
-  until `flat-design-geometric-panels` is reconciled in the asset manifest and
-  attached or deliberately documented according to the asset gate.
+  horizontal overflow, and no console warnings/errors. The user subsequently
+  accepted the code-native B2 scene and documented the raster waiver above;
+  P1.9 is therefore complete.
 
 ### P1.10 Skeuomorphism / Realistic UI
 

@@ -2,13 +2,13 @@
 
 ## Status
 
-Proposed. Awaiting approval before implementation.
+Approved for implementation on 2026-07-29.
 
 ## Sprint Goal
 
-Close the remaining Foundation ambiguity and prove that one normalized Spec 3
-research record can coexist with the current visual workspace without a
-rewrite.
+Prove that one normalized Spec 3 research record can become source of truth
+while coexisting with the current visual workspace through a compatibility
+adapter and without rewriting accepted dossier renderers.
 
 ## Selected Work
 
@@ -28,6 +28,18 @@ rewrite.
 | 12 | S3-DATA-002 | Modern SaaS is the first normalized vertical slice |
 | 13 | S3-DATA-004 | Domain invariants have automated proof |
 
+Orders 1-5 are complete. Implementation begins at `S3-DOM-001`.
+
+## Accepted Inputs
+
+- Normalized data becomes source of truth incrementally.
+- Legacy `DesignStyle` remains an adapter output during migration.
+- Modern SaaS is the first normalized vertical slice.
+- React Router owns routes and shareable URL state.
+- `DOMAIN_VOCABULARY.md` is the canonical vocabulary.
+- `EVALUATION_AND_TESTING_RULES.md` is the canonical proof contract.
+- `IMPLEMENTATION_PLAN.md` is the detailed dependency-ordered work plan.
+
 ## Explicit Non-Goals
 
 - No `/compare` UI.
@@ -40,10 +52,49 @@ rewrite.
 
 ## Entry Criteria
 
-- This initiative packet is reviewed.
-- No uncommitted user work is overwritten.
-- US-003 open items are confirmed.
-- Architecture choices are recorded before structural changes.
+- [x] Initiative packet reviewed.
+- [x] Foundation/US-003 completed with durable evidence.
+- [x] Source ownership and adapter boundary recorded in ADR 0008.
+- [x] Routing and URL ownership recorded in ADR 0009.
+- [x] Domain vocabulary accepted.
+- [x] Evaluation and testing rules accepted.
+- [ ] Before code changes, re-check the working tree and preserve unrelated
+  user work.
+
+## Implementation Batches
+
+### Batch 1 — Test and vocabulary foundation
+
+- Select and configure the real TypeScript test runner.
+- Implement controlled vocabulary and runtime membership validation.
+- Add negative tests for unsupported values and unknown-data fallbacks.
+
+### Batch 2 — Context, evaluation, and evidence
+
+- Implement product types separately from platform and usage context.
+- Implement the six core evaluation criteria.
+- Implement product fit, claims, sources, and relationship contracts.
+- Add completeness and reference-integrity tests.
+
+### Batch 3 — Scenarios, shared model, and adapter
+
+- Implement canonical Dashboard, Form, and E-commerce Product scenarios.
+- Define `ResearchStyle`.
+- Implement normalized-first compatibility adapter.
+- Add Modern SaaS, Glassmorphism, and Flat Design adapter fixtures.
+
+### Batch 4 — Modern SaaS vertical slice
+
+- Normalize Modern SaaS with honest claim/source labels.
+- Connect its adapter output to the current UI.
+- Keep the other 12 styles on the legacy path.
+- Run domain, adapter, build, and browser regression proof.
+
+### Batch 5 — Sprint close
+
+- Run all configured validation.
+- Update US-004 and durable proof.
+- Record any contract changes or migration friction.
 
 ## Acceptance Criteria
 
@@ -62,8 +113,9 @@ rewrite.
 
 | Layer | Proof |
 | --- | --- |
-| Unit | Domain vocabulary and invariant tests |
-| Integration | Adapter maps normalized Modern SaaS to current UI contract |
+| Unit | Vocabulary, completeness, references, and scenario invariants |
+| Adapter | Normalized-first precedence and legacy contract preservation |
+| Integration | Modern SaaS maps through the adapter into the current UI |
 | E2E | Existing `/` and `/styles` smoke flows retain parity |
 | Platform | Desktop and `390x844` mobile overflow and interaction checks |
 | Release | `npm run build`, unit suite, browser smoke, durable story verification |

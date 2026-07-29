@@ -2,7 +2,7 @@
 
 ## Status
 
-in_progress
+completed
 
 ## Lane
 
@@ -83,12 +83,12 @@ Every style pass must include:
 | P1.6 | Neo-brutalism | completed | Implemented two switchable layouts: current warm paper/yellow-red-blue palette and new Signal Pop violet/cyan/orange palette. Added local generated poster texture, thick-border controls, hard-shadow cards, sticker badge, pressed states, creator/launch/price example modules, and responsive mobile stacking. Build passed; desktop and `390x844` mobile Browser QA confirmed palette switching, loaded local asset, no horizontal overflow, and clean console logs. |
 | P1.7 | Material/Fluent-like | completed | Refined the reference-matched board into three explicit columns: new layered surface/field column, central toolbar/state/card column, and right token column for color/elevation/shape/spacing/motion. Added descriptions for each item and a new local generated surface visual. Build passed; desktop `1280x720` and mobile `390x844` Browser QA confirmed asset loading, no horizontal overflow, and clean console logs. |
 | P1.8 | Neumorphism | completed | Implemented the approved Calm Control Room layout without attaching a raster backdrop, per user direction: accessible labeled input, raised and inset control states, explicit focus-safe state, media-control board, and three visual examples. Updated the data-driven Overview, Tokens, Patterns, and Examples content with distinguishing signals, six contextual color roles, exact applied visual rules, four dossier-usage notes, and aligned guidance. `npm run build` plus the earlier desktop and `390x844` Browser QA passed with no horizontal overflow or console warnings/errors. |
-| P1.9 | Flat Design | in_progress | Implemented the selected B2 ink/teal layout: flat mobile messages preview, five-column state system, component settings form, and Color blocks/Typography hierarchy/No fake depth principle strips. The data-driven dossier content now matches the runtime palette, state rules, examples, and accessibility guidance. Codex Browser QA at `390x844` confirmed style selection, `Examples` navigation, no document/body horizontal overflow, and no console warnings or errors. Completion remains blocked only by the planned `flat-design-geometric-panels` manifest entry not yet being reconciled with the existing local Flat Design image assets. |
+| P1.9 | Flat Design | completed | Implemented the selected B2 ink/teal layout: flat mobile messages preview, five-column state system, component settings form, and Color blocks/Typography hierarchy/No fake depth principle strips. The data-driven dossier content matches the runtime palette, state rules, examples, and accessibility guidance. Browser QA at `390x844` confirmed style selection, `Examples` navigation, no document/body horizontal overflow, and no console warnings or errors. The user accepted the code-native scene as final; `flat-design-geometric-panels` remains a documented historical manifest entry and is explicitly waived rather than claimed as an available runtime asset. |
 | P1.10 | Skeuomorphism / Realistic UI | completed | Selected Signal Desk audio-control layout implemented with generated local paper texture, real input/buttons, meter/waveform/task anatomy, contextual tokens and usage notes. Build plus desktop `1270px` and mobile `390x844` Browser QA passed with no page/console overflow or console warnings/errors. |
 | P1.11 | Claymorphism / Soft 3D | completed | Implemented user-selected Bloom Studio with interactive Explore/Progress inner tabs, a generated local `1536x1024` learning-orbit hero background, code-native topic/progress/focus anatomy, contextual tokens and usage notes, plus onboarding/education/wellness examples. Refinements make constrained dossier-width topics `2x2`, give course actions their own row, restore readable full-width example cards, deepen the code-native 3D objects, and expose the complete Progress route with explicit desktop/mobile connectors. Build plus desktop `1280x720` and mobile `390x844` Browser QA passed with loaded imagery, no horizontal overflow, and clean console logs. |
 | P1.12 | Dark Futuristic / Neon Tech | completed | Implemented the user-selected Signal Grid operational workspace: incident and system rails, real command input, selectable deploy pipeline, workflow graph, deploy/rollback controls, alert queue, service cards, local FontAwesome icons, and high-contrast Overview/Examples surfaces. The local generated Signal Grid image is cataloged as a user-approved composition reference, not a runtime backdrop. Added complete contextual research data. Build passed; Codex Browser QA at desktop `1280x720` and mobile `390x844` confirmed style selection, Examples navigation, environment and deployment-pipeline interactions, visible command input, no document/body horizontal overflow, and zero console warnings or errors. |
 | P1.13 | Web 2.0 Gloss / Frutiger Aero | completed | Implemented the Aqua Bloom eco-tech promo dossier with aqua/sky raster imagery, glossy navigation, gel primary and secondary controls, selectable Water/Green/Energy tiles, and an inset search input. The generated local `1672x941` image is recorded as available in the asset manifest. `npm run build` passed; Codex Browser QA at desktop `1280x720` and mobile `390x844` confirmed style selection, `Examples` navigation, loaded local imagery, no document/body horizontal overflow, and no console warnings or errors. |
-| P1.14 | Final sweep | planned | |
+| P1.14 | Final sweep | completed | On 2026-07-29, Browser QA at desktop `1280x720` and mobile `390x844` selected all 13 styles, opened `Examples` for each, and confirmed the correct dossier title, no broken loaded images, no document/body horizontal overflow, and no warning/error console output. `npm run build` and durable story verification also passed. |
 
 ## Validation
 
@@ -119,6 +119,10 @@ When updating durable proof status, use numeric booleans:
 - Durable story: `US-003`.
 - Current validation for the correction pass: `npm run build` passed after the
   Modern SaaS correction and harness plan edits.
+- Final sweep on 2026-07-29: `npm run build` passed. Browser QA at desktop
+  `1280x720` and mobile `390x844` covered all 13 style selections and their
+  `Examples` tabs, with no broken images, horizontal overflow, or
+  warning/error console output.
 - Harness verification: `scripts/bin/harness-cli.exe story verify US-003`
   passed.
 - Asset correction: `public/style-assets/manifest.json` contains one required

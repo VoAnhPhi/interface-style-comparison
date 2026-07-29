@@ -41,11 +41,15 @@ Critical claims must link to evidence or be labeled as interpretation.
 
 ## Domain Contract
 
+The canonical controlled values and their meanings live in
+`docs/product/spec-3/DOMAIN_VOCABULARY.md`.
+
 Core entities:
 
-- DesignStyle.
+- ResearchStyle.
 - StyleClassification.
-- ProductContext.
+- StyleMaturity and ProductionReadiness.
+- ProductType, ProductPlatform, and UsageContext.
 - EvaluationCriterion and Evaluation.
 - ProductFit.
 - StylePattern.
@@ -54,7 +58,9 @@ Core entities:
 - StyleRelationship.
 - ResearchSource.
 
-RecommendationRule is a later-phase entity.
+RecommendationRule is a later-phase entity. Normalized `ResearchStyle` records
+become the source of truth one style at a time; the legacy `DesignStyle` shape
+remains an adapter output during migration.
 
 ## Evaluation Contract
 
@@ -74,13 +80,16 @@ Initial controlled levels:
 - moderate;
 - requires care;
 - weak.
+- not applicable;
+- not evaluated.
 
 An evaluation includes reasoning, strengths, risks, conditions, and evidence.
 It is not just a score.
 
 ## Product Fit Contract
 
-Initial contexts:
+Product type is separate from platform and usage context. Initial product
+types:
 
 - SaaS product;
 - Dashboard/Admin;
@@ -88,8 +97,10 @@ Initial contexts:
 - Portfolio;
 - E-commerce;
 - Documentation;
-- Mobile application;
 - Experimental experience.
+
+Mobile web, native mobile, and desktop application are platforms rather than
+product types.
 
 Each fit includes a level, reason, strengths, risks, and optional conditions.
 
@@ -129,9 +140,21 @@ The public methodology explains:
 - Missing research is shown as missing or under review, never invented.
 - One business fact has one source of truth.
 
+The canonical evaluation and Definition of Done rules live in
+`docs/product/spec-3/EVALUATION_AND_TESTING_RULES.md`.
+
+## Accepted Technical Direction
+
+- Normalized research data becomes source of truth through incremental
+  migration.
+- Migrated records use normalized-first precedence.
+- A compatibility adapter preserves current `DesignStyle` consumers.
+- React Router owns paths and shareable query state.
+- Accepted routes are `/`, `/styles`, `/styles/:slug`, `/compare`,
+  `/evolution`, `/methodology`, and Not Found.
+
 ## Deferred Contract
 
 Finder, report publication, analytics, persistence, authentication, and
 collaborative research editing are not part of the first Spec 3 implementation
 sprint.
-

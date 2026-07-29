@@ -4,7 +4,7 @@
 
 | Phase | Epic | Outcome | Priority | Status | Depends on |
 | --- | --- | --- | --- | --- | --- |
-| F0 | Foundation closure | Spec 1 and Spec 2 have honest completion evidence | P0 | in_progress | none |
+| F0 | Foundation closure | Spec 1 and Spec 2 have honest completion evidence | P0 | completed | none |
 | S3.0 | Governance and contracts | Spec 3 has a task system, product contract, and architecture questions | P0 | completed | none |
 | S3.1 | Research domain foundation | Stable taxonomy, context, evaluation, evidence, relationship, and scenario contracts | P0 | planned | F0 disposition |
 | S3.2 | Shared research data | One source of truth with an incremental legacy adapter and validated 13-style migration | P0 | planned | S3.1 |
@@ -20,9 +20,9 @@
 
 ### Features
 
-- Reconcile Flat Design asset gate.
-- Complete final visual and responsive sweep.
-- Close or explicitly carry forward US-003.
+- Document the Flat Design raster waiver.
+- Complete the final visual and responsive browser sweep.
+- Close US-003 with current durable evidence.
 
 ### Exit criteria
 

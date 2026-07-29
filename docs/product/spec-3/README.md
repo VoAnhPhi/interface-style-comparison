@@ -43,9 +43,9 @@ Spec 1 and Spec 2 are the current Foundation. Spec 3 extends that Foundation.
 
 ```text
 Spec 1 + Spec 2 Foundation
-  US-003 still open
-  P1.9 asset reconciliation
-  P1.14 final sweep
+  US-003 complete
+  P1.9 closed with a documented raster waiver
+  P1.14 final browser sweep complete
 
 Spec 3
   planning harness complete
@@ -59,8 +59,20 @@ Spec 3
 - [Roadmap](./ROADMAP.md)
 - [Task ledger](./TASKS.md)
 - [Sprint 01](./SPRINT-01.md)
+- [Domain vocabulary](./DOMAIN_VOCABULARY.md)
+- [Evaluation and testing rules](./EVALUATION_AND_TESTING_RULES.md)
+- [Detailed implementation plan](./IMPLEMENTATION_PLAN.md)
 - [Product contract](../spec-3-research-platform.md)
 - [Active story](../../stories/US-004-spec-3-research-platform-foundation.md)
+
+## Accepted Architecture
+
+- Normalized Spec 3 records become the source of truth incrementally.
+- A compatibility adapter keeps existing `DesignStyle` consumers and dossier
+  renderers working during migration.
+- Modern SaaS is the first normalized record.
+- React Router owns paths and shareable query state.
+- See ADR 0008 and ADR 0009 under `docs/decisions/`.
 
 ## Definition of Ready for Feature Implementation
 
