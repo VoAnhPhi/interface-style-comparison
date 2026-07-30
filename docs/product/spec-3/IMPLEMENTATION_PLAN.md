@@ -165,6 +165,8 @@ Tasks: `S3-DOM-002` and `S3-DOM-003`.
 
 ### WP3.1 Product context records
 
+Status: completed on 2026-07-30.
+
 Create canonical records for the ten `ProductType` values. Each record should
 contain:
 
@@ -179,6 +181,8 @@ contain:
 Product platform and usage context remain separate fields.
 
 ### WP3.2 Evaluation structure
+
+Status: completed on 2026-07-30.
 
 Define:
 
@@ -200,6 +204,8 @@ quality wording.
 
 ### WP3.3 Product fit structure
 
+Status: completed on 2026-07-30.
+
 Each fit record contains:
 
 - product type;
@@ -213,16 +219,27 @@ Each fit record contains:
 
 Acceptance:
 
-- no universal overall score exists;
-- published evaluation has a reason;
-- missing research remains `not-evaluated`;
-- product fit uses fit levels rather than evaluation levels.
+- [x] No universal overall score exists; score-like fields fail validation.
+- [x] Published evaluation has a reason.
+- [x] Missing research remains `not-evaluated`.
+- [x] Product fit uses fit levels rather than evaluation levels.
+- [x] A core evaluation set contains exactly the six accepted criteria.
+- [x] Product type, platform, and usage context validate independently.
+
+Proof:
+
+- `src/domain/research/context.test.ts`;
+- `src/domain/research/evaluation.test.ts`;
+- `npm test`: 3 files, 21 tests passed on 2026-07-30;
+- `npm run build` passed on 2026-07-30.
 
 ## Phase 4 — Evidence, Relationships, and Review Metadata
 
 Tasks: `S3-DOM-004` and `S3-DOM-005`.
 
 ### WP4.1 Research sources
+
+Status: completed on 2026-07-30.
 
 Define stable source ids and:
 
@@ -236,6 +253,8 @@ Define stable source ids and:
 
 ### WP4.2 Claims
 
+Status: completed on 2026-07-30.
+
 Every important claim records:
 
 - claim type;
@@ -244,6 +263,8 @@ Every important claim records:
 - interpretation note when not a documented fact.
 
 ### WP4.3 Relationships
+
+Status: completed on 2026-07-30.
 
 Define:
 
@@ -256,16 +277,28 @@ Define:
 
 Acceptance:
 
-- unknown targets fail;
-- directional relationships retain direction;
-- `related-to` does not imply historical causation;
-- implementation choices cannot masquerade as documented facts.
+- [x] Unknown targets fail.
+- [x] Directional relationships retain direction.
+- [x] `related-to` does not imply historical causation.
+- [x] Implementation choices cannot masquerade as documented facts.
+- [x] Documented facts require a known source.
+- [x] Non-documented claims carry an explicit interpretation note.
+- [x] Published and approved states enforce their review metadata.
+
+Proof:
+
+- `src/domain/research/evidence.test.ts`;
+- `src/domain/research/relationships.test.ts`;
+- full suite: 6 files, 37 tests passed on 2026-07-30;
+- `npm run build` passed on 2026-07-30.
 
 ## Phase 5 — Canonical Same-Context Scenarios
 
 Task: `S3-SCN-001`.
 
 ### WP5.1 Initial scenario records
+
+Status: completed on 2026-07-30.
 
 Sprint 01 implements at least:
 
@@ -277,6 +310,8 @@ The full accepted catalog also reserves landing, navigation, pricing, and
 content card.
 
 ### WP5.2 Immutability rules
+
+Status: completed on 2026-07-30.
 
 For each scenario, lock:
 
@@ -291,9 +326,15 @@ Style renderers may change visual treatment and secondary grouping only.
 
 Acceptance:
 
-- a test fails when canonical business content changes unexpectedly;
-- every renderer receives the same scenario object;
-- scenarios contain no style-specific recommendation.
+- [x] A test fails when canonical business content changes unexpectedly.
+- [x] Canonical records are deeply frozen for shared renderer consumption.
+- [x] Scenarios contain no style-specific recommendation.
+
+Proof:
+
+- `src/domain/research/scenarios.test.ts`;
+- Dashboard, Form, and E-commerce Product records pass structural validation;
+- canonical mismatch, missing-scenario, and forbidden-style-field tests pass.
 
 ## Phase 6 — Normalized Research Model and Adapter
 

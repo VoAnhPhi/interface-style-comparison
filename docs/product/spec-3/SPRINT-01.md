@@ -23,12 +23,13 @@ adapter and without rewriting accepted dossier renderers.
 | 7 | S3-DOM-002 | Product contexts are implemented |
 | 8 | S3-DOM-003 | Evaluation and product-fit contracts are implemented |
 | 9 | S3-DOM-004 | Evidence and review metadata are implemented |
-| 10 | S3-SCN-001 | Canonical scenario contract is implemented |
-| 11 | S3-DATA-001 | Compatibility adapter exists |
-| 12 | S3-DATA-002 | Modern SaaS is the first normalized vertical slice |
-| 13 | S3-DATA-004 | Domain invariants have automated proof |
+| 10 | S3-DOM-005 | Relationships and evolution references are implemented |
+| 11 | S3-SCN-001 | Canonical scenario contract is implemented |
+| 12 | S3-DATA-001 | Compatibility adapter exists |
+| 13 | S3-DATA-002 | Modern SaaS is the first normalized vertical slice |
+| 14 | S3-DATA-004 | Domain invariants have automated proof |
 
-Orders 1-5 are complete. Implementation begins at `S3-DOM-001`.
+Orders 1-11 are complete. The next dependency-ready work is `S3-DATA-001`.
 
 ## Accepted Inputs
 
@@ -73,14 +74,33 @@ Orders 1-5 are complete. Implementation begins at `S3-DOM-001`.
 
 ### Batch 2 — Context, evaluation, and evidence
 
-- Implement product types separately from platform and usage context.
-- Implement the six core evaluation criteria.
-- Implement product fit, claims, sources, and relationship contracts.
-- Add completeness and reference-integrity tests.
+- [x] Implement product types separately from platform and usage context.
+- [x] Add one canonical context record for each of the ten product types.
+- [x] Add density, session, task, accessibility, and brand-expression characteristics.
+- [x] Implement the six core evaluation criteria and criterion completeness.
+- [x] Implement product fit with its own fit-level vocabulary.
+- [x] Preserve `not-evaluated`, require reasoning, and reject score fields.
+- [x] Implement claims, sources, review metadata, and relationship contracts.
+- [x] Add source and relationship reference-integrity tests.
+
+Evidence for the completed context/evaluation slice on 2026-07-30:
+
+- `npm test` passed: 3 files, 21 tests.
+- `npm run build` passed.
+- No React, route, adapter, or renderer code changed, so this slice does not
+  require Browser QA.
+
+Evidence for the completed evidence/relationship slice on 2026-07-30:
+
+- Source, claim, review, relationship, and evolution validation exists.
+- Broken source/style/evolution references and invalid review-state
+  combinations are rejected.
+- The full suite passed: 6 files, 37 tests, followed by `npm run build`.
 
 ### Batch 3 — Scenarios, shared model, and adapter
 
-- Implement canonical Dashboard, Form, and E-commerce Product scenarios.
+- [x] Implement canonical Dashboard, Form, and E-commerce Product scenarios.
+- [x] Deep-freeze shared scenario content and detect canonical changes.
 - Define `ResearchStyle`.
 - Implement normalized-first compatibility adapter.
 - Add Modern SaaS, Glassmorphism, and Flat Design adapter fixtures.

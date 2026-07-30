@@ -97,3 +97,31 @@ When updating durable proof status, use numeric booleans:
   - `npm run build` passed.
   - Patched transitive PostCSS/Nanoid dependencies; `npm audit --omit=dev`
     reports zero vulnerabilities.
+- Batch 2 product-context and evaluation slice on 2026-07-30:
+  - Added canonical context records for all ten accepted product types.
+  - Added the five product-context characteristics from the Spec 3 model:
+    information density, session length, task complexity, accessibility
+    criticality, and brand-expression need.
+  - Added separate runtime vocabularies and validation for product platform
+    and usage context; mobile remains a platform, not a product type.
+  - Added discriminated evaluation contracts so implementation complexity
+    uses its own scale while the other five criteria use evaluation levels.
+  - Added six-criterion completeness checks, product-fit validation, required
+    reasoning, `not-evaluated` preservation, and rejection of score fields.
+  - `npm test` passed: 3 files, 21 tests.
+  - `npm run build` passed.
+  - No UI, routing, adapter, or renderer behavior changed; Browser QA remains
+    reserved for the first rendered normalized slice.
+- Batch 3 evidence, relationships, and canonical scenarios on 2026-07-30:
+  - Added source, claim, evidence-strength, content/review-state, review-date,
+    version, limitations, and source-reference contracts.
+  - Enforced source-backed documented facts, explicit interpretation notes,
+    review gates, stable ids, and broken-reference validation.
+  - Added directional style relationships and evolution references with all
+    nine accepted relationship semantics and non-causal `related-to`.
+  - Added deeply frozen Dashboard, Form, and E-commerce Product scenarios with
+    invariant checks for shared data, goals, hierarchy, semantics, and flow.
+  - `npm test` passed: 6 files, 37 tests.
+  - `npm run build` passed.
+  - No UI, routing, adapter, or renderer changed; Browser QA is still deferred
+    to the first normalized record rendered through the compatibility adapter.

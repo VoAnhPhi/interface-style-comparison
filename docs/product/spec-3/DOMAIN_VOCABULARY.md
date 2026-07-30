@@ -427,6 +427,11 @@ Defined in the contract but allowed to land after the first vertical slice:
 - `ComparisonContext`;
 - `RecommendationLevel`.
 
+Implementation note, 2026-07-30:
+
+- `ProductPlatform` and `UsageContext` landed with `S3-DOM-002`.
+- `EvidenceStrength` and `ReviewStatus` landed with `S3-DOM-004`.
+- Risk and Finder-specific vocabularies remain reserved.
+
 `UsageContext`, `RiskType`, and `RecommendationLevel` must exist before Finder
 implementation.
-

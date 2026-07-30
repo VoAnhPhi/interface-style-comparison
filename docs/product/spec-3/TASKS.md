@@ -19,7 +19,9 @@ Active phase: Sprint 01 Foundation and Domain Contract
 Foundation closure: completed
 Architecture decisions: completed
 Controlled vocabulary: completed
-Next implementation task: S3-DOM-002 and S3-DOM-003
+Product context and evaluation contracts: completed
+Evidence, relationships, and canonical scenarios: completed
+Next implementation task: S3-DATA-001
 ```
 
 ## Ledger
@@ -34,12 +36,12 @@ Next implementation task: S3-DOM-002 and S3-DOM-003
 | S3-ADR-001 | Architecture | Shared domain and data | Decide incremental domain modules, legacy adapter boundary, and source ownership | P0 | S3-GOV-002 | completed | ADR 0008 makes normalized records source of truth incrementally and preserves renderers through a normalized-first adapter |
 | S3-ADR-002 | Architecture | Routing | Decide router approach, route parsing, URL ownership, and not-found behavior | P0 | S3-GOV-002 | completed | ADR 0009 accepts React Router, path/query ownership, stable slug routes, Compare URL normalization, and Not Found |
 | S3-DOM-001 | Research | Taxonomy | Implement the accepted Sprint 01 controlled vocabulary | P0 | S3-ADR-001 | completed | `src/domain/research/vocabulary.ts` defines TypeScript/runtime vocabularies and structured validation; 6 Vitest tests and production build passed on 2026-07-29 |
-| S3-DOM-002 | Product | Product context | Define product type separately from platform and usage context, plus canonical product records | P0 | S3-DOM-001 | ready | Ten product types are represented without treating mobile as a product type |
-| S3-DOM-003 | Product | Evaluation | Define the six core criteria, controlled levels, product fit, reasoning, risks, conditions, and evidence references | P0 | S3-DOM-001 | ready | No mandatory decimal score; `not-evaluated` is preserved and implementation complexity uses its own scale |
-| S3-DOM-004 | Research | Evidence | Define sources, claim type, source reference, inference label, review metadata, and content status | P0 | S3-DOM-001 | planned | Critical claims can link to a source or be marked interpretation |
-| S3-DOM-005 | Research | Evolution | Define style relationships, evolution references, and transition semantics | P0 | S3-DOM-001, S3-DOM-004 | planned | Cause, reaction, influence, relation, combination, and revival are representable |
-| S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | planned | Shared content, goal, structure, and functionality are immutable across style implementations |
-| S3-DATA-001 | Engineering | Shared data | Create normalized research module and compatibility adapter | P0 | S3-DOM-002, S3-DOM-003, S3-DOM-004, S3-DOM-005 | planned | Existing catalog and dossier can consume adapted legacy data without visual regression |
+| S3-DOM-002 | Product | Product context | Define product type separately from platform and usage context, plus canonical product records | P0 | S3-DOM-001 | completed | Ten canonical product contexts include five descriptive characteristics, separate platform/usage vocabularies, structured validation, and negative tests passed on 2026-07-30 |
+| S3-DOM-003 | Product | Evaluation | Define the six core criteria, controlled levels, product fit, reasoning, risks, conditions, and evidence references | P0 | S3-DOM-001 | completed | Six-criterion completeness, criterion-specific complexity levels, product-fit levels, `not-evaluated`, required reasoning, and forbidden score fields are covered by tests passed on 2026-07-30 |
+| S3-DOM-004 | Research | Evidence | Define sources, claim type, source reference, inference label, review metadata, and content status | P0 | S3-DOM-001 | completed | Sources, claims, evidence strength, review gates, dates, documented-fact requirements, interpretation labels, and broken-reference checks passed on 2026-07-30 |
+| S3-DOM-005 | Research | Evolution | Define style relationships, evolution references, and transition semantics | P0 | S3-DOM-001, S3-DOM-004 | completed | Directional edges, all nine accepted relationship semantics, evidence attribution, non-causal `related-to`, evolution drivers, and unknown-target checks passed on 2026-07-30 |
+| S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | completed | Dashboard, Form, and E-commerce Product lock shared content, goals, actions, hierarchy, semantics, and task flow with deep-freeze and canonical mismatch tests |
+| S3-DATA-001 | Engineering | Shared data | Create normalized research module and compatibility adapter | P0 | S3-DOM-002, S3-DOM-003, S3-DOM-004, S3-DOM-005 | ready | Existing catalog and dossier can consume adapted legacy data without visual regression |
 | S3-DATA-002 | Research | Modern SaaS vertical slice | Normalize one complete style including evidence, evaluation, product fit, relationships, and versioning | P0 | S3-DATA-001, S3-SCN-001 | planned | Modern SaaS passes schema validation and renders through existing UI |
 | S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | planned | All published records satisfy required fields; incomplete sections are marked reviewed/draft honestly |
 | S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | planned | Automated proof fails on invalid slug, missing reference, invalid level, unknown fallback, legacy overwrite, or changed shared scenario |

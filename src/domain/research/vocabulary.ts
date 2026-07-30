@@ -40,6 +40,16 @@ export const CONTENT_STATUSES = [
 
 export type ContentStatus = (typeof CONTENT_STATUSES)[number];
 
+export const REVIEW_STATUSES = [
+  "not-reviewed",
+  "research-reviewed",
+  "content-reviewed",
+  "implementation-reviewed",
+  "approved",
+] as const;
+
+export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
+
 export const EVALUATION_CRITERIA = [
   "usability",
   "accessibility",
@@ -106,6 +116,31 @@ export const PRODUCT_TYPES = [
 
 export type ProductType = (typeof PRODUCT_TYPES)[number];
 
+export const PRODUCT_PLATFORMS = [
+  "responsive-web",
+  "desktop-web",
+  "mobile-web",
+  "native-mobile",
+  "desktop-application",
+  "cross-platform",
+] as const;
+
+export type ProductPlatform = (typeof PRODUCT_PLATFORMS)[number];
+
+export const USAGE_CONTEXTS = [
+  "frequent-daily-use",
+  "long-session",
+  "short-session",
+  "data-heavy",
+  "task-heavy",
+  "transactional",
+  "content-reading",
+  "brand-discovery",
+  "accessibility-critical",
+] as const;
+
+export type UsageContext = (typeof USAGE_CONTEXTS)[number];
+
 export const VISUAL_DNA_DIMENSIONS = [
   "depth",
   "decoration",
@@ -166,6 +201,16 @@ export const RESEARCH_SOURCE_TYPES = [
 
 export type ResearchSourceType = (typeof RESEARCH_SOURCE_TYPES)[number];
 
+export const EVIDENCE_STRENGTHS = [
+  "primary",
+  "corroborated",
+  "observational",
+  "interpretive",
+  "insufficient",
+] as const;
+
+export type EvidenceStrength = (typeof EVIDENCE_STRENGTHS)[number];
+
 export const COMPLEXITY_LEVELS = [
   "low",
   "medium",
@@ -180,15 +225,19 @@ export const SPEC3_VOCABULARIES = {
   styleMaturity: STYLE_MATURITIES,
   productionReadiness: PRODUCTION_READINESS_LEVELS,
   contentStatus: CONTENT_STATUSES,
+  reviewStatus: REVIEW_STATUSES,
   evaluationCriterion: EVALUATION_CRITERIA,
   evaluationLevel: EVALUATION_LEVELS,
   productFitLevel: PRODUCT_FIT_LEVELS,
   productType: PRODUCT_TYPES,
+  productPlatform: PRODUCT_PLATFORMS,
+  usageContext: USAGE_CONTEXTS,
   visualDnaDimension: VISUAL_DNA_DIMENSIONS,
   dimensionLevel: DIMENSION_LEVELS,
   styleRelationshipType: STYLE_RELATIONSHIP_TYPES,
   claimType: CLAIM_TYPES,
   researchSourceType: RESEARCH_SOURCE_TYPES,
+  evidenceStrength: EVIDENCE_STRENGTHS,
   complexityLevel: COMPLEXITY_LEVELS,
 } as const;
 
