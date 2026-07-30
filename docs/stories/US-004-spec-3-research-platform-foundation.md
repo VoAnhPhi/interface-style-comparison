@@ -125,3 +125,19 @@ When updating durable proof status, use numeric booleans:
   - `npm run build` passed.
   - No UI, routing, adapter, or renderer changed; Browser QA is still deferred
     to the first normalized record rendered through the compatibility adapter.
+- Batch 4 normalized model and compatibility adapter on 2026-07-30:
+  - Added the aggregate `ResearchStyle` contract covering identity, taxonomy,
+    review state, claims/sources, Visual DNA, evaluations, product fit,
+    relationships, scenarios, versioning, and legacy renderer metadata.
+  - Added aggregate validation with structured errors for missing dimensions,
+    product contexts, claim/source references, scenario references, dates, and
+    renderer-id mismatch.
+  - Added a normalized-first adapter that overwrites only explicitly migrated
+    legacy fields and preserves all unmigrated renderer data.
+  - Added Modern SaaS, Glassmorphism, and Flat Design fixtures to prove
+    production-ready, selective visual-aesthetic, and historical/implementation
+    edge cases without claiming those fixtures are complete research records.
+  - `npm test` passed: 7 files, 46 tests.
+  - `npm run build` passed.
+  - Runtime catalog data is not switched yet; Browser QA remains part of the
+    complete Modern SaaS vertical slice in `S3-DATA-002`.

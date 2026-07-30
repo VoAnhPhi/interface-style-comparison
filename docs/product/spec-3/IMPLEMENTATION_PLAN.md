@@ -342,6 +342,8 @@ Task: `S3-DATA-001`.
 
 ### WP6.1 Define `ResearchStyle`
 
+Status: completed on 2026-07-30.
+
 The first complete model includes:
 
 - identity, aliases, slug, and summary;
@@ -359,6 +361,8 @@ The first complete model includes:
 
 ### WP6.2 Implement normalized-first adapter
 
+Status: completed on 2026-07-30.
+
 Adapter behavior:
 
 1. accept a normalized record;
@@ -370,6 +374,8 @@ Adapter behavior:
 
 ### WP6.3 Adapter fixtures
 
+Status: completed on 2026-07-30.
+
 Required fixtures:
 
 - Modern SaaS: interface direction and production-ready case;
@@ -378,6 +384,17 @@ Required fixtures:
 
 Only Modern SaaS must be fully normalized in Sprint 01. The other two fixtures
 may be minimal contract fixtures used to prove adapter edge cases.
+
+Proof:
+
+- `src/domain/research/style.ts`;
+- `src/domain/research/adapter.ts`;
+- `src/domain/research/adapter.test.ts`;
+- Modern SaaS, Glassmorphism, and Flat Design minimal fixtures validate;
+- normalized fields defeat conflicting legacy fallback values;
+- renderer-id drift and invalid normalized references return structured errors;
+- 7 test files and 46 tests passed on 2026-07-30;
+- `npm run build` passed on 2026-07-30.
 
 ## Phase 7 — Modern SaaS Vertical Slice
 

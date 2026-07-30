@@ -29,7 +29,8 @@ adapter and without rewriting accepted dossier renderers.
 | 13 | S3-DATA-002 | Modern SaaS is the first normalized vertical slice |
 | 14 | S3-DATA-004 | Domain invariants have automated proof |
 
-Orders 1-11 are complete. The next dependency-ready work is `S3-DATA-001`.
+Orders 1-12 are complete. The next dependency-ready work is `S3-DATA-002`
+and `S3-DATA-004`.
 
 ## Accepted Inputs
 
@@ -101,9 +102,19 @@ Evidence for the completed evidence/relationship slice on 2026-07-30:
 
 - [x] Implement canonical Dashboard, Form, and E-commerce Product scenarios.
 - [x] Deep-freeze shared scenario content and detect canonical changes.
-- Define `ResearchStyle`.
-- Implement normalized-first compatibility adapter.
-- Add Modern SaaS, Glassmorphism, and Flat Design adapter fixtures.
+- [x] Define `ResearchStyle`.
+- [x] Implement normalized-first compatibility adapter.
+- [x] Add Modern SaaS, Glassmorphism, and Flat Design adapter fixtures.
+
+Evidence for the completed shared-model/adapter slice on 2026-07-30:
+
+- Aggregate validation covers identity, taxonomy, review, evidence, Visual DNA,
+  six evaluations, ten product fits, relationships, scenarios, and versioning.
+- The adapter preserves legacy renderer ids and all unmigrated nested fields.
+- Normalized name, summary, distinguishing signals, and explicit legacy
+  classification mapping take precedence over fallback data.
+- `npm test` passed: 7 files, 46 tests.
+- `npm run build` passed.
 
 ### Batch 4 — Modern SaaS vertical slice
 

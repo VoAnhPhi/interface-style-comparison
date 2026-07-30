@@ -1,4 +1,5 @@
 export type DomainValidationIssueCode =
+  | "adapter-mismatch"
   | "duplicate-id"
   | "empty-value"
   | "forbidden-field"
@@ -11,6 +12,7 @@ export type DomainValidationIssueCode =
   | "missing-criterion"
   | "missing-product-type"
   | "missing-required-field"
+  | "missing-visual-dimension"
   | "scenario-mismatch"
   | "self-reference"
   | "unknown-style";
