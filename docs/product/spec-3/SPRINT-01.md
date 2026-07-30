@@ -65,9 +65,11 @@ Orders 1-5 are complete. Implementation begins at `S3-DOM-001`.
 
 ### Batch 1 — Test and vocabulary foundation
 
-- Select and configure the real TypeScript test runner.
-- Implement controlled vocabulary and runtime membership validation.
-- Add negative tests for unsupported values and unknown-data fallbacks.
+- [x] Select and configure Vitest `4.1.10`.
+- [x] Add `npm test` and watch-mode scripts.
+- [x] Implement controlled vocabulary and runtime membership validation.
+- [x] Add negative tests for unsupported values and unknown-data fallbacks.
+- [x] Run 6 domain tests and `npm run build`.
 
 ### Batch 2 — Context, evaluation, and evidence
 
@@ -113,7 +115,7 @@ Orders 1-5 are complete. Implementation begins at `S3-DOM-001`.
 
 | Layer | Proof |
 | --- | --- |
-| Unit | Vocabulary, completeness, references, and scenario invariants |
+| Unit | `npm test`; vocabulary proof exists, with completeness, references, and scenario invariants added in later batches |
 | Adapter | Normalized-first precedence and legacy contract preservation |
 | Integration | Modern SaaS maps through the adapter into the current UI |
 | E2E | Existing `/` and `/styles` smoke flows retain parity |

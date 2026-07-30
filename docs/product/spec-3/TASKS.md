@@ -18,7 +18,8 @@ Current sprint: Sprint 01 approved
 Active phase: Sprint 01 Foundation and Domain Contract
 Foundation closure: completed
 Architecture decisions: completed
-Next implementation task: S3-DOM-001
+Controlled vocabulary: completed
+Next implementation task: S3-DOM-002 and S3-DOM-003
 ```
 
 ## Ledger
@@ -32,9 +33,9 @@ Next implementation task: S3-DOM-001
 | F0-CLOSE-001 | Foundation | Harness | Close US-003 or record an explicit carry-forward | P0 | F0-SWEEP-001 | completed | US-003 is complete; the durable matrix and story evidence record the final sweep |
 | S3-ADR-001 | Architecture | Shared domain and data | Decide incremental domain modules, legacy adapter boundary, and source ownership | P0 | S3-GOV-002 | completed | ADR 0008 makes normalized records source of truth incrementally and preserves renderers through a normalized-first adapter |
 | S3-ADR-002 | Architecture | Routing | Decide router approach, route parsing, URL ownership, and not-found behavior | P0 | S3-GOV-002 | completed | ADR 0009 accepts React Router, path/query ownership, stable slug routes, Compare URL normalization, and Not Found |
-| S3-DOM-001 | Research | Taxonomy | Implement the accepted Sprint 01 controlled vocabulary | P0 | S3-ADR-001 | ready | Types and runtime membership checks match `DOMAIN_VOCABULARY.md` and reject unsupported free-form values |
-| S3-DOM-002 | Product | Product context | Define product type separately from platform and usage context, plus canonical product records | P0 | S3-DOM-001 | planned | Ten product types are represented without treating mobile as a product type |
-| S3-DOM-003 | Product | Evaluation | Define the six core criteria, controlled levels, product fit, reasoning, risks, conditions, and evidence references | P0 | S3-DOM-001 | planned | No mandatory decimal score; `not-evaluated` is preserved and implementation complexity uses its own scale |
+| S3-DOM-001 | Research | Taxonomy | Implement the accepted Sprint 01 controlled vocabulary | P0 | S3-ADR-001 | completed | `src/domain/research/vocabulary.ts` defines TypeScript/runtime vocabularies and structured validation; 6 Vitest tests and production build passed on 2026-07-29 |
+| S3-DOM-002 | Product | Product context | Define product type separately from platform and usage context, plus canonical product records | P0 | S3-DOM-001 | ready | Ten product types are represented without treating mobile as a product type |
+| S3-DOM-003 | Product | Evaluation | Define the six core criteria, controlled levels, product fit, reasoning, risks, conditions, and evidence references | P0 | S3-DOM-001 | ready | No mandatory decimal score; `not-evaluated` is preserved and implementation complexity uses its own scale |
 | S3-DOM-004 | Research | Evidence | Define sources, claim type, source reference, inference label, review metadata, and content status | P0 | S3-DOM-001 | planned | Critical claims can link to a source or be marked interpretation |
 | S3-DOM-005 | Research | Evolution | Define style relationships, evolution references, and transition semantics | P0 | S3-DOM-001, S3-DOM-004 | planned | Cause, reaction, influence, relation, combination, and revival are representable |
 | S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | planned | Shared content, goal, structure, and functionality are immutable across style implementations |

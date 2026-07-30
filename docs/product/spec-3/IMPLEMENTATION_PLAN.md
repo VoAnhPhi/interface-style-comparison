@@ -52,9 +52,11 @@ Purpose: create executable proof before normalized production data is added.
 
 ### WP1.1 Select the test runner
 
-Likely implementation:
+Status: completed on 2026-07-29.
 
-- add Vitest for pure TypeScript domain and adapter tests;
+Implemented:
+
+- Vitest `4.1.10` for pure TypeScript domain and adapter tests;
 - add Testing Library only when component/route integration needs DOM proof;
 - keep Browser QA as a separate rendered-experience gate.
 
@@ -116,6 +118,9 @@ Rules:
 
 ### WP2.2 Required Sprint 01 types
 
+Status: completed on 2026-07-29, including runtime value guards and structured
+validation errors.
+
 Implement:
 
 - `StyleClassification`;
@@ -147,10 +152,12 @@ Do not require these in the first record, but reserve their accepted names:
 
 Acceptance:
 
-- unsupported free-form values fail type/runtime validation;
-- maturity and production readiness remain distinct;
-- `not-applicable` and `not-evaluated` survive parsing;
-- classification includes `interface-pattern`.
+- [x] Unsupported free-form values fail type/runtime validation.
+- [x] Maturity and production readiness remain distinct.
+- [x] `not-applicable` and `not-evaluated` survive validation.
+- [x] Classification includes `interface-pattern`.
+- [x] Product type does not contain platform values.
+- [x] All runtime vocabulary values are unique and kebab-case.
 
 ## Phase 3 — Product Context and Evaluation
 

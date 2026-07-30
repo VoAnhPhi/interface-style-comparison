@@ -65,6 +65,12 @@ Build for production:
 npm run build
 ```
 
+Run the domain and application test suite:
+
+```bash
+npm test
+```
+
 Preview the production build:
 
 ```bash

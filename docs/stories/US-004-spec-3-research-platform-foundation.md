@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+in_progress
 
 ## Lane
 
@@ -85,4 +85,15 @@ When updating durable proof status, use numeric booleans:
 - Planning audit used the codebase graph, `SPEC.md`, `SPEC2.md`, all sections
   of `SPEC3.md`, current product docs, US-003, architecture rules, quality
   gates, and durable matrix.
-- Feature implementation intentionally not started.
+- The original planning pass intentionally did not start feature code; Batch 1
+  below is the first implementation slice.
+- Batch 1 implementation on 2026-07-29:
+  - Added Vitest `4.1.10` with `npm test` and `test:watch`.
+  - Added pure domain vocabulary under `src/domain/research/`.
+  - Added runtime membership guards and `VocabularyValidationError`.
+  - Added six tests covering uniqueness, kebab-case, core criteria,
+    `not-evaluated`, product-type separation, and invalid values.
+  - `npm test` passed: 1 file, 6 tests.
+  - `npm run build` passed.
+  - Patched transitive PostCSS/Nanoid dependencies; `npm audit --omit=dev`
+    reports zero vulnerabilities.
