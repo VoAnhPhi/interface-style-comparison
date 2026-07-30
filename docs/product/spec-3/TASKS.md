@@ -14,15 +14,16 @@
 ## Current Position
 
 ```text
-Current sprint: Sprint 01 approved
-Active phase: Sprint 01 Foundation and Domain Contract
+Current sprint: Sprint 01 completed
+Active phase: Post-Sprint routing and incremental data migration
 Foundation closure: completed
 Architecture decisions: completed
 Controlled vocabulary: completed
 Product context and evaluation contracts: completed
 Evidence, relationships, and canonical scenarios: completed
 Normalized research model and compatibility adapter: completed
-Next implementation task: S3-DATA-002 and S3-DATA-004
+Modern SaaS vertical slice and invariant suite: completed
+Next implementation task: S3-ROUTE-001
 ```
 
 ## Ledger
@@ -43,10 +44,10 @@ Next implementation task: S3-DATA-002 and S3-DATA-004
 | S3-DOM-005 | Research | Evolution | Define style relationships, evolution references, and transition semantics | P0 | S3-DOM-001, S3-DOM-004 | completed | Directional edges, all nine accepted relationship semantics, evidence attribution, non-causal `related-to`, evolution drivers, and unknown-target checks passed on 2026-07-30 |
 | S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | completed | Dashboard, Form, and E-commerce Product lock shared content, goals, actions, hierarchy, semantics, and task flow with deep-freeze and canonical mismatch tests |
 | S3-DATA-001 | Engineering | Shared data | Create normalized research module and compatibility adapter | P0 | S3-DOM-002, S3-DOM-003, S3-DOM-004, S3-DOM-005 | completed | `ResearchStyle`, aggregate validation, normalized-first adapter, renderer-id protection, and Modern SaaS/Glassmorphism/Flat Design fixtures passed 46 tests and production build on 2026-07-30 |
-| S3-DATA-002 | Research | Modern SaaS vertical slice | Normalize one complete style including evidence, evaluation, product fit, relationships, and versioning | P0 | S3-DATA-001, S3-SCN-001 | ready | Modern SaaS passes schema validation and renders through existing UI |
-| S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | planned | All published records satisfy required fields; incomplete sections are marked reviewed/draft honestly |
-| S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | ready | Automated proof fails on invalid slug, missing reference, invalid level, unknown fallback, legacy overwrite, or changed shared scenario |
-| S3-ROUTE-001 | Engineering | All routes | Introduce typed route map and navigation shell | P0 | S3-ADR-002 | planned | `/` and `/styles` retain parity; not-found behavior exists |
+| S3-DATA-002 | Research | Modern SaaS vertical slice | Normalize one complete style including evidence, evaluation, product fit, relationships, and versioning | P0 | S3-DATA-001, S3-SCN-001 | completed | Modern SaaS is the normalized source for migrated catalog fields; 12 styles retain exact legacy fallbacks; build and desktop/mobile Browser QA passed on 2026-07-30 |
+| S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | ready | All published records satisfy required fields; incomplete sections are marked reviewed/draft honestly |
+| S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | completed | 53 tests cover aggregate completeness, references, duplicate ids/slugs, Compare normalization, scenario invariants, and adapter precedence; production build passed on 2026-07-30 |
+| S3-ROUTE-001 | Engineering | All routes | Introduce typed route map and navigation shell | P0 | S3-ADR-002 | ready | `/` and `/styles` retain parity; not-found behavior exists |
 | S3-ROUTE-002 | Engineering | `/styles/:slug` | Add stable style detail URL and selection synchronization | P0 | S3-ROUTE-001, S3-DATA-002 | planned | Direct load, bookmark, back, forward, and unknown slug behavior work |
 | S3-EXP-001 | UX | `/styles` | Enhance search and primary classification filter from normalized data | P1 | S3-DATA-003, S3-ROUTE-001 | planned | Search covers aliases and characteristics; empty state is accessible |
 | S3-EXP-002 | UX | `/styles` | Add secondary era, density, visual weight, and maturity filters with URL state | P1 | S3-EXP-001 | planned | Refresh and shared URL restore filters |

@@ -2,7 +2,7 @@
 
 ## Status
 
-Approved for implementation on 2026-07-29.
+Completed on 2026-07-30.
 
 ## Sprint Goal
 
@@ -29,8 +29,7 @@ adapter and without rewriting accepted dossier renderers.
 | 13 | S3-DATA-002 | Modern SaaS is the first normalized vertical slice |
 | 14 | S3-DATA-004 | Domain invariants have automated proof |
 
-Orders 1-12 are complete. The next dependency-ready work is `S3-DATA-002`
-and `S3-DATA-004`.
+Orders 1-14 are complete. Sprint 01 exit proof passed.
 
 ## Accepted Inputs
 
@@ -118,16 +117,30 @@ Evidence for the completed shared-model/adapter slice on 2026-07-30:
 
 ### Batch 4 — Modern SaaS vertical slice
 
-- Normalize Modern SaaS with honest claim/source labels.
-- Connect its adapter output to the current UI.
-- Keep the other 12 styles on the legacy path.
-- Run domain, adapter, build, and browser regression proof.
+- [x] Normalize Modern SaaS with honest claim/source labels.
+- [x] Connect its adapter output to the current UI.
+- [x] Keep the other 12 styles on the legacy path.
+- [x] Run domain, adapter, build, and browser regression proof.
+
+Evidence:
+
+- Runtime catalog contains one adapted Modern SaaS record and twelve exact
+  legacy object references.
+- Browser QA passed at `1280x800` and `390x844` for landing, Modern SaaS, and
+  Glassmorphism, including selection, `Examples`, images, overflow, and console.
 
 ### Batch 5 — Sprint close
 
-- Run all configured validation.
-- Update US-004 and durable proof.
-- Record any contract changes or migration friction.
+- [x] Run all configured validation.
+- [x] Update US-004 and durable proof.
+- [x] Record contract changes and migration friction.
+
+Final proof:
+
+- `npm test`: 8 files, 53 tests passed.
+- `npm run build` passed.
+- Browser QA produced no broken images, document overflow, or warning/error
+  console output.
 
 ## Acceptance Criteria
 

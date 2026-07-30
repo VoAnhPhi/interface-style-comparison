@@ -2,7 +2,7 @@
 
 ## Status
 
-in_progress
+implemented
 
 ## Lane
 
@@ -141,3 +141,17 @@ When updating durable proof status, use numeric booleans:
   - `npm run build` passed.
   - Runtime catalog data is not switched yet; Browser QA remains part of the
     complete Modern SaaS vertical slice in `S3-DATA-002`.
+- Batch 5 Modern SaaS vertical slice and invariant closure on 2026-07-30:
+  - Added one complete Modern SaaS normalized record with local project
+    sources, claim labels, Visual DNA, six evaluations, ten product fits,
+    relationships, canonical scenarios, review state, and version metadata.
+  - Switched only Modern SaaS to normalized-first runtime ownership; the
+    remaining twelve catalog entries retain exact legacy object identity.
+  - Added dataset validation and Compare selection normalization covering
+    duplicate ids/slugs, unknown targets, missing renderer fallback,
+    invalid/duplicate/over-limit selections, and explicit below-two state.
+  - `npm test` passed: 8 files, 53 tests.
+  - `npm run build` passed.
+  - Browser QA passed at `1280x800` and `390x844` for landing, Modern SaaS,
+    and Glassmorphism: selection and `Examples` worked, images loaded, no
+    document overflow occurred, and console warning/error logs were empty.

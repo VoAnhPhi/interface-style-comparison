@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import {
   type DesignStyle,
-  designStyles,
+  legacyDesignStyles,
 } from "../../data/designStyles";
 import { adaptResearchStyleToDesignStyle } from "./adapter";
 import type { CoreEvaluationSet, ProductFit } from "./evaluation";
@@ -25,7 +25,7 @@ const draftReview = {
 } as const;
 
 function getLegacyStyle(id: string): DesignStyle {
-  const style = designStyles.find((candidate) => candidate.id === id);
+  const style = legacyDesignStyles.find((candidate) => candidate.id === id);
 
   if (!style) {
     throw new Error(`Missing legacy fixture: ${id}`);

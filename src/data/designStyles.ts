@@ -1,3 +1,6 @@
+import { buildDesignStyleCatalog } from "../domain/research/dataset";
+import { modernSaasResearchStyle } from "../domain/research/data/modernSaas";
+
 export type FitLevel = "High" | "Medium" | "Low" | "Use carefully";
 export type StyleClassification = "production-safe" | "expressive" | "experimental" | "historical-reference" | "system-language";
 
@@ -68,7 +71,7 @@ export type DesignStyle = {
   };
 };
 
-export const designStyles: DesignStyle[] = [
+export const legacyDesignStyles: DesignStyle[] = [
   {
     id: "modern-saas",
     name: "Modern SaaS",
@@ -1369,6 +1372,21 @@ export const designStyles: DesignStyle[] = [
     },
   },
 ];
+
+const catalogResult = buildDesignStyleCatalog(
+  legacyDesignStyles,
+  [modernSaasResearchStyle],
+);
+
+if (!catalogResult.ok) {
+  throw new Error(
+    `Invalid normalized style catalog: ${catalogResult.issues
+      .map(({ path, message }) => `${path}: ${message}`)
+      .join("; ")}`,
+  );
+}
+
+export const designStyles: DesignStyle[] = catalogResult.value;
 
 export type StyleRecommendation = {
   goal: string;

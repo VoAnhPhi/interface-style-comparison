@@ -402,10 +402,14 @@ Task: `S3-DATA-002`.
 
 ### WP7.1 Normalize research
 
+Status: completed on 2026-07-30.
+
 Create one complete Modern SaaS record using accepted local specs and current
 product copy. Label each claim correctly and avoid inventing external sources.
 
 ### WP7.2 Connect current UI
+
+Status: completed on 2026-07-30.
 
 - include the adapted Modern SaaS record in the current catalog dataset;
 - leave the remaining 12 records on the legacy path;
@@ -413,6 +417,8 @@ product copy. Label each claim correctly and avoid inventing external sources.
 - preserve visual output and existing interactions.
 
 ### WP7.3 Prove the boundary
+
+Status: completed on 2026-07-30.
 
 Tests:
 
@@ -424,9 +430,22 @@ Tests:
 - landing and `/styles` build parity;
 - Browser QA desktop/mobile for Modern SaaS plus one unmigrated style.
 
+Proof:
+
+- `src/domain/research/data/modernSaas.ts` is the first complete normalized
+  record and labels local project evidence honestly.
+- `src/data/designStyles.ts` builds the runtime catalog through the
+  normalized-first adapter.
+- Modern SaaS is adapted; the other twelve entries retain exact legacy object
+  identity.
+- Browser QA passed at `1280x800` and `390x844` for landing, Modern SaaS, and
+  Glassmorphism with no broken images, overflow, or console warnings/errors.
+
 ## Phase 8 — Domain Invariant Suite
 
 Task: `S3-DATA-004`.
+
+Status: completed on 2026-07-30.
 
 Add negative tests for:
 
@@ -441,7 +460,8 @@ Add negative tests for:
 - legacy data overwriting a normalized value;
 - unknown values becoming `moderate`.
 
-Sprint 01 exits only when these tests and the production build pass.
+Sprint 01 exited after 8 test files, 53 tests, the production build, and
+desktop/mobile Browser QA passed on 2026-07-30.
 
 ## Phase 9 — Typed Routing Shell
 
@@ -497,15 +517,15 @@ building full Compare.
 
 ## Sprint 01 Exit Checklist
 
-- ADR 0008 and ADR 0009 are accepted.
-- Canonical vocabulary and evaluation docs are current.
-- Test runner and real validation commands exist.
-- Required Sprint 01 vocabulary is implemented.
-- Product contexts, evaluation, evidence, and relationship contracts exist.
-- Canonical scenarios have invariants.
-- Adapter uses normalized-first precedence.
-- Modern SaaS is normalized and rendered through the existing UI.
-- Domain and adapter tests pass.
-- `npm run build` passes.
-- Existing landing and Explorer pass browser regression checks.
-- Durable story, task ledger, and trace evidence are updated.
+- [x] ADR 0008 and ADR 0009 are accepted.
+- [x] Canonical vocabulary and evaluation docs are current.
+- [x] Test runner and real validation commands exist.
+- [x] Required Sprint 01 vocabulary is implemented.
+- [x] Product contexts, evaluation, evidence, and relationship contracts exist.
+- [x] Canonical scenarios have invariants.
+- [x] Adapter uses normalized-first precedence.
+- [x] Modern SaaS is normalized and rendered through the existing UI.
+- [x] Domain and adapter tests pass.
+- [x] `npm run build` passes.
+- [x] Existing landing and Explorer pass browser regression checks.
+- [x] Durable story, task ledger, and trace evidence are updated.

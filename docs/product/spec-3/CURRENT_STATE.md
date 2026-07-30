@@ -1,17 +1,19 @@
 # Spec 3 Baseline Audit
 
 Audit date: 2026-07-23
+Implementation update: 2026-07-30
 
 ## Executive Status
 
-The current product is a strong visual Foundation, not yet the normalized
-research platform described by Spec 3.
+The visual Foundation and Sprint 01 domain/migration foundation are complete.
+Modern SaaS is the first normalized runtime record; the remaining twelve
+styles continue through explicit legacy fallback.
 
 | Area | Current state | Spec 3 gap |
 | --- | --- | --- |
 | Landing | Implemented at `/` with research framing, featured directions, lenses, comparison teaser, and timeline | CTAs and teasers are not connected to dedicated Compare or Evolution routes |
 | Explorer | Implemented at `/styles` with search, tag filtering, selection, and a three-column workspace | Selection is local state; classification, era, density, maturity, and slug routing are missing |
-| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections | No stable `/styles/:slug`; no normalized Visual DNA, evaluation, product-fit reasoning, relationships, or sources |
+| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; Modern SaaS now has a normalized research source | No stable `/styles/:slug`; normalized Spec 3 sections are not rendered publicly yet |
 | Decision guide | Surface fit and recommendation summaries exist | Uses legacy fit values without conditions, evidence, or context-aware reasoning |
 | Comparison | Legacy comparison surface exists but is hidden; landing contains a static teaser | No compare domain, 2-3 selection rule, URL state, shared scenario, context interpretation, or decision summary |
 | Evolution | Landing teaser uses a visual timeline | No evolution entities, transition causes, relationship graph, sources, or route |
@@ -56,7 +58,9 @@ shareable through the URL.
 
 ### Data
 
-`src/data/designStyles.ts` contains 13 large `DesignStyle` records.
+`src/data/designStyles.ts` retains 13 legacy `DesignStyle` records as
+compatibility fallbacks. The runtime catalog adapts the normalized Modern SaaS
+record first and leaves the other twelve exact legacy objects unchanged.
 
 It already provides valuable Foundation content:
 
@@ -67,7 +71,7 @@ It already provides valuable Foundation content:
 - strengths, weaknesses, and accessibility risks;
 - basic suitability values.
 
-It does not yet model Spec 3 concepts:
+The new `src/domain/research/` layer now models:
 
 - aliases and stable slug contract;
 - taxonomy as interface direction, aesthetic, design language, or historical
@@ -79,7 +83,11 @@ It does not yet model Spec 3 concepts:
 - style relationships;
 - evolution references;
 - research version and content status;
-- canonical same-context specimens.
+- canonical same-context specimens;
+- aggregate dataset and compatibility-adapter validation.
+
+The remaining data gap is migrating the other twelve style records and moving
+normalized research sections into public dossier UI.
 
 ### UI architecture
 
@@ -130,5 +138,6 @@ Approved on 2026-07-29:
 - the dependency-ordered work plan is
   `docs/product/spec-3/IMPLEMENTATION_PLAN.md`.
 
-ADR 0008 and ADR 0009 are accepted. The next implementation task is
-`S3-DOM-001`.
+ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete. The
+recommended next task is `S3-ROUTE-001`, followed by `S3-ROUTE-002`; remaining
+style records can then migrate in reviewed batches.

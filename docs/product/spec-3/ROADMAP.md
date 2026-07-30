@@ -6,9 +6,9 @@
 | --- | --- | --- | --- | --- | --- |
 | F0 | Foundation closure | Spec 1 and Spec 2 have honest completion evidence | P0 | completed | none |
 | S3.0 | Governance and contracts | Spec 3 has a task system, product contract, and architecture questions | P0 | completed | none |
-| S3.1 | Research domain foundation | Stable taxonomy, context, evaluation, evidence, relationship, and scenario contracts | P0 | planned | F0 disposition |
-| S3.2 | Shared research data | One source of truth with an incremental legacy adapter and validated 13-style migration | P0 | planned | S3.1 |
-| S3.3 | Routing and information architecture | Shareable routes for Explorer, Dossier, Compare, Evolution, and Methodology | P0 | planned | S3.1, routing decision |
+| S3.1 | Research domain foundation | Stable taxonomy, context, evaluation, evidence, relationship, and scenario contracts | P0 | completed | F0 disposition |
+| S3.2 | Shared research data | One source of truth with an incremental legacy adapter and validated 13-style migration | P0 | in_progress | S3.1 |
+| S3.3 | Routing and information architecture | Shareable routes for Explorer, Dossier, Compare, Evolution, and Methodology | P0 | ready | S3.1, routing decision |
 | S3.4 | Explorer and dossier | Searchable taxonomy and complete research dossier on stable style URLs | P1 | planned | S3.2, S3.3 |
 | S3.5 | Comparison engine | Contextual 2-3 style comparison with same-context specimens and trade-off guidance | P1 | planned | S3.2, S3.3, canonical scenarios |
 | S3.6 | Evolution system | Explain movements, causes, reactions, influences, and taxonomy over time | P2 | planned | S3.2, S3.3 |
