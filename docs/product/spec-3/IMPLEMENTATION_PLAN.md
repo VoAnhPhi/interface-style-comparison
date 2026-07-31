@@ -467,26 +467,38 @@ desktop/mobile Browser QA passed on 2026-07-30.
 
 Task: `S3-ROUTE-001`.
 
-This starts after Sprint 01. The routing direction is accepted now, but route
-implementation waits until the Modern SaaS normalized slice and adapter have
-passed Sprint 01 proof.
+Status: completed on 2026-07-30.
+
+This started after the Modern SaaS normalized slice and adapter passed Sprint
+01 proof.
 
 ### WP9.1 Introduce React Router
 
-- wrap the app in the router;
-- create typed route helpers/constants;
-- preserve `/` and `/styles`;
-- add Not Found;
-- remove manual route ownership only after parity proof.
+- [x] Wrap the app in `BrowserRouter`.
+- [x] Create typed route helpers/constants.
+- [x] Preserve `/` and `/styles`.
+- [x] Add Not Found with recovery links.
+- [x] Remove manual pathname, `pushState`, and `popstate` ownership.
 
 ### WP9.2 Route proof
 
-- direct access;
-- reload;
-- back/forward;
-- landing-to-Explorer navigation;
-- unknown route;
-- desktop/mobile regression.
+- [x] Direct access.
+- [x] Reload.
+- [x] Back/forward.
+- [x] Landing-to-Explorer navigation.
+- [x] Unknown route and recovery.
+- [x] Desktop `1280x720` and mobile `390x844` regression.
+
+Proof:
+
+- `src/routing/routes.test.ts`: 2 route-contract tests.
+- `npm test`: 9 files, 55 tests passed.
+- `npm run build`: passed.
+- Browser QA found and corrected a Not Found token-scope defect, then passed
+  with no broken images, horizontal overflow, console warnings, or errors.
+- React Router `7.18.2` is used in client-only Declarative mode. The current
+  npm audit advisory concerns RSC Action handling, which this application does
+  not enable; the advisory remains recorded rather than hidden.
 
 ## Phase 10 — Slug Dossier
 

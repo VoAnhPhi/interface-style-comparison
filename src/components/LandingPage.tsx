@@ -1,7 +1,8 @@
 import { designStyles } from "../data/designStyles";
+import { type AppRoutePath } from "../routing/routes";
 import { FontAwesomeIcon, type FontAwesomeIconName } from "./icons/FontAwesomeIcon";
 
-type LandingPageProps = { onNavigate: (path: "/" | "/styles") => void };
+type LandingPageProps = { onNavigate: (path: AppRoutePath) => void };
 
 type Direction = {
   id: string;

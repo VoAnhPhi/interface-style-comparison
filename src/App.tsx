@@ -6,11 +6,14 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import { designStyles, recommendations, type DesignStyle, type FitLevel } from "./data/designStyles";
 import { ResearchDossier } from "./components/dossiers/ResearchDossier";
 import { FontAwesomeIcon } from "./components/icons/FontAwesomeIcon";
 import { LandingPage } from "./components/LandingPage";
+import { NotFoundPage } from "./components/NotFoundPage";
 import { StylePreview } from "./components/StylePreview";
+import { APP_ROUTES, type AppRoutePath } from "./routing/routes";
 
 type SurfaceId = keyof DesignStyle["suitability"];
 
@@ -450,11 +453,12 @@ function useTouchPointer(active: boolean) {
 }
 
 function App() {
-  const [route, setRoute] = useState<"landing" | "styles">(() => window.location.pathname === "/styles" ? "styles" : "landing");
   const [selectedStyleId, setSelectedStyleId] = useState(designStyles[0].id);
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
   const [activeMode, setActiveMode] = useState<"fast" | "deep" | "compare">("deep");
+  const location = useLocation();
+  const routerNavigate = useNavigate();
 
   const filteredStyles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -486,44 +490,41 @@ function App() {
     setActiveMode("deep");
   };
 
-  const touchPointer = useTouchPointer(route === "styles");
+  const touchPointer = useTouchPointer(location.pathname === APP_ROUTES.explorer);
 
-  useEffect(() => {
-    const syncRoute = () => setRoute(window.location.pathname === "/styles" ? "styles" : "landing");
-    window.addEventListener("popstate", syncRoute);
-    return () => window.removeEventListener("popstate", syncRoute);
-  }, []);
-
-  const navigate = (path: "/" | "/styles") => {
-    if (window.location.pathname !== path) {
-      window.history.pushState(null, "", path);
+  const navigate = (path: AppRoutePath) => {
+    if (location.pathname !== path) {
+      routerNavigate(path);
     }
-    setRoute(path === "/styles" ? "styles" : "landing");
     window.scrollTo({ top: 0, behavior: "auto" });
   };
 
-  if (route === "landing") {
-    return <LandingPage onNavigate={navigate} />;
-  }
-
   return (
-    <main className="research-shell" {...touchPointer.handlers}>
-      {touchPointer.feedback}
-      <AppHeader onQueryChange={setQuery} query={query} />
+    <Routes>
+      <Route path={APP_ROUTES.landing} element={<LandingPage onNavigate={navigate} />} />
+      <Route
+        path={APP_ROUTES.explorer}
+        element={
+          <main className="research-shell" {...touchPointer.handlers}>
+            {touchPointer.feedback}
+            <AppHeader onQueryChange={setQuery} query={query} />
 
-      <div className="workspace-grid">
-        <StyleCatalog
-          activeTag={activeTag}
-          filteredStyles={filteredStyles}
-          onSelect={handleSelectStyle}
-          onTagChange={setActiveTag}
-          selectedId={selectedStyleId}
-        />
-        <ResearchDossier activeMode={activeMode} style={selectedStyle} />
-        <DecisionRail style={selectedStyle} />
-      </div>
-
-    </main>
+            <div className="workspace-grid">
+              <StyleCatalog
+                activeTag={activeTag}
+                filteredStyles={filteredStyles}
+                onSelect={handleSelectStyle}
+                onTagChange={setActiveTag}
+                selectedId={selectedStyleId}
+              />
+              <ResearchDossier activeMode={activeMode} style={selectedStyle} />
+              <DecisionRail style={selectedStyle} />
+            </div>
+          </main>
+        }
+      />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
 }
 

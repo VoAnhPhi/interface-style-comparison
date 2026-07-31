@@ -40,9 +40,13 @@ US-003 has current Foundation evidence and is complete.
 
 ### Routing
 
-- `App.tsx` maps only `/` and `/styles`.
-- Routing uses `window.location.pathname`, `pushState`, and `popstate`.
-- No dynamic route params or query-state parser exists.
+- React Router owns the client-side route shell.
+- `src/routing/routes.ts` provides typed constants for `/` and `/styles`.
+- `/` and `/styles` preserve their accepted behavior and unknown paths render
+  an explicit Not Found recovery page.
+- Direct access, reload, landing-to-Explorer navigation, back/forward, and
+  desktop/mobile behavior passed Browser QA on 2026-07-30.
+- Dynamic style params and Compare query-state parsing remain for later tasks.
 
 ### State
 
@@ -138,6 +142,6 @@ Approved on 2026-07-29:
 - the dependency-ordered work plan is
   `docs/product/spec-3/IMPLEMENTATION_PLAN.md`.
 
-ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete. The
-recommended next task is `S3-ROUTE-001`, followed by `S3-ROUTE-002`; remaining
-style records can then migrate in reviewed batches.
+ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete.
+`S3-ROUTE-001` is complete through US-005. The recommended next task is
+`S3-ROUTE-002`; remaining style records can then migrate in reviewed batches.
