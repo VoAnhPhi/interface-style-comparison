@@ -6,14 +6,14 @@ import {
   type MouseEvent as ReactMouseEvent,
   type PointerEvent as ReactPointerEvent,
 } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router";
+import { Route, Routes, useLocation, useNavigate, useParams } from "react-router";
 import { designStyles, recommendations, type DesignStyle, type FitLevel } from "./data/designStyles";
 import { ResearchDossier } from "./components/dossiers/ResearchDossier";
 import { FontAwesomeIcon } from "./components/icons/FontAwesomeIcon";
 import { LandingPage } from "./components/LandingPage";
 import { NotFoundPage } from "./components/NotFoundPage";
 import { StylePreview } from "./components/StylePreview";
-import { APP_ROUTES, type AppRoutePath } from "./routing/routes";
+import { APP_ROUTES, getStyleRoute, type AppRoutePath } from "./routing/routes";
 
 type SurfaceId = keyof DesignStyle["suitability"];
 
@@ -452,13 +452,14 @@ function useTouchPointer(active: boolean) {
   return { feedback, handlers };
 }
 
-function App() {
-  const [selectedStyleId, setSelectedStyleId] = useState(designStyles[0].id);
+function ResearchWorkspace() {
+  const { slug } = useParams<{ slug?: string }>();
   const [query, setQuery] = useState("");
   const [activeTag, setActiveTag] = useState("All");
   const [activeMode, setActiveMode] = useState<"fast" | "deep" | "compare">("deep");
   const location = useLocation();
   const routerNavigate = useNavigate();
+  const selectedStyleId = slug ?? designStyles[0].id;
 
   const filteredStyles = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -480,17 +481,55 @@ function App() {
     });
   }, [activeTag, query]);
 
-  const selectedStyle = useMemo(
-    () => designStyles.find((style) => style.id === selectedStyleId) ?? designStyles[0],
-    [selectedStyleId],
-  );
+  const selectedStyle = useMemo(() => designStyles.find((style) => style.id === selectedStyleId), [selectedStyleId]);
 
   const handleSelectStyle = (id: string) => {
-    setSelectedStyleId(id);
     setActiveMode("deep");
+
+    const nextPath = getStyleRoute(id);
+    if (location.pathname !== nextPath) {
+      routerNavigate(nextPath);
+    }
+
+    window.scrollTo({ top: 0, behavior: "auto" });
   };
 
-  const touchPointer = useTouchPointer(location.pathname === APP_ROUTES.explorer);
+  const touchPointer = useTouchPointer(location.pathname === APP_ROUTES.explorer || Boolean(selectedStyle));
+
+  const navigate = (path: AppRoutePath) => {
+    if (location.pathname !== path) {
+      routerNavigate(path);
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
+  if (slug && !selectedStyle) {
+    return <NotFoundPage />;
+  }
+
+  return (
+    <main className="research-shell" {...touchPointer.handlers}>
+      {touchPointer.feedback}
+      <AppHeader onQueryChange={setQuery} query={query} />
+
+      <div className="workspace-grid">
+        <StyleCatalog
+          activeTag={activeTag}
+          filteredStyles={filteredStyles}
+          onSelect={handleSelectStyle}
+          onTagChange={setActiveTag}
+          selectedId={selectedStyleId}
+        />
+        <ResearchDossier activeMode={activeMode} style={selectedStyle ?? designStyles[0]} />
+        <DecisionRail style={selectedStyle ?? designStyles[0]} />
+      </div>
+    </main>
+  );
+}
+
+function App() {
+  const routerNavigate = useNavigate();
+  const location = useLocation();
 
   const navigate = (path: AppRoutePath) => {
     if (location.pathname !== path) {
@@ -502,27 +541,8 @@ function App() {
   return (
     <Routes>
       <Route path={APP_ROUTES.landing} element={<LandingPage onNavigate={navigate} />} />
-      <Route
-        path={APP_ROUTES.explorer}
-        element={
-          <main className="research-shell" {...touchPointer.handlers}>
-            {touchPointer.feedback}
-            <AppHeader onQueryChange={setQuery} query={query} />
-
-            <div className="workspace-grid">
-              <StyleCatalog
-                activeTag={activeTag}
-                filteredStyles={filteredStyles}
-                onSelect={handleSelectStyle}
-                onTagChange={setActiveTag}
-                selectedId={selectedStyleId}
-              />
-              <ResearchDossier activeMode={activeMode} style={selectedStyle} />
-              <DecisionRail style={selectedStyle} />
-            </div>
-          </main>
-        }
-      />
+      <Route path={APP_ROUTES.explorer} element={<ResearchWorkspace />} />
+      <Route path={APP_ROUTES.styleDetail} element={<ResearchWorkspace />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

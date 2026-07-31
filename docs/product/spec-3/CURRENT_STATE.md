@@ -12,8 +12,8 @@ styles continue through explicit legacy fallback.
 | Area | Current state | Spec 3 gap |
 | --- | --- | --- |
 | Landing | Implemented at `/` with research framing, featured directions, lenses, comparison teaser, and timeline | CTAs and teasers are not connected to dedicated Compare or Evolution routes |
-| Explorer | Implemented at `/styles` with search, tag filtering, selection, and a three-column workspace | Selection is local state; classification, era, density, maturity, and slug routing are missing |
-| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; Modern SaaS now has a normalized research source | No stable `/styles/:slug`; normalized Spec 3 sections are not rendered publicly yet |
+| Explorer | Implemented at `/styles` with search, tag filtering, URL-backed selection, and a three-column workspace | Classification, era, density, and maturity filters are still missing |
+| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; Modern SaaS now has a normalized research source; `/styles/:slug` resolves known catalog styles | Normalized Spec 3 sections are not rendered publicly yet |
 | Decision guide | Surface fit and recommendation summaries exist | Uses legacy fit values without conditions, evidence, or context-aware reasoning |
 | Comparison | Legacy comparison surface exists but is hidden; landing contains a static teaser | No compare domain, 2-3 selection rule, URL state, shared scenario, context interpretation, or decision summary |
 | Evolution | Landing teaser uses a visual timeline | No evolution entities, transition causes, relationship graph, sources, or route |
@@ -143,5 +143,6 @@ Approved on 2026-07-29:
   `docs/product/spec-3/IMPLEMENTATION_PLAN.md`.
 
 ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete.
-`S3-ROUTE-001` is complete through US-005. The recommended next task is
-`S3-ROUTE-002`; remaining style records can then migrate in reviewed batches.
+`S3-ROUTE-001` and `S3-ROUTE-002` are complete through US-005. The recommended
+next task is `S3-DATA-003`; remaining style records can then migrate in reviewed
+batches before the full dossier and Compare work.
