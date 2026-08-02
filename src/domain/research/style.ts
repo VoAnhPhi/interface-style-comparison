@@ -82,6 +82,7 @@ export type ResearchStyle = {
   name: string;
   aliases: readonly string[];
   summary: string;
+  characteristics: readonly string[];
   classifications: readonly StyleClassification[];
   maturity: StyleMaturity;
   productionReadiness: ProductionReadiness;
@@ -175,6 +176,14 @@ export function validateResearchStyle(
       code: "invalid-value",
       path: `${path}.aliases`,
       message: "aliases must be an array of non-empty strings.",
+    });
+  }
+
+  if (!isStringArray(value.characteristics)) {
+    issues.push({
+      code: "invalid-value",
+      path: `${path}.characteristics`,
+      message: "characteristics must be an array of non-empty strings.",
     });
   }
 

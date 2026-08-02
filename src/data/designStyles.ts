@@ -1,6 +1,5 @@
 import { buildDesignStyleCatalog } from "../domain/research/dataset";
-import { migratedResearchStyles } from "../domain/research/data/migratedStyles";
-import { modernSaasResearchStyle } from "../domain/research/data/modernSaas";
+import { normalizedResearchStyles } from "../domain/research/catalog";
 
 export type FitLevel = "High" | "Medium" | "Low" | "Use carefully";
 export type StyleClassification = "production-safe" | "expressive" | "experimental" | "historical-reference" | "system-language";
@@ -1376,7 +1375,7 @@ export const legacyDesignStyles: DesignStyle[] = [
 
 const catalogResult = buildDesignStyleCatalog(
   legacyDesignStyles,
-  [modernSaasResearchStyle, ...migratedResearchStyles],
+  normalizedResearchStyles,
 );
 
 if (!catalogResult.ok) {

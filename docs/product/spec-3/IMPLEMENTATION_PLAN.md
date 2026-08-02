@@ -540,7 +540,8 @@ Proof:
 
 1. Migrate remaining styles in small reviewed batches. **Completed by
    `S3-DATA-003`.**
-2. Move Explorer search and classification filters to normalized data.
+2. Move Explorer search and classification filters to normalized data. **Completed
+   by `S3-EXP-001`.**
 3. Add shareable secondary filters.
 4. Complete normalized slug dossier sections.
 5. Implement pure Compare selection/query/context logic.
@@ -549,6 +550,29 @@ Proof:
 8. Publish research contract and build `/methodology`.
 9. Define Finder rules only after Compare reasoning is reviewed.
 10. Defer report, analytics, persistence, authentication, and collaboration.
+
+## Phase 12 — Normalized Explorer Search
+
+Task: `S3-EXP-001`.
+
+Status: completed on 2026-08-02.
+
+- Added `characteristics` to the normalized `ResearchStyle` contract so Explorer
+  does not need legacy-only searchable fields.
+- Added pure normalized search and primary classification filtering for name,
+  aliases, keywords, characteristics, definitions, signals, and classifications.
+- Added an accessible empty state with a clear recovery action while preserving
+  the existing tag filter and legacy renderer adapter.
+
+Proof:
+
+- `src/domain/research/explorer.test.ts`: alias, characteristic,
+  classification, and available-filter coverage.
+- `npm test`: 10 files, 61 tests passed.
+- `npm run build`: passed.
+- Browser QA at `1280x800`: classification filtering, alias search,
+  characteristic search, empty-state recovery, no horizontal overflow, and no
+  console logs.
 
 ## Sprint 01 Exit Checklist
 

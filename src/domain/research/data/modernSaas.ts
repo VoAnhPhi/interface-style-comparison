@@ -88,6 +88,7 @@ export const modernSaasResearchStyle = {
   name: "Modern SaaS",
   aliases: ["polished-saas", "product-led-saas"],
   summary: "Polished product UI with soft surfaces, clear hierarchy, and restrained brand tint.",
+  characteristics: ["Soft radius", "Layered cards", "Light gradients", "Crisp labels", "Prominent primary actions"],
   classifications: ["interface-direction"],
   maturity: "established",
   productionReadiness: "production-ready",

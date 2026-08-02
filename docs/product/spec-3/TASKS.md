@@ -25,7 +25,7 @@ Normalized research model and compatibility adapter: completed
 Modern SaaS vertical slice and invariant suite: completed
 Typed routing shell: completed
 13-style normalized dataset migration: completed
-Next implementation task: S3-EXP-001
+Next implementation task: S3-EXP-002
 ```
 
 ## Ledger
@@ -51,7 +51,7 @@ Next implementation task: S3-EXP-001
 | S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | completed | 53 tests cover aggregate completeness, references, duplicate ids/slugs, Compare normalization, scenario invariants, and adapter precedence; production build passed on 2026-07-30 |
 | S3-ROUTE-001 | Engineering | All routes | Introduce typed route map and navigation shell | P0 | S3-ADR-002 | completed | React Router `7.18.2` owns `/` and `/styles`; typed helpers and Not Found exist; 56 tests, build, direct load, reload, back/forward, CTA navigation, and `1280x720`/`390x844` Browser QA passed on 2026-07-30 |
 | S3-ROUTE-002 | Engineering | `/styles/:slug` | Add stable style detail URL and selection synchronization | P0 | S3-ROUTE-001, S3-DATA-002 | completed | `/styles/:slug` resolves catalog styles; selection pushes bookmarkable URLs; direct load, back, forward, mobile overflow, console logs, and unknown slug Not Found behavior passed Browser QA |
-| S3-EXP-001 | UX | `/styles` | Enhance search and primary classification filter from normalized data | P1 | S3-DATA-003, S3-ROUTE-001 | planned | Search covers aliases and characteristics; empty state is accessible |
+| S3-EXP-001 | UX | `/styles` | Enhance search and primary classification filter from normalized data | P1 | S3-DATA-003, S3-ROUTE-001 | completed | Normalized search covers aliases, characteristics, definitions, signals, and classifications; primary classification buttons filter the catalog; accessible empty state offers recovery; 61 tests, build, and Browser QA passed on 2026-08-02 |
 | S3-EXP-002 | UX | `/styles` | Add secondary era, density, visual weight, and maturity filters with URL state | P1 | S3-EXP-001 | planned | Refresh and shared URL restore filters |
 | S3-DOS-001 | UX | `/styles/:slug` | Render normalized Overview, Visual DNA, implementation, patterns, and same-context sections | P1 | S3-ROUTE-002, S3-DATA-002 | planned | Existing renderer remains the local demo; normalized sections answer dossier questions |
 | S3-DOS-002 | UX | `/styles/:slug` | Add evaluation, product fit, related directions, and sources | P1 | S3-DOM-003, S3-DOM-004, S3-DOM-005, S3-DOS-001 | planned | Reasons, conditions, evidence, and related CTAs are visible |

@@ -122,6 +122,7 @@ function createFixture(
     name: legacy.name,
     aliases: [],
     summary: legacy.summary,
+    characteristics: legacy.characteristics,
     classifications: [classification],
     maturity: "established",
     productionReadiness: "use-selectively",
