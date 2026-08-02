@@ -1,19 +1,21 @@
 # Spec 3 Baseline Audit
 
 Audit date: 2026-07-23
-Implementation update: 2026-07-30
+Implementation update: 2026-08-02
 
 ## Executive Status
 
-The visual Foundation and Sprint 01 domain/migration foundation are complete.
-Modern SaaS is the first normalized runtime record; the remaining twelve
-styles continue through explicit legacy fallback.
+The visual Foundation, Sprint 01 domain/migration foundation, and reviewed
+13-style normalized dataset migration are complete. Modern SaaS is the first
+complete normalized research record; the remaining twelve records are
+explicitly marked incomplete and not-reviewed while their existing renderer
+content remains available through the compatibility adapter.
 
 | Area | Current state | Spec 3 gap |
 | --- | --- | --- |
 | Landing | Implemented at `/` with research framing, featured directions, lenses, comparison teaser, and timeline | CTAs and teasers are not connected to dedicated Compare or Evolution routes |
 | Explorer | Implemented at `/styles` with search, tag filtering, URL-backed selection, and a three-column workspace | Classification, era, density, and maturity filters are still missing |
-| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; Modern SaaS now has a normalized research source; `/styles/:slug` resolves known catalog styles | Normalized Spec 3 sections are not rendered publicly yet |
+| Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; all 13 styles now have normalized runtime records; `/styles/:slug` resolves known catalog styles | Normalized Spec 3 sections are not rendered publicly yet; 12 records still need research review |
 | Decision guide | Surface fit and recommendation summaries exist | Uses legacy fit values without conditions, evidence, or context-aware reasoning |
 | Comparison | Legacy comparison surface exists but is hidden; landing contains a static teaser | No compare domain, 2-3 selection rule, URL state, shared scenario, context interpretation, or decision summary |
 | Evolution | Landing teaser uses a visual timeline | No evolution entities, transition causes, relationship graph, sources, or route |
@@ -63,8 +65,10 @@ shareable through the URL.
 ### Data
 
 `src/data/designStyles.ts` retains 13 legacy `DesignStyle` records as
-compatibility fallbacks. The runtime catalog adapts the normalized Modern SaaS
-record first and leaves the other twelve exact legacy objects unchanged.
+compatibility fallbacks. The runtime catalog now adapts all 13 normalized
+records first; the 12 incomplete migration records intentionally preserve
+legacy token, example, and renderer fields until their research sections are
+reviewed.
 
 It already provides valuable Foundation content:
 
@@ -131,7 +135,8 @@ Do not begin by splitting every file or rewriting every renderer.
 Approved on 2026-07-29:
 
 - normalized data becomes source of truth incrementally;
-- Modern SaaS is the first normalized vertical slice;
+- Modern SaaS is the first complete normalized vertical slice;
+- the remaining twelve styles have explicit incomplete normalized records;
 - a normalized-first compatibility adapter preserves legacy
   `DesignStyle` consumers;
 - React Router owns routes and shareable URL state;
@@ -143,6 +148,7 @@ Approved on 2026-07-29:
   `docs/product/spec-3/IMPLEMENTATION_PLAN.md`.
 
 ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete.
-`S3-ROUTE-001` and `S3-ROUTE-002` are complete through US-005. The recommended
-next task is `S3-DATA-003`; remaining style records can then migrate in reviewed
-batches before the full dossier and Compare work.
+`S3-ROUTE-001` and `S3-ROUTE-002` are complete through US-005. `S3-DATA-003`
+is complete: all 13 normalized records validate, and the 12 incomplete records
+are explicit about their missing research review. The recommended next task is
+`S3-EXP-001`, followed by normalized dossier rendering.

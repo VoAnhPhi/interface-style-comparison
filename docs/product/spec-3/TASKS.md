@@ -24,7 +24,8 @@ Evidence, relationships, and canonical scenarios: completed
 Normalized research model and compatibility adapter: completed
 Modern SaaS vertical slice and invariant suite: completed
 Typed routing shell: completed
-Next implementation task: S3-DATA-003
+13-style normalized dataset migration: completed
+Next implementation task: S3-EXP-001
 ```
 
 ## Ledger
@@ -46,7 +47,7 @@ Next implementation task: S3-DATA-003
 | S3-SCN-001 | Product | Same-context specimens | Define Dashboard, E-commerce, and Form canonical scenarios | P0 | S3-DOM-002 | completed | Dashboard, Form, and E-commerce Product lock shared content, goals, actions, hierarchy, semantics, and task flow with deep-freeze and canonical mismatch tests |
 | S3-DATA-001 | Engineering | Shared data | Create normalized research module and compatibility adapter | P0 | S3-DOM-002, S3-DOM-003, S3-DOM-004, S3-DOM-005 | completed | `ResearchStyle`, aggregate validation, normalized-first adapter, renderer-id protection, and Modern SaaS/Glassmorphism/Flat Design fixtures passed 46 tests and production build on 2026-07-30 |
 | S3-DATA-002 | Research | Modern SaaS vertical slice | Normalize one complete style including evidence, evaluation, product fit, relationships, and versioning | P0 | S3-DATA-001, S3-SCN-001 | completed | Modern SaaS is the normalized source for migrated catalog fields; 12 styles retain exact legacy fallbacks; build and desktop/mobile Browser QA passed on 2026-07-30 |
-| S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | ready | All published records satisfy required fields; incomplete sections are marked reviewed/draft honestly |
+| S3-DATA-003 | Research | 13-style dataset | Migrate remaining styles in reviewed batches | P0 | S3-DATA-002 | completed | 12 explicit normalized records validate with unique ids/slugs, legacy renderer mappings, source/claim references, six evaluation entries, ten product-fit entries, and honest `incomplete`/`not-reviewed` status; `npm test` passed 57 tests, build passed, and desktop/mobile smoke passed on 2026-08-02 |
 | S3-DATA-004 | Engineering | Validation | Add unit checks for uniqueness, references, controlled values, completeness, compare limits, adapter precedence, and scenario invariants | P0 | S3-DATA-001 | completed | 53 tests cover aggregate completeness, references, duplicate ids/slugs, Compare normalization, scenario invariants, and adapter precedence; production build passed on 2026-07-30 |
 | S3-ROUTE-001 | Engineering | All routes | Introduce typed route map and navigation shell | P0 | S3-ADR-002 | completed | React Router `7.18.2` owns `/` and `/styles`; typed helpers and Not Found exist; 56 tests, build, direct load, reload, back/forward, CTA navigation, and `1280x720`/`390x844` Browser QA passed on 2026-07-30 |
 | S3-ROUTE-002 | Engineering | `/styles/:slug` | Add stable style detail URL and selection synchronization | P0 | S3-ROUTE-001, S3-DATA-002 | completed | `/styles/:slug` resolves catalog styles; selection pushes bookmarkable URLs; direct load, back, forward, mobile overflow, console logs, and unknown slug Not Found behavior passed Browser QA |

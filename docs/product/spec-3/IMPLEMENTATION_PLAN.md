@@ -514,9 +514,32 @@ Task: `S3-ROUTE-002`.
 After this proof, migrate the remaining 12 records in reviewed batches before
 building full Compare.
 
+## Phase 11 — Reviewed 13-Style Dataset Migration
+
+Task: `S3-DATA-003`.
+
+Status: completed on 2026-08-02.
+
+- Added explicit normalized migration records for the remaining 12 styles.
+- Kept incomplete research honest with `contentStatus: "incomplete"` and
+  `reviewStatus: "not-reviewed"`.
+- Preserved legacy tokens, examples, and renderer-specific presentation through
+  the normalized-first compatibility adapter.
+- Kept missing qualitative research as `not-evaluated`; implementation
+  complexity remains a migration estimate and is not a universal score.
+
+Proof:
+
+- `npm test`: 9 files, 57 tests passed.
+- `npm run build`: passed.
+- Browser smoke at `1280x800` and `390x844` passed for landing and
+  `/styles/minimal-clean` with no broken images, overflow, or warning/error
+  console logs.
+
 ## Post-Sprint Sequence
 
-1. Migrate remaining styles in small reviewed batches.
+1. Migrate remaining styles in small reviewed batches. **Completed by
+   `S3-DATA-003`.**
 2. Move Explorer search and classification filters to normalized data.
 3. Add shareable secondary filters.
 4. Complete normalized slug dossier sections.

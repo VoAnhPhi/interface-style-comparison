@@ -9,6 +9,7 @@ import {
   buildDesignStyleCatalog,
   validateResearchDataset,
 } from "./dataset";
+import { migratedResearchStyles } from "./data/migratedStyles";
 import { modernSaasResearchStyle } from "./data/modernSaas";
 import type { ResearchStyle } from "./style";
 
@@ -23,21 +24,54 @@ describe("Spec 3 normalized dataset and runtime migration", () => {
     ).toEqual([]);
   });
 
-  it("migrates only Modern SaaS in the runtime catalog", () => {
+  it("validates all 13 normalized records and keeps incomplete migration honest", () => {
+    const normalizedStyles = [modernSaasResearchStyle, ...migratedResearchStyles];
+
+    expect(migratedResearchStyles).toHaveLength(12);
+    expect(new Set(normalizedStyles.map(({ id }) => id)).size).toBe(13);
+    expect(
+      validateResearchDataset(
+        normalizedStyles,
+        "styles",
+        new Set(legacyDesignStyles.map(({ id }) => id)),
+      ).issues,
+    ).toEqual([]);
+
+    for (const style of migratedResearchStyles) {
+      expect(style.review).toEqual({
+        contentStatus: "incomplete",
+        reviewStatus: "not-reviewed",
+        version: "0.2.0-migration",
+      });
+      expect(style.evaluations.usability.level).toBe("not-evaluated");
+      expect(style.evaluations.accessibility.level).toBe("not-evaluated");
+      expect(style.evaluations.scalability.level).toBe("not-evaluated");
+      expect(style.evaluations["information-density"].level).toBe("not-evaluated");
+      expect(style.evaluations["visual-expression"].level).toBe("not-evaluated");
+      expect(style.productFit.every(({ level }) => level === "not-evaluated")).toBe(true);
+    }
+  });
+
+  it("migrates all normalized records while preserving legacy renderer fields", () => {
     expect(designStyles).toHaveLength(legacyDesignStyles.length);
 
     for (const legacyStyle of legacyDesignStyles) {
       const runtimeStyle = designStyles.find(({ id }) => id === legacyStyle.id);
+      const normalizedStyle = [modernSaasResearchStyle, ...migratedResearchStyles]
+        .find(({ id }) => id === legacyStyle.id);
 
       expect(runtimeStyle).toBeDefined();
+      expect(normalizedStyle).toBeDefined();
+      expect(runtimeStyle).not.toBe(legacyStyle);
+      expect(runtimeStyle?.tokenRecipe).toBe(legacyStyle.tokenRecipe);
 
-      if (legacyStyle.id === "modern-saas") {
-        expect(runtimeStyle).not.toBe(legacyStyle);
-        expect(runtimeStyle?.tokenRecipe).toBe(legacyStyle.tokenRecipe);
-        expect(runtimeStyle?.summary).toBe(modernSaasResearchStyle.summary);
-      } else {
-        expect(runtimeStyle).toBe(legacyStyle);
-      }
+      expect(runtimeStyle?.summary).toBe(normalizedStyle?.summary);
+      expect(runtimeStyle?.distinguishingSignals).toEqual(
+        normalizedStyle?.distinguishingSignals.map(({ text }) => text),
+      );
+      expect(runtimeStyle?.classification).toBe(
+        normalizedStyle?.legacyRenderer.classification,
+      );
     }
   });
 

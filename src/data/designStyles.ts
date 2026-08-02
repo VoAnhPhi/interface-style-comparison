@@ -1,4 +1,5 @@
 import { buildDesignStyleCatalog } from "../domain/research/dataset";
+import { migratedResearchStyles } from "../domain/research/data/migratedStyles";
 import { modernSaasResearchStyle } from "../domain/research/data/modernSaas";
 
 export type FitLevel = "High" | "Medium" | "Low" | "Use carefully";
@@ -1375,7 +1376,7 @@ export const legacyDesignStyles: DesignStyle[] = [
 
 const catalogResult = buildDesignStyleCatalog(
   legacyDesignStyles,
-  [modernSaasResearchStyle],
+  [modernSaasResearchStyle, ...migratedResearchStyles],
 );
 
 if (!catalogResult.ok) {

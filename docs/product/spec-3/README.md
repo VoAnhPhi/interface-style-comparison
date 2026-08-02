@@ -2,7 +2,8 @@
 
 ## Status
 
-Planning complete. Feature implementation has not started.
+Planning complete. Sprint 01 and the reviewed 13-style data migration are
+implemented; normalized dossier and decision-support UI remain future work.
 
 ## Source
 
@@ -49,8 +50,9 @@ Spec 1 + Spec 2 Foundation
 
 Spec 3
   planning harness complete
-  implementation not started
-  next phase: Sprint 01 Foundation and Domain Contract
+  Sprint 01 foundation complete
+  S3-DATA-003 reviewed migration complete
+  next phase: Explorer normalization and dossier work
 ```
 
 ## Documents
@@ -70,7 +72,8 @@ Spec 3
 - Normalized Spec 3 records become the source of truth incrementally.
 - A compatibility adapter keeps existing `DesignStyle` consumers and dossier
   renderers working during migration.
-- Modern SaaS is the first normalized record.
+- Modern SaaS is the first complete normalized record; the other twelve styles
+  now have explicit incomplete normalized migration records.
 - React Router owns paths and shareable query state.
 - See ADR 0008 and ADR 0009 under `docs/decisions/`.
 
