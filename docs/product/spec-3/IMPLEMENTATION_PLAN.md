@@ -574,6 +574,28 @@ Proof:
   characteristic search, empty-state recovery, no horizontal overflow, and no
   console logs.
 
+## Phase 13 — Shareable Explorer Facets
+
+Task: `S3-EXP-002`.
+
+Status: completed on 2026-08-03.
+
+- Added normalized era metadata with explicit multi-era support.
+- Added secondary era, density, visual weight, and production maturity
+  filters to the Explorer command palette.
+- Made all Explorer filters shareable through canonical URL query state with
+  safe recovery for invalid values.
+
+Proof:
+
+- `src/domain/research/explorer.test.ts`: combined filters, available values,
+  URL round-trip, and invalid-value recovery.
+- `npm test`: 10 files, 65 tests passed.
+- `npm run build`: passed.
+- Browser QA at `1280x800` and `390x844`: combined filtering, clear state,
+  URL persistence, responsive layout, no horizontal overflow, and no console
+  warnings/errors.
+
 ## Sprint 01 Exit Checklist
 
 - [x] ADR 0008 and ADR 0009 are accepted.

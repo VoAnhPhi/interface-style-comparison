@@ -7,6 +7,7 @@ import {
   type StyleClassification,
   type StyleMaturity,
   type ProductionReadiness,
+  type StyleEra,
   type VisualDNADimension,
 } from "../vocabulary";
 import { INITIAL_SCENARIO_IDS } from "../scenarios";
@@ -36,6 +37,7 @@ type MigratedStyleBlueprint = {
   summary: string;
   characteristics: readonly string[];
   classification: StyleClassification;
+  eras: readonly StyleEra[];
   maturity: StyleMaturity;
   productionReadiness: ProductionReadiness;
   rendererClassification: LegacyRendererClassification;
@@ -60,6 +62,7 @@ const blueprints = [
     summary: "Quiet, durable UI where clarity, whitespace, and typography do most of the work.",
     characteristics: ["Neutral palette", "Flat surfaces", "Light borders", "Generous whitespace", "Few effects"],
     classification: "interface-direction",
+    eras: ["2010s", "2020s"],
     maturity: "established",
     productionReadiness: "production-ready",
     rendererClassification: "production-safe",
@@ -85,6 +88,7 @@ const blueprints = [
     summary: "Operational UI optimized for scanning, forms, filters, tables, and repeated work.",
     characteristics: ["Clear borders", "Compact controls", "Status colors", "Table-like rhythm", "Low decoration"],
     classification: "interface-direction",
+    eras: ["2000s", "2010s", "2020s"],
     maturity: "established",
     productionReadiness: "production-ready",
     rendererClassification: "production-safe",
@@ -110,6 +114,7 @@ const blueprints = [
     summary: "Typography-led composition with expressive hierarchy and fewer conventional app surfaces.",
     characteristics: ["Large headlines", "Asymmetry", "Graphic spacing", "Image-like cards", "Understated controls"],
     classification: "interface-direction",
+    eras: ["2000s", "2010s", "2020s"],
     maturity: "established",
     productionReadiness: "production-with-constraints",
     rendererClassification: "expressive",
@@ -135,6 +140,7 @@ const blueprints = [
     summary: "Frosted translucent surfaces over rich backgrounds, useful as an accent rather than a full system.",
     characteristics: ["Backdrop blur", "Transparent panels", "Edge highlights", "Gradient backdrops", "Soft depth"],
     classification: "visual-aesthetic",
+    eras: ["2020s"],
     maturity: "established",
     productionReadiness: "use-selectively",
     rendererClassification: "experimental",
@@ -160,6 +166,7 @@ const blueprints = [
     summary: "Loud, graphic interface style with thick outlines, hard shadows, and high-contrast color.",
     characteristics: ["Thick black borders", "Hard offset shadows", "Saturated fills", "Bold type", "Poster-like modules"],
     classification: "visual-aesthetic",
+    eras: ["2020s"],
     maturity: "emerging",
     productionReadiness: "prototype-only",
     rendererClassification: "expressive",
@@ -185,6 +192,7 @@ const blueprints = [
     summary: "Systemized, token-led UI with clear states, formal elevation, and familiar component anatomy.",
     characteristics: ["State layers", "Semantic roles", "Documented elevations", "Consistent fields", "Structured dialogs"],
     classification: "design-language",
+    eras: ["2010s", "2020s"],
     maturity: "established",
     productionReadiness: "production-ready",
     rendererClassification: "system-language",
@@ -210,6 +218,7 @@ const blueprints = [
     summary: "A soft tactile control language that needs explicit labels, contrast, and focus cues to stay usable.",
     characteristics: ["Embossed controls", "Inset states", "Tone-on-tone palette", "Large radius", "Very soft shadows"],
     classification: "visual-aesthetic",
+    eras: ["2020s", "revival"],
     maturity: "revived",
     productionReadiness: "use-selectively",
     rendererClassification: "experimental",
@@ -235,6 +244,7 @@ const blueprints = [
     summary: "A direct 2D UI language where solid fills, dividers, typography, and explicit state changes replace simulated depth.",
     characteristics: ["Flat fills", "Simple icons", "Few shadows", "Typography-led hierarchy", "Clear color blocks"],
     classification: "historical-movement",
+    eras: ["2010s"],
     maturity: "established",
     productionReadiness: "production-with-constraints",
     rendererClassification: "historical-reference",
@@ -260,6 +270,7 @@ const blueprints = [
     summary: "Object-inspired UI that borrows physical materials, bevels, textures, and metaphors to signal use.",
     characteristics: ["Material textures", "Beveled edges", "Inner shadows", "Object metaphors", "Layered highlights"],
     classification: "historical-movement",
+    eras: ["2000s", "revival"],
     maturity: "legacy",
     productionReadiness: "historical-reference",
     rendererClassification: "historical-reference",
@@ -285,6 +296,7 @@ const blueprints = [
     summary: "A low-density soft-3D learning scene where inflated geometry and explicit copy make exploration approachable.",
     characteristics: ["Large radius", "Puffed surfaces", "Pastel gradients", "Soft 3D shadows", "Rounded illustration cues"],
     classification: "visual-aesthetic",
+    eras: ["2020s"],
     maturity: "emerging",
     productionReadiness: "use-selectively",
     rendererClassification: "experimental",
@@ -310,6 +322,7 @@ const blueprints = [
     summary: "A technical aesthetic combining dark canvases, luminous accents, fine grids, and controlled motion.",
     characteristics: ["Dark surfaces", "Luminous accents", "Fine grid or mesh depth", "Glow edges", "Sans and mono pairing"],
     classification: "visual-aesthetic",
+    eras: ["2020s"],
     maturity: "emerging",
     productionReadiness: "production-with-constraints",
     rendererClassification: "expressive",
@@ -335,6 +348,7 @@ const blueprints = [
     summary: "Glossy, optimistic, eco-tech nostalgia with aqua gradients, shine, transparency, and rounded gel controls.",
     characteristics: ["Gloss highlights", "Aqua gradients", "Rounded gel buttons", "Transparency", "Eco-tech imagery"],
     classification: "historical-movement",
+    eras: ["2000s", "2010s"],
     maturity: "legacy",
     productionReadiness: "historical-reference",
     rendererClassification: "historical-reference",
@@ -466,6 +480,7 @@ function createMigratedStyle(
     summary: blueprint.summary,
     characteristics: blueprint.characteristics,
     classifications: [blueprint.classification],
+    eras: blueprint.eras,
     maturity: blueprint.maturity,
     productionReadiness: blueprint.productionReadiness,
     review: incompleteReview,

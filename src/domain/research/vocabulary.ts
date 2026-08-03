@@ -18,6 +18,15 @@ export const STYLE_MATURITIES = [
 
 export type StyleMaturity = (typeof STYLE_MATURITIES)[number];
 
+export const STYLE_ERAS = [
+  "2000s",
+  "2010s",
+  "2020s",
+  "revival",
+] as const;
+
+export type StyleEra = (typeof STYLE_ERAS)[number];
+
 export const PRODUCTION_READINESS_LEVELS = [
   "production-ready",
   "production-with-constraints",
@@ -223,6 +232,7 @@ export type ComplexityLevel = (typeof COMPLEXITY_LEVELS)[number];
 export const SPEC3_VOCABULARIES = {
   styleClassification: STYLE_CLASSIFICATIONS,
   styleMaturity: STYLE_MATURITIES,
+  styleEra: STYLE_ERAS,
   productionReadiness: PRODUCTION_READINESS_LEVELS,
   contentStatus: CONTENT_STATUSES,
   reviewStatus: REVIEW_STATUSES,

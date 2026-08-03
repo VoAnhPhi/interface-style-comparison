@@ -14,7 +14,7 @@ content remains available through the compatibility adapter.
 | Area | Current state | Spec 3 gap |
 | --- | --- | --- |
 | Landing | Implemented at `/` with research framing, featured directions, lenses, comparison teaser, and timeline | CTAs and teasers are not connected to dedicated Compare or Evolution routes |
-| Explorer | Implemented at `/styles` with a header command palette for search, primary classification, and tag filtering; URL-backed selection and the three-column workspace remain | Era, density, and maturity filters are still missing |
+| Explorer | Implemented at `/styles` with a header command palette for search, primary classification, tag, era, density, visual weight, and maturity filtering; all filter state is URL-backed and the three-column workspace remains | The next gap is normalized dossier rendering |
 | Dossier | 13 style-specific renderers and shared Overview, Tokens, Patterns, Examples sections; all 13 styles now have normalized runtime records; `/styles/:slug` resolves known catalog styles | Normalized Spec 3 sections are not rendered publicly yet; 12 records still need research review |
 | Decision guide | Surface fit and recommendation summaries exist | Uses legacy fit values without conditions, evidence, or context-aware reasoning |
 | Comparison | Legacy comparison surface exists but is hidden; landing contains a static teaser | No compare domain, 2-3 selection rule, URL state, shared scenario, context interpretation, or decision summary |
@@ -59,8 +59,8 @@ Current local application state includes:
 - active tag;
 - display mode.
 
-The selected style, filter state, dossier tab, and comparison intent are not
-shareable through the URL.
+The selected style and Explorer filter state are shareable through the URL.
+Dossier tab and comparison intent remain future URL-state work.
 
 ### Data
 
@@ -150,9 +150,10 @@ Approved on 2026-07-29:
 ADR 0008 and ADR 0009 are accepted. Sprint 01 and US-004 are complete.
 `S3-ROUTE-001` and `S3-ROUTE-002` are complete through US-005. `S3-DATA-003`
 is complete: all 13 normalized records validate, and the 12 incomplete records
-are explicit about their missing research review. `S3-EXP-001` is now complete:
-Explorer search and the primary classification filter consume normalized records,
-including aliases and characteristics, with an accessible recovery state. The
-filter UI is presented in a header command palette with Font Awesome category/tag
-icons, keyboard shortcuts, clear state, and responsive layout. The recommended
-next task is `S3-EXP-002`, followed by normalized dossier rendering.
+are explicit about their missing research review. `S3-EXP-001` and `S3-EXP-002`
+are now complete: Explorer search, primary and secondary filters consume
+normalized records, including aliases, characteristics, era, density, visual
+weight, and maturity. The filter UI is presented in a header command palette
+with Font Awesome category/tag icons, keyboard shortcuts, canonical URL state,
+clear state, invalid-value recovery, and responsive layout. The recommended
+next task is normalized dossier rendering through `S3-DOS-001`.

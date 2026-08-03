@@ -90,6 +90,7 @@ export const modernSaasResearchStyle = {
   summary: "Polished product UI with soft surfaces, clear hierarchy, and restrained brand tint.",
   characteristics: ["Soft radius", "Layered cards", "Light gradients", "Crisp labels", "Prominent primary actions"],
   classifications: ["interface-direction"],
+  eras: ["2010s", "2020s"],
   maturity: "established",
   productionReadiness: "production-ready",
   review,

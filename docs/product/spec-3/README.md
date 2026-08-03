@@ -52,7 +52,8 @@ Spec 3
   planning harness complete
   Sprint 01 foundation complete
   S3-DATA-003 reviewed migration complete
-  next phase: Explorer normalization and dossier work
+  S3-EXP-002 complete
+  next task: normalized dossier rendering (`S3-DOS-001`)
 ```
 
 ## Documents

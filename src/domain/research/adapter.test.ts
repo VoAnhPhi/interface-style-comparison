@@ -124,6 +124,7 @@ function createFixture(
     summary: legacy.summary,
     characteristics: legacy.characteristics,
     classifications: [classification],
+    eras: ["2020s"],
     maturity: "established",
     productionReadiness: "use-selectively",
     review: draftReview,

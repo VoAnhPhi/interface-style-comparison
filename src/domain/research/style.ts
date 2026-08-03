@@ -1,6 +1,7 @@
 import {
   type DimensionLevel,
   type ProductionReadiness,
+  type StyleEra,
   type StyleClassification,
   type StyleMaturity,
   type VisualDNADimension,
@@ -84,6 +85,7 @@ export type ResearchStyle = {
   summary: string;
   characteristics: readonly string[];
   classifications: readonly StyleClassification[];
+  eras: readonly StyleEra[];
   maturity: StyleMaturity;
   productionReadiness: ProductionReadiness;
   review: ReviewMetadata;
@@ -200,6 +202,24 @@ export function validateResearchStyle(
           code: "invalid-value",
           path: `${path}.classifications[${index}]`,
           message: "Unsupported style classification.",
+        });
+      }
+    });
+  }
+
+  if (!Array.isArray(value.eras) || value.eras.length === 0) {
+    issues.push({
+      code: "missing-required-field",
+      path: `${path}.eras`,
+      message: "At least one style era is required.",
+    });
+  } else {
+    value.eras.forEach((era, index) => {
+      if (!isVocabularyValue("styleEra", era)) {
+        issues.push({
+          code: "invalid-value",
+          path: `${path}.eras[${index}]`,
+          message: "Unsupported style era.",
         });
       }
     });

@@ -362,6 +362,22 @@ type RiskSeverity =
 
 Every risk should state the condition under which it applies.
 
+## Explorer Era Facet
+
+Explorer era is a research-period facet, separate from production maturity.
+Because a style can span more than one period or return as a documented
+revival, normalized records store an array rather than a single era value.
+
+```ts
+type StyleEra = "2000s" | "2010s" | "2020s" | "revival";
+```
+
+The initial values are project research metadata based on the Spec 2 timeline
+and the migration notes. They support filtering and comparison within this
+research workspace; they are not universal historical claims. A record may
+contain multiple values, and `revival` is used only where the project marks a
+direction as a contemporary return or reinterpretation.
+
 ## 15. Implementation Complexity
 
 ```ts

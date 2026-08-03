@@ -20,7 +20,7 @@ describe("Spec 3 controlled vocabulary", () => {
 
       for (const value of values) {
         expect(value, `${name}.${value} is not kebab-case`).toMatch(
-          /^[a-z]+(?:-[a-z]+)*$/,
+          /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
         );
       }
     }

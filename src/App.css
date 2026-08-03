@@ -498,6 +498,55 @@ p {
 	white-space: nowrap;
 }
 
+.command-filter-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.command-filter-group {
+	min-width: 0;
+	padding: 12px;
+	border: 1px solid var(--line-soft);
+	border-radius: 12px;
+	background: #fbfcff;
+}
+
+.command-filter-group h3 {
+	margin-bottom: 9px;
+	color: var(--text);
+	font-size: 0.74rem;
+	font-weight: 820;
+}
+
+.command-filter-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.command-filter-option {
+	min-height: 32px;
+	max-width: 100%;
+	padding: 6px 9px;
+	border: 1px solid rgba(217, 226, 239, 0.96);
+	border-radius: 8px;
+	background: #ffffff;
+	color: var(--muted);
+	font-size: 0.7rem;
+	font-weight: 760;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
+.command-filter-option:hover,
+.command-filter-option:focus-visible,
+.command-filter-option.is-active {
+	border-color: rgba(37, 95, 232, 0.34);
+	background: var(--accent-soft);
+	color: var(--accent);
+}
+
 .command-footer {
 	display: flex;
 	align-items: center;
@@ -8671,7 +8720,8 @@ td:last-child {
 	}
 
 	.command-category-grid,
-	.command-tag-grid {
+	.command-tag-grid,
+	.command-filter-grid {
 		grid-template-columns: 1fr;
 	}
 

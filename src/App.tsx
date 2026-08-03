@@ -15,9 +15,18 @@ import { NotFoundPage } from "./components/NotFoundPage";
 import { StylePreview } from "./components/StylePreview";
 import {
   CLASSIFICATION_LABELS,
+  DEFAULT_EXPLORER_FILTERS,
+  DIMENSION_LEVEL_LABELS,
+  ERA_LABELS,
+  MATURITY_LABELS,
   filterResearchStyles,
   getAvailableClassifications,
+  getAvailableExplorerFilters,
   normalizedResearchStyles,
+  parseExplorerFilters,
+  serializeExplorerFilters,
+  type ExplorerFilterOptions,
+  type ExplorerFilterState,
   type ExplorerClassification,
 } from "./domain/research";
 import { APP_ROUTES, getStyleRoute, type AppRoutePath } from "./routing/routes";
@@ -61,6 +70,7 @@ const classificationFilters: ExplorerClassification[] = [
   "all",
   ...getAvailableClassifications(normalizedResearchStyles),
 ];
+const explorerFilterOptions = getAvailableExplorerFilters(normalizedResearchStyles);
 const classificationDetails: Record<Exclude<ExplorerClassification, "all">, {
   description: string;
   icon: FontAwesomeIconName;
@@ -155,30 +165,53 @@ function AppHeader({
   );
 }
 
+function FilterChipGroup({
+  label,
+  onChange,
+  options,
+  value,
+}: {
+  label: string;
+  onChange: (value: string) => void;
+  options: readonly { value: string; label: string }[];
+  value: string;
+}) {
+  return (
+    <div className="command-filter-group">
+      <h3>{label}</h3>
+      <div className="command-filter-options" role="group" aria-label={`${label} filter`}>
+        {options.map((option) => (
+          <button
+            aria-pressed={value === option.value}
+            className={`command-filter-option ${value === option.value ? "is-active" : ""}`}
+            key={option.value}
+            onClick={() => onChange(option.value)}
+            type="button"
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function CommandPalette({
-  activeTag,
-  activeClassification,
+  filterOptions,
   filteredStylesCount,
-  hasActiveFilters,
+  filters,
   isOpen,
   onClearFilters,
   onClose,
-  onClassificationChange,
-  onQueryChange,
-  onTagChange,
-  query,
+  onFilterChange,
 }: {
-  activeTag: string;
-  activeClassification: ExplorerClassification;
+  filterOptions: ExplorerFilterOptions;
   filteredStylesCount: number;
-  hasActiveFilters: boolean;
+  filters: ExplorerFilterState;
   isOpen: boolean;
   onClearFilters: () => void;
   onClose: () => void;
-  onClassificationChange: (classification: ExplorerClassification) => void;
-  onQueryChange: (query: string) => void;
-  onTagChange: (tag: string) => void;
-  query: string;
+  onFilterChange: (updates: Partial<ExplorerFilterState>) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -212,10 +245,10 @@ function CommandPalette({
           <input
             ref={inputRef}
             aria-label="Search styles, aliases, classifications"
-            onChange={(event) => onQueryChange(event.target.value)}
+            onChange={(event) => onFilterChange({ query: event.target.value })}
             placeholder="Search styles, aliases, classifications..."
             type="search"
-            value={query}
+            value={filters.query}
           />
           <button aria-label="Close search" className="command-close" onClick={onClose} type="button">
             <FontAwesomeIcon name="plus" size={16} />
@@ -234,14 +267,14 @@ function CommandPalette({
             <div className="command-category-grid">
               {availableClassifications.map((classification) => {
                 const detail = classificationDetails[classification];
-                const isActive = activeClassification === classification;
+                const isActive = filters.classification === classification;
 
                 return (
                   <button
                     aria-pressed={isActive}
                     className={`command-category ${isActive ? "is-active" : ""}`}
                     key={classification}
-                    onClick={() => onClassificationChange(classification)}
+                    onClick={() => onFilterChange({ classification })}
                     type="button"
                   >
                     <span className={`command-icon command-icon-${detail.tone}`}>
@@ -268,14 +301,14 @@ function CommandPalette({
             </div>
             <div className="command-tag-grid">
               {tagFilters.map((tag, index) => {
-                const isActive = activeTag === tag;
+                const isActive = filters.tag === tag;
 
                 return (
                   <button
                     aria-pressed={isActive}
                     className={`command-tag ${isActive ? "is-active" : ""}`}
                     key={tag}
-                    onClick={() => onTagChange(tag)}
+                    onClick={() => onFilterChange({ tag })}
                     type="button"
                   >
                     <FontAwesomeIcon name={tag === "All" ? "circle-check" : tagIconNames[index % tagIconNames.length]} size={15} />
@@ -285,6 +318,54 @@ function CommandPalette({
               })}
             </div>
           </section>
+
+          <section className="command-section" aria-labelledby="secondary-filters-title">
+            <div className="command-section-heading">
+              <div>
+                <span className="command-eyebrow">Narrow the research set</span>
+                <h2 id="secondary-filters-title">Secondary filters</h2>
+              </div>
+              <span className="command-section-count">URL-shareable</span>
+            </div>
+            <div className="command-filter-grid">
+              <FilterChipGroup
+                label="Era"
+                onChange={(era) => onFilterChange({ era: era as ExplorerFilterState["era"] })}
+                options={[
+                  { value: "all", label: "All eras" },
+                  ...filterOptions.eras.map((era) => ({ value: era, label: ERA_LABELS[era] })),
+                ]}
+                value={filters.era}
+              />
+              <FilterChipGroup
+                label="Density"
+                onChange={(density) => onFilterChange({ density: density as ExplorerFilterState["density"] })}
+                options={[
+                  { value: "all", label: "All densities" },
+                  ...filterOptions.densities.map((level) => ({ value: level, label: DIMENSION_LEVEL_LABELS[level] })),
+                ]}
+                value={filters.density}
+              />
+              <FilterChipGroup
+                label="Visual weight"
+                onChange={(visualWeight) => onFilterChange({ visualWeight: visualWeight as ExplorerFilterState["visualWeight"] })}
+                options={[
+                  { value: "all", label: "All weights" },
+                  ...filterOptions.visualWeights.map((level) => ({ value: level, label: DIMENSION_LEVEL_LABELS[level] })),
+                ]}
+                value={filters.visualWeight}
+              />
+              <FilterChipGroup
+                label="Production maturity"
+                onChange={(maturity) => onFilterChange({ maturity: maturity as ExplorerFilterState["maturity"] })}
+                options={[
+                  { value: "all", label: "All maturity" },
+                  ...filterOptions.maturities.map((level) => ({ value: level, label: MATURITY_LABELS[level] })),
+                ]}
+                value={filters.maturity}
+              />
+            </div>
+          </section>
         </div>
 
         <footer className="command-footer">
@@ -292,11 +373,11 @@ function CommandPalette({
             <strong>{filteredStylesCount}</strong> styles match
           </span>
           <div className="command-footer-actions">
-            {hasActiveFilters && (
+            {filters.query.trim() || filters.tag !== "All" || filters.classification !== "all" || filters.era !== "all" || filters.density !== "all" || filters.visualWeight !== "all" || filters.maturity !== "all" ? (
               <button className="command-clear" onClick={onClearFilters} type="button">
                 Clear filters
               </button>
-            )}
+            ) : null}
             <span className="command-key-hint"><kbd>Esc</kbd> to close</span>
           </div>
         </footer>
@@ -648,14 +729,26 @@ function useTouchPointer(active: boolean) {
 
 function ResearchWorkspace() {
   const { slug } = useParams<{ slug?: string }>();
-  const [query, setQuery] = useState("");
-  const [activeTag, setActiveTag] = useState("All");
-  const [activeClassification, setActiveClassification] = useState<ExplorerClassification>("all");
   const [activeMode, setActiveMode] = useState<"fast" | "deep" | "compare">("deep");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const location = useLocation();
   const routerNavigate = useNavigate();
   const selectedStyleId = slug ?? designStyles[0].id;
+  const filters = useMemo(
+    () => parseExplorerFilters(location.search, tagFilters),
+    [location.search],
+  );
+
+  useEffect(() => {
+    const canonicalSearch = serializeExplorerFilters(filters);
+
+    if (location.search !== canonicalSearch) {
+      routerNavigate(
+        { pathname: location.pathname, search: canonicalSearch },
+        { replace: true },
+      );
+    }
+  }, [filters, location.pathname, location.search, routerNavigate]);
 
   useEffect(() => {
     const handleSearchShortcut = (event: KeyboardEvent) => {
@@ -677,25 +770,38 @@ function ResearchWorkspace() {
 
   const filteredStyles = useMemo(() => {
     const normalizedIds = new Set(
-      filterResearchStyles(normalizedResearchStyles, query, activeClassification)
+      filterResearchStyles(normalizedResearchStyles, filters)
         .map(({ id }) => id),
     );
 
     return designStyles.filter((style) =>
       normalizedIds.has(style.id)
-      && (activeTag === "All" || style.tags.includes(activeTag)),
+      && (filters.tag === "All" || style.tags.includes(filters.tag)),
     );
-  }, [activeClassification, activeTag, query]);
+  }, [filters]);
 
-  const hasActiveFilters = Boolean(query.trim()) || activeTag !== "All" || activeClassification !== "all";
-  const activeFilterCount = Number(Boolean(query.trim()))
-    + Number(activeTag !== "All")
-    + Number(activeClassification !== "all");
+  const activeFilterCount = Number(Boolean(filters.query.trim()))
+    + Number(filters.tag !== "All")
+    + Number(filters.classification !== "all")
+    + Number(filters.era !== "all")
+    + Number(filters.density !== "all")
+    + Number(filters.visualWeight !== "all")
+    + Number(filters.maturity !== "all");
 
   const clearExplorerFilters = () => {
-    setQuery("");
-    setActiveTag("All");
-    setActiveClassification("all");
+    updateExplorerFilters(DEFAULT_EXPLORER_FILTERS);
+  };
+
+  const updateExplorerFilters = (updates: Partial<ExplorerFilterState>) => {
+    const nextFilters = { ...filters, ...updates };
+    const nextSearch = serializeExplorerFilters(nextFilters);
+
+    if (location.search !== nextSearch) {
+      routerNavigate(
+        { pathname: location.pathname, search: nextSearch },
+        { replace: true },
+      );
+    }
   };
 
   const selectedStyle = useMemo(() => designStyles.find((style) => style.id === selectedStyleId), [selectedStyleId]);
@@ -705,7 +811,7 @@ function ResearchWorkspace() {
 
     const nextPath = getStyleRoute(id);
     if (location.pathname !== nextPath) {
-      routerNavigate(nextPath);
+      routerNavigate({ pathname: nextPath, search: location.search });
     }
 
     window.scrollTo({ top: 0, behavior: "auto" });
@@ -731,20 +837,16 @@ function ResearchWorkspace() {
         activeFilterCount={activeFilterCount}
         isSearchOpen={isSearchOpen}
         onOpenSearch={() => setIsSearchOpen(true)}
-        query={query}
+        query={filters.query}
       />
       <CommandPalette
-        activeTag={activeTag}
-        activeClassification={activeClassification}
+        filterOptions={explorerFilterOptions}
         filteredStylesCount={filteredStyles.length}
-        hasActiveFilters={hasActiveFilters}
+        filters={filters}
         isOpen={isSearchOpen}
         onClearFilters={clearExplorerFilters}
         onClose={() => setIsSearchOpen(false)}
-        onClassificationChange={setActiveClassification}
-        onQueryChange={setQuery}
-        onTagChange={setActiveTag}
-        query={query}
+        onFilterChange={updateExplorerFilters}
       />
 
       <div className="workspace-grid">
