@@ -1,13 +1,20 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "react-router";
 import type { DesignStyle } from "../../data/designStyles";
 import {
   CANONICAL_SCENARIOS,
+  CORE_EVALUATION_CRITERIA,
   normalizedResearchStyles,
+  type CoreEvaluationCriterion,
+  type ProductFit,
+  type ProductType,
+  type ResearchSource,
   type ResearchStyle,
   type ScenarioId,
   type SharedScenario,
   type VisualDNADimension,
 } from "../../domain/research";
+import { getStyleRoute } from "../../routing/routes";
 import { ClaymorphismDossier } from "./styles/ClaymorphismDossier";
 import { DefaultDossier } from "./styles/DefaultDossier";
 import { DarkFuturisticDossier } from "./styles/DarkFuturisticDossier";
@@ -56,6 +63,28 @@ const visualDNADimensionLabels: Record<VisualDNADimension, string> = {
   "brand-expression": "Brand expression",
   "contrast-dependency": "Contrast dependency",
   "surface-complexity": "Surface complexity",
+};
+
+const evaluationLabels: Record<CoreEvaluationCriterion, string> = {
+  usability: "Usability",
+  accessibility: "Accessibility",
+  "implementation-complexity": "Implementation complexity",
+  scalability: "Scalability",
+  "information-density": "Information density",
+  "visual-expression": "Visual expression",
+};
+
+const productTypeLabels: Record<ProductType, string> = {
+  "saas-product": "SaaS product",
+  "dashboard-admin": "Dashboard / admin",
+  "marketing-landing": "Marketing landing",
+  portfolio: "Portfolio",
+  ecommerce: "E-commerce",
+  documentation: "Documentation",
+  "content-platform": "Content platform",
+  "consumer-product": "Consumer product",
+  "enterprise-system": "Enterprise system",
+  "experimental-experience": "Experimental experience",
 };
 
 function formatResearchLabel(value: string) {
@@ -204,6 +233,199 @@ function NormalizedPatterns({ researchStyle, style }: { researchStyle: ResearchS
   );
 }
 
+function NormalizedDetailList({ label, values }: { label: string; values: readonly string[] }) {
+  if (values.length === 0) return null;
+
+  return (
+    <div className="normalized-detail-list">
+      <strong>{label}</strong>
+      <ul className="normalized-list">
+        {values.map((value) => <li key={value}>{value}</li>)}
+      </ul>
+    </div>
+  );
+}
+
+function NormalizedEvidenceTrail({
+  claimType,
+  evidence,
+}: {
+  claimType: string;
+  evidence: readonly string[];
+}) {
+  return (
+    <div className="normalized-evidence-trail">
+      <span>Claim type: {formatResearchLabel(claimType)}</span>
+      <span>{evidence.length > 0 ? `Evidence: ${evidence.join(", ")}` : "Evidence: not recorded"}</span>
+    </div>
+  );
+}
+
+function NormalizedEvaluationCard({
+  criterion,
+  evaluation,
+}: {
+  criterion: CoreEvaluationCriterion;
+  evaluation: ResearchStyle["evaluations"][CoreEvaluationCriterion];
+}) {
+  const isNotEvaluated = evaluation.level === "not-evaluated";
+
+  return (
+    <article className={`normalized-card normalized-evaluation-card${isNotEvaluated ? " is-not-evaluated" : ""}`}>
+      <div className="normalized-dna-heading">
+        <span>{evaluationLabels[criterion]}</span>
+        <strong>{formatResearchLabel(evaluation.level)}</strong>
+      </div>
+      <p>{evaluation.reason}</p>
+      <NormalizedDetailList label="Strengths" values={evaluation.strengths} />
+      <NormalizedDetailList label="Risks" values={evaluation.risks} />
+      <NormalizedDetailList label="Conditions" values={evaluation.conditions} />
+      <NormalizedEvidenceTrail claimType={evaluation.claimType} evidence={evaluation.evidence} />
+    </article>
+  );
+}
+
+function NormalizedEvaluation({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <div className="normalized-evaluation-grid">
+      {CORE_EVALUATION_CRITERIA.map((criterion) => (
+        <NormalizedEvaluationCard
+          criterion={criterion}
+          evaluation={researchStyle.evaluations[criterion]}
+          key={criterion}
+        />
+      ))}
+    </div>
+  );
+}
+
+function NormalizedProductFitCard({ fit }: { fit: ProductFit }) {
+  const isNotEvaluated = fit.level === "not-evaluated";
+
+  return (
+    <article className={`normalized-card normalized-fit-card${isNotEvaluated ? " is-not-evaluated" : ""}`}>
+      <div className="normalized-dna-heading">
+        <span>{productTypeLabels[fit.productType]}</span>
+        <strong>{formatResearchLabel(fit.level)}</strong>
+      </div>
+      <p>{fit.reason}</p>
+      <NormalizedDetailList label="Strengths" values={fit.strengths} />
+      <NormalizedDetailList label="Risks" values={fit.risks} />
+      <NormalizedDetailList label="Conditions" values={fit.conditions} />
+      <NormalizedEvidenceTrail claimType={fit.claimType} evidence={fit.evidence} />
+    </article>
+  );
+}
+
+function NormalizedProductFit({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <>
+      <p className="normalized-section-note">
+        Fit is contextual: these records explain conditions and evidence rather than declaring a universal winner.
+      </p>
+      <div className="normalized-product-fit-grid">
+        {researchStyle.productFit.map((fit) => <NormalizedProductFitCard fit={fit} key={fit.productType} />)}
+      </div>
+    </>
+  );
+}
+
+function NormalizedRelationships({ researchStyle }: { researchStyle: ResearchStyle }) {
+  const relationships = researchStyle.relationships.filter(
+    ({ sourceStyleId }) => sourceStyleId === researchStyle.id,
+  );
+
+  if (relationships.length === 0) {
+    return (
+      <article className="normalized-card normalized-empty-card">
+        <span className="normalized-card-kicker">Relationship coverage</span>
+        <p>No reviewed related direction is recorded for this style yet.</p>
+        <small>Future relationship records will add evidence-backed dossier links here.</small>
+      </article>
+    );
+  }
+
+  return (
+    <div className="normalized-related-grid">
+      {relationships.map((relationship) => {
+        const target = normalizedResearchStyles.find(({ id }) => id === relationship.targetStyleId);
+        if (!target) return null;
+
+        return (
+          <article className="normalized-card normalized-related-card" key={relationship.id}>
+            <div className="normalized-dna-heading">
+              <span>{formatResearchLabel(relationship.type)}</span>
+              <strong>{target.name}</strong>
+            </div>
+            <p>{relationship.explanation}</p>
+            <NormalizedEvidenceTrail
+              claimType={relationship.claimType}
+              evidence={relationship.sourceIds}
+            />
+            <Link className="normalized-related-cta" to={getStyleRoute(target.slug)}>
+              Open {target.name} dossier <span aria-hidden="true">→</span>
+            </Link>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+function NormalizedSourceCard({
+  source,
+  claims,
+}: {
+  source: ResearchSource;
+  claims: ResearchStyle["claims"];
+}) {
+  const sourceClaims = claims.filter(({ sourceIds }) => sourceIds.includes(source.id));
+
+  return (
+    <article className="normalized-card normalized-source-card">
+      <div className="normalized-source-heading">
+        <div>
+          <span className="normalized-card-kicker">{formatResearchLabel(source.type)}</span>
+          <h4>{source.title}</h4>
+        </div>
+        <span className="normalized-source-review">{formatResearchLabel(source.review.reviewStatus)}</span>
+      </div>
+      <div className="normalized-source-meta">
+        {source.publisher ? <span>{source.publisher}</span> : null}
+        {source.retrievedAt ? <span>Retrieved {source.retrievedAt}</span> : null}
+        {source.url ? <a href={source.url} rel="noreferrer" target="_blank">Open source</a> : null}
+        {source.localReference ? <code>{source.localReference}</code> : null}
+      </div>
+      {source.notes ? <p>{source.notes}</p> : null}
+      <NormalizedDetailList label="Limitations" values={source.limitations} />
+      {sourceClaims.length > 0 ? (
+        <div className="normalized-source-claims">
+          <strong>Claims using this source</strong>
+          <ul className="normalized-list">
+            {sourceClaims.map((claim) => <li key={claim.id}>{claim.statement}</li>)}
+          </ul>
+        </div>
+      ) : null}
+    </article>
+  );
+}
+
+function NormalizedSources({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <>
+      <p className="normalized-section-note">
+        Sources show where the current record comes from and where its limits are. Claim text is kept alongside provenance
+        so project observation and interpretation are not mistaken for universal history.
+      </p>
+      <div className="normalized-sources-grid">
+        {researchStyle.sources.map((source) => (
+          <NormalizedSourceCard claims={researchStyle.claims} key={source.id} source={source} />
+        ))}
+      </div>
+    </>
+  );
+}
+
 function NormalizedScenario({ scenario }: { scenario: SharedScenario }) {
   return (
     <article className="normalized-scenario-card">
@@ -313,6 +535,50 @@ function NormalizedDossierSections({ researchStyle, style }: { researchStyle: Re
         <div className="normalized-scenario-grid">
           {scenarios.map((scenario) => <NormalizedScenario key={scenario.id} scenario={scenario} />)}
         </div>
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-evaluation`} aria-labelledby={`normalized-${style.id}-evaluation-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">06</span>
+            <h3 id={`normalized-${style.id}-evaluation-title`}>Evaluation</h3>
+          </div>
+          <span>Six criteria with reasons, conditions, and evidence</span>
+        </div>
+        <NormalizedEvaluation researchStyle={researchStyle} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-product-fit`} aria-labelledby={`normalized-${style.id}-product-fit-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">07</span>
+            <h3 id={`normalized-${style.id}-product-fit-title`}>Product fit</h3>
+          </div>
+          <span>Context-specific guidance, not a universal score</span>
+        </div>
+        <NormalizedProductFit researchStyle={researchStyle} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-related`} aria-labelledby={`normalized-${style.id}-related-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">08</span>
+            <h3 id={`normalized-${style.id}-related-title`}>Related directions</h3>
+          </div>
+          <span>Evidence-backed relationships and dossier CTAs</span>
+        </div>
+        <NormalizedRelationships researchStyle={researchStyle} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-sources`} aria-labelledby={`normalized-${style.id}-sources-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">09</span>
+            <h3 id={`normalized-${style.id}-sources-title`}>Sources</h3>
+          </div>
+          <span>Provenance, review status, claims, and limitations</span>
+        </div>
+        <NormalizedSources researchStyle={researchStyle} />
       </section>
     </div>
   );

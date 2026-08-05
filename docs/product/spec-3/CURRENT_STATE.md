@@ -14,8 +14,8 @@ content remains available through the compatibility adapter.
 | Area | Current state | Spec 3 gap |
 | --- | --- | --- |
 | Landing | Implemented at `/` with research framing, featured directions, lenses, comparison teaser, and timeline | CTAs and teasers are not connected to dedicated Compare or Evolution routes |
-| Explorer | Implemented at `/styles` with a header command palette for search, primary classification, tag, era, density, visual weight, and maturity filtering; all filter state is URL-backed and the three-column workspace remains | The next gap is normalized dossier rendering |
-| Dossier | `/styles/:slug` resolves known catalog styles and now exposes normalized Overview, Visual DNA, Reference implementation, Patterns, and Same-context specimens before the preserved 13 style-specific renderers; all 13 styles have normalized runtime records | Evaluation, product fit, related directions, and source sections remain; 12 records still need research review |
+| Explorer | Implemented at `/styles` with a header command palette for search, primary classification, tag, era, density, visual weight, and maturity filtering; all filter state is URL-backed and the three-column workspace remains | Compare, Evolution, and Methodology routes remain |
+| Dossier | `/styles/:slug` resolves known catalog styles and exposes normalized Overview, Visual DNA, Reference implementation, Patterns, Same-context specimens, Evaluation, Product fit, Related directions, and Sources before the preserved 13 style-specific renderers; all 13 styles have normalized runtime records | 12 records still need research review; Compare and methodology cross-links remain |
 | Decision guide | Surface fit and recommendation summaries exist | Uses legacy fit values without conditions, evidence, or context-aware reasoning |
 | Comparison | Legacy comparison surface exists but is hidden; landing contains a static teaser | No compare domain, 2-3 selection rule, URL state, shared scenario, context interpretation, or decision summary |
 | Evolution | Landing teaser uses a visual timeline | No evolution entities, transition causes, relationship graph, sources, or route |
@@ -95,8 +95,9 @@ The new `src/domain/research/` layer now models:
 - aggregate dataset and compatibility-adapter validation.
 
 The remaining data gap is research review for the other twelve style records.
-The remaining public dossier gap is evaluation, product fit, related
-directions, and source presentation.
+The normalized dossier contract is publicly rendered. The remaining data gap
+is research review for the other twelve style records, while the remaining
+product gap is contextual Compare decision support.
 
 ### UI architecture
 
@@ -157,5 +158,6 @@ normalized records, including aliases, characteristics, era, density, visual
 weight, and maturity. The filter UI is presented in a header command palette
 with Font Awesome category/tag icons, keyboard shortcuts, canonical URL state,
 clear state, invalid-value recovery, and responsive layout. The recommended
-next task is evaluation, product fit, related directions, and sources through
-`S3-DOS-002`; `S3-DOS-001` is complete through `US-009`.
+next task is pure Compare selection and query normalization through
+`S3-CMP-001`; `S3-DOS-001` and `S3-DOS-002` are complete through `US-009` and
+`US-010`.

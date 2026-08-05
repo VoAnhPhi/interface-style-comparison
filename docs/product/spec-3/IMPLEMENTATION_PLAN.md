@@ -618,6 +618,28 @@ Proof:
   style selection, legacy `Examples` tab availability, no horizontal overflow,
   and no console warnings/errors.
 
+## Phase 15 — Dossier Evaluation And Evidence
+
+Task: `S3-DOS-002`.
+
+Status: completed on 2026-08-05.
+
+- Added normalized Evaluation and Product fit sections using the six core
+  criteria and ten canonical product types.
+- Added Related directions with evidence-backed route CTAs and explicit empty
+  coverage for unreviewed records.
+- Added Sources with provenance, review status, claim statements, notes, and
+  limitations.
+- Preserved the local renderer and all existing dossier tabs.
+
+Proof:
+
+- `npm test`: 10 files, 65 tests passed.
+- `npm run build`: passed; existing Vite warnings remain non-blocking.
+- Browser QA at `1280x800` and `390x844`: section presence, reviewed and
+  incomplete record states, related CTA navigation, no horizontal overflow,
+  and no console warnings/errors.
+
 ## Sprint 01 Exit Checklist
 
 - [x] ADR 0008 and ADR 0009 are accepted.

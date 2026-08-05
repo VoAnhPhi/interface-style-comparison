@@ -3,8 +3,8 @@
 ## Status
 
 Planning complete. Sprint 01, the reviewed 13-style data migration, and the
-first normalized dossier sections are implemented; evaluation and broader
-decision-support UI remain future work.
+complete normalized dossier contract are implemented; contextual comparison
+and broader decision-support UI remain future work.
 
 ## Source
 
@@ -55,7 +55,8 @@ Spec 3
   S3-DATA-003 reviewed migration complete
   S3-EXP-002 complete
   S3-DOS-001 normalized dossier sections complete
-  next task: dossier evaluation, fit, relationships, and sources (`S3-DOS-002`)
+  S3-DOS-002 dossier evaluation, fit, relationships, and sources complete
+  next task: pure Compare selection and query normalization (`S3-CMP-001`)
 ```
 
 ## Documents
@@ -79,6 +80,28 @@ Spec 3
   now have explicit incomplete normalized migration records.
 - React Router owns paths and shareable query state.
 - See ADR 0008 and ADR 0009 under `docs/decisions/`.
+
+## Phase 15 — Dossier Evaluation And Evidence
+
+Task: `S3-DOS-002`.
+
+Status: completed on 2026-08-05.
+
+- Added six normalized evaluation criteria with reasons, strengths, risks,
+  conditions, claim types, and evidence references.
+- Added ten product-fit contexts without universal scores or winner fields.
+- Added relationship cards with typed dossier CTAs and honest empty states for
+  records that have no reviewed relationship yet.
+- Added source cards with review status, local/external references, claims,
+  notes, and limitations.
+
+Proof:
+
+- `npm test`: 10 files, 65 tests passed.
+- `npm run build`: passed with only existing Vite warnings.
+- Browser QA at `1280x800` and `390x844`: all sections, responsive layout,
+  related CTA navigation, and incomplete-record honesty passed without overflow
+  or console warnings/errors.
 
 ## Definition of Ready for Feature Implementation
 

@@ -1400,6 +1400,173 @@ p {
 	line-height: 1.5;
 }
 
+.normalized-section-note {
+	max-width: 72ch;
+	margin: -4px 0 16px;
+	color: var(--dossier-muted, var(--muted));
+	font-size: 0.8rem;
+	line-height: 1.6;
+}
+
+.normalized-evaluation-grid,
+.normalized-product-fit-grid,
+.normalized-sources-grid,
+.normalized-related-grid {
+	display: grid;
+	gap: 12px;
+}
+
+.normalized-evaluation-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.normalized-product-fit-grid {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.normalized-sources-grid,
+.normalized-related-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.normalized-evaluation-card,
+.normalized-fit-card {
+	display: flex;
+	min-height: 100%;
+	flex-direction: column;
+}
+
+.normalized-evaluation-card.is-not-evaluated,
+.normalized-fit-card.is-not-evaluated {
+	border-style: dashed;
+	background: color-mix(in srgb, var(--dossier-bg, #f8fafc) 88%, var(--dossier-surface, #ffffff));
+}
+
+.normalized-detail-list {
+	display: grid;
+	gap: 4px;
+	margin-top: 14px;
+}
+
+.normalized-detail-list > strong,
+.normalized-source-claims > strong {
+	color: var(--dossier-muted, var(--muted));
+	font-size: 0.68rem;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+.normalized-detail-list .normalized-list,
+.normalized-source-claims .normalized-list {
+	margin-top: 2px;
+	font-size: 0.74rem;
+}
+
+.normalized-evidence-trail {
+	display: grid;
+	gap: 4px;
+	margin-top: auto;
+	padding-top: 16px;
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.normalized-related-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.normalized-related-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	width: fit-content;
+	margin-top: 17px;
+	border-bottom: 1px solid color-mix(in srgb, var(--dossier-accent, var(--accent)) 36%, transparent);
+	color: var(--dossier-accent, var(--accent));
+	font-size: 0.76rem;
+	font-weight: 800;
+	text-decoration: none;
+}
+
+.normalized-related-cta:hover,
+.normalized-related-cta:focus-visible {
+	border-bottom-color: var(--dossier-accent, var(--accent));
+}
+
+.normalized-empty-card {
+	border-style: dashed;
+}
+
+.normalized-source-card {
+	display: flex;
+	flex-direction: column;
+}
+
+.normalized-source-heading {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.normalized-source-heading h4 {
+	margin-top: 6px;
+	font-size: 0.98rem;
+	line-height: 1.35;
+}
+
+.normalized-source-review {
+	flex: 0 0 auto;
+	border: 1px solid color-mix(in srgb, var(--dossier-accent, var(--accent)) 24%, var(--line-soft));
+	border-radius: 999px;
+	color: var(--dossier-accent, var(--accent));
+	padding: 5px 8px;
+	font-size: 0.62rem;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.normalized-source-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px 12px;
+	margin-top: 13px;
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	line-height: 1.5;
+}
+
+.normalized-source-meta a {
+	color: var(--dossier-accent, var(--accent));
+	font-weight: 800;
+	text-decoration: none;
+}
+
+.normalized-source-meta a:hover,
+.normalized-source-meta a:focus-visible {
+	text-decoration: underline;
+}
+
+.normalized-source-meta code {
+	max-width: 100%;
+	overflow-wrap: anywhere;
+}
+
+.normalized-source-card > p {
+	margin-top: 14px;
+}
+
+.normalized-source-claims {
+	margin-top: 16px;
+	border-top: 1px solid var(--line-soft);
+	padding-top: 13px;
+}
+
 .dossier-tabs {
 	position: sticky;
 	top: 74px;
@@ -8919,6 +9086,16 @@ td:last-child {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
+	.normalized-evaluation-grid,
+	.normalized-product-fit-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.normalized-sources-grid,
+	.normalized-related-grid {
+		grid-template-columns: 1fr;
+	}
+
 	.normalized-scenario-columns {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -9099,6 +9276,10 @@ td:last-child {
 	.normalized-implementation-grid,
 	.normalized-pattern-grid,
 	.normalized-dna-grid,
+	.normalized-evaluation-grid,
+	.normalized-product-fit-grid,
+	.normalized-sources-grid,
+	.normalized-related-grid,
 	.normalized-scenario-columns {
 		grid-template-columns: 1fr;
 	}

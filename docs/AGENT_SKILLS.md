@@ -158,7 +158,7 @@ sessions; a task-specific instruction can override it.
 ### Active Skill Set: Spec 3 dossier slices
 
 The visual Foundation skill routing above is historical. For the current Spec 3
-work, use this sequence for `S3-DOS-002` and later dossier/decision surfaces:
+work, use this sequence for `S3-CMP-001` and later dossier/decision surfaces:
 
 1. `agency-ux-architect` for information architecture, dossier navigation,
    responsive behavior, and cross-link decisions.

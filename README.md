@@ -131,5 +131,5 @@ Only the React app source and project configuration are intended to be pushed.
 
 This remains a client-side research prototype. The current focus is normalized
 research exploration and comparison foundations rather than production data
-persistence or backend integration. The next Spec 3 dossier slice is
-evaluation, product fit, related directions, and sources (`S3-DOS-002`).
+persistence or backend integration. The next Spec 3 slice is pure Compare
+selection and query normalization (`S3-CMP-001`).
