@@ -1,5 +1,13 @@
 import { useState, type ReactNode } from "react";
 import type { DesignStyle } from "../../data/designStyles";
+import {
+  CANONICAL_SCENARIOS,
+  normalizedResearchStyles,
+  type ResearchStyle,
+  type ScenarioId,
+  type SharedScenario,
+  type VisualDNADimension,
+} from "../../domain/research";
 import { ClaymorphismDossier } from "./styles/ClaymorphismDossier";
 import { DefaultDossier } from "./styles/DefaultDossier";
 import { DarkFuturisticDossier } from "./styles/DarkFuturisticDossier";
@@ -38,6 +46,277 @@ const styleRendererMap: Partial<Record<string, DossierRenderer>> = {
   "dark-futuristic": DarkFuturisticDossier,
   "web20-gloss": Web20GlossDossier,
 };
+
+const visualDNADimensionLabels: Record<VisualDNADimension, string> = {
+  depth: "Depth",
+  decoration: "Decoration",
+  density: "Density",
+  motion: "Motion",
+  "visual-weight": "Visual weight",
+  "brand-expression": "Brand expression",
+  "contrast-dependency": "Contrast dependency",
+  "surface-complexity": "Surface complexity",
+};
+
+function formatResearchLabel(value: string) {
+  return value
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function isDefined<Value>(value: Value | undefined): value is Value {
+  return value !== undefined;
+}
+
+function getCanonicalScenarios(researchStyle: ResearchStyle): SharedScenario[] {
+  return researchStyle.scenarioIds
+    .map((scenarioId: ScenarioId) => CANONICAL_SCENARIOS.find(({ id }) => id === scenarioId))
+    .filter(isDefined);
+}
+
+function ResearchStatus({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <div className="normalized-status-list" aria-label="Research record status">
+      <span>{formatResearchLabel(researchStyle.maturity)}</span>
+      <span>{formatResearchLabel(researchStyle.productionReadiness)}</span>
+      <span>{researchStyle.eras.join(" / ")}</span>
+      <span>{formatResearchLabel(researchStyle.review.contentStatus)}</span>
+    </div>
+  );
+}
+
+function NormalizedOverview({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <div className="normalized-overview-grid">
+      <article className="normalized-card normalized-card-featured">
+        <span className="normalized-card-kicker">Definition</span>
+        <p>{researchStyle.definition.text}</p>
+        <small>Research claim: {researchStyle.definition.claimId}</small>
+      </article>
+      <article className="normalized-card">
+        <span className="normalized-card-kicker">Core philosophy</span>
+        <ul className="normalized-list">
+          {researchStyle.principles.map((principle) => (
+            <li key={principle.id}>{principle.text}</li>
+          ))}
+        </ul>
+      </article>
+      <article className="normalized-card">
+        <span className="normalized-card-kicker">What makes it distinct</span>
+        <ul className="normalized-list">
+          {researchStyle.distinguishingSignals.map((signal) => (
+            <li key={signal.id}>{signal.text}</li>
+          ))}
+        </ul>
+      </article>
+      <article className="normalized-card normalized-card-status">
+        <span className="normalized-card-kicker">Research status</span>
+        <ResearchStatus researchStyle={researchStyle} />
+        <small>Updated {researchStyle.version.updatedAt}</small>
+      </article>
+    </div>
+  );
+}
+
+function NormalizedVisualDNA({ researchStyle }: { researchStyle: ResearchStyle }) {
+  return (
+    <div className="normalized-dna-grid">
+      {(Object.keys(visualDNADimensionLabels) as VisualDNADimension[]).map((dimension) => {
+        const signal = researchStyle.visualDNA[dimension];
+
+        return (
+          <article className="normalized-dna-card" key={dimension}>
+            <div className="normalized-dna-heading">
+              <span>{visualDNADimensionLabels[dimension]}</span>
+              <strong>{formatResearchLabel(signal.level)}</strong>
+            </div>
+            <p>{signal.reason}</p>
+            <small>Claim: {signal.claimId}</small>
+          </article>
+        );
+      })}
+    </div>
+  );
+}
+
+function NormalizedImplementation({ researchStyle, style }: { researchStyle: ResearchStyle; style: DesignStyle }) {
+  const tokens = [
+    ["Color", style.colorTokens?.map(({ value }) => value).join(" / ") || style.tokenRecipe.colors.join(" / ")],
+    ["Typography", style.tokenRecipe.typography],
+    ["Surface", "Defined by the local renderer surface"],
+    ["Radius", style.tokenRecipe.radius],
+    ["Border", style.tokenRecipe.border],
+    ["Shadow", style.tokenRecipe.shadow],
+    ["Spacing", style.tokenRecipe.spacing],
+    ["Motion", style.tokenRecipe.motion],
+  ];
+
+  return (
+    <div className="normalized-implementation-grid">
+      <article className="normalized-card normalized-implementation-note">
+        <span className="normalized-card-kicker">Research → engineering</span>
+        <p>
+          This is the current local visual specimen for the normalized record. Its tokens and renderer show one
+          implementation of the direction; they are not an official definition of the style.
+        </p>
+        <div className="normalized-implementation-meta">
+          <span>Renderer: {researchStyle.legacyRenderer.rendererId}</span>
+          <span>Classification: {formatResearchLabel(researchStyle.legacyRenderer.classification)}</span>
+        </div>
+      </article>
+      <article className="normalized-card">
+        <span className="normalized-card-kicker">Representative token recipe</span>
+        <dl className="normalized-token-list">
+          {tokens.map(([label, value]) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </article>
+    </div>
+  );
+}
+
+function NormalizedPatterns({ researchStyle, style }: { researchStyle: ResearchStyle; style: DesignStyle }) {
+  return (
+    <div className="normalized-pattern-grid">
+      <article className="normalized-card">
+        <span className="normalized-card-kicker">Principles in practice</span>
+        <ol className="normalized-list normalized-list-numbered">
+          {researchStyle.principles.map((principle) => (
+            <li key={principle.id}>{principle.text}</li>
+          ))}
+        </ol>
+      </article>
+      <article className="normalized-card">
+        <span className="normalized-card-kicker">Pattern signals</span>
+        <ul className="normalized-list">
+          {style.commonPatterns.map((pattern) => (
+            <li key={pattern}>{pattern}</li>
+          ))}
+        </ul>
+        <small>These patterns remain implementation observations during incremental migration.</small>
+      </article>
+    </div>
+  );
+}
+
+function NormalizedScenario({ scenario }: { scenario: SharedScenario }) {
+  return (
+    <article className="normalized-scenario-card">
+      <div className="normalized-scenario-heading">
+        <div>
+          <span className="normalized-card-kicker">Shared scenario</span>
+          <h4>{scenario.name}</h4>
+        </div>
+        <code>{scenario.id}</code>
+      </div>
+      <p className="normalized-scenario-goal">Goal: {scenario.userGoal}</p>
+      <div className="normalized-scenario-columns">
+        <div>
+          <span className="normalized-card-kicker">Same content</span>
+          <ul className="normalized-list">
+            {scenario.content.map((item) => (
+              <li key={item.id}><strong>{item.label}</strong> {item.value}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <span className="normalized-card-kicker">Required actions</span>
+          <ul className="normalized-list">
+            {scenario.requiredActions.map((action) => <li key={action}>{action}</li>)}
+          </ul>
+        </div>
+        <div>
+          <span className="normalized-card-kicker">Task flow</span>
+          <ol className="normalized-list normalized-list-numbered">
+            {scenario.taskFlow.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+        </div>
+      </div>
+      <div className="normalized-scenario-structure">
+        <span>Information structure: {scenario.informationStructure.join(" → ")}</span>
+        <span>Semantics: {scenario.semanticStructure.join(" · ")}</span>
+      </div>
+    </article>
+  );
+}
+
+function NormalizedDossierSections({ researchStyle, style }: { researchStyle: ResearchStyle; style: DesignStyle }) {
+  const scenarios = getCanonicalScenarios(researchStyle);
+
+  return (
+    <div className="normalized-dossier" aria-label="Normalized research dossier">
+      <div className="normalized-dossier-intro">
+        <div>
+          <span className="normalized-card-kicker">Spec 3 normalized record</span>
+          <h3>Research contract</h3>
+        </div>
+        <p>Research facts stay separate from the visual renderer so the same direction can be compared fairly.</p>
+      </div>
+
+      <section className="normalized-section" id={`normalized-${style.id}-overview`} aria-labelledby={`normalized-${style.id}-overview-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">01</span>
+            <h3 id={`normalized-${style.id}-overview-title`}>Overview</h3>
+          </div>
+          <span>What it is and what distinguishes it</span>
+        </div>
+        <NormalizedOverview researchStyle={researchStyle} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-visual-dna`} aria-labelledby={`normalized-${style.id}-visual-dna-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">02</span>
+            <h3 id={`normalized-${style.id}-visual-dna-title`}>Visual DNA</h3>
+          </div>
+          <span>Qualitative dimensions for comparison</span>
+        </div>
+        <NormalizedVisualDNA researchStyle={researchStyle} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-implementation`} aria-labelledby={`normalized-${style.id}-implementation-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">03</span>
+            <h3 id={`normalized-${style.id}-implementation-title`}>Reference implementation</h3>
+          </div>
+          <span>One local translation, not a universal definition</span>
+        </div>
+        <NormalizedImplementation researchStyle={researchStyle} style={style} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-patterns`} aria-labelledby={`normalized-${style.id}-patterns-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">04</span>
+            <h3 id={`normalized-${style.id}-patterns-title`}>Patterns</h3>
+          </div>
+          <span>Principles translated into reusable UI signals</span>
+        </div>
+        <NormalizedPatterns researchStyle={researchStyle} style={style} />
+      </section>
+
+      <section className="normalized-section" id={`normalized-${style.id}-same-context`} aria-labelledby={`normalized-${style.id}-same-context-title`}>
+        <div className="normalized-section-heading">
+          <div>
+            <span className="normalized-section-index">05</span>
+            <h3 id={`normalized-${style.id}-same-context-title`}>Same-context specimens</h3>
+          </div>
+          <span>Shared content, hierarchy, goal, and task flow</span>
+        </div>
+        <div className="normalized-scenario-grid">
+          {scenarios.map((scenario) => <NormalizedScenario key={scenario.id} scenario={scenario} />)}
+        </div>
+      </section>
+    </div>
+  );
+}
 
 function QuickFacts({ style }: { style: DesignStyle }) {
   return (
@@ -278,6 +557,7 @@ function TabContent({ className = "", style }: { className?: string; style: Desi
 export function ResearchDossier({ activeMode, style }: { activeMode: "fast" | "deep" | "compare"; style: DesignStyle }) {
   const [activeTab, setActiveTab] = useState<DossierTab>("overview");
   const visibleTab = activeMode === "compare" ? "tokens" : activeTab;
+  const researchStyle = normalizedResearchStyles.find(({ id }) => id === style.id);
   const renderTab = (className?: string) => <TabContent className={className} style={style} />;
   const Renderer = styleRendererMap[style.id] ?? DefaultDossier;
 
@@ -308,6 +588,8 @@ export function ResearchDossier({ activeMode, style }: { activeMode: "fast" | "d
       </div>
 
       <QuickFacts style={style} />
+
+      {researchStyle ? <NormalizedDossierSections researchStyle={researchStyle} style={style} /> : null}
 
       <div className="dossier-tabs" role="tablist" aria-label="Dossier sections">
         {tabs.map((tab) => (

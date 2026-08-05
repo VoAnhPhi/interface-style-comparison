@@ -8,7 +8,9 @@ The project is built as a visual reference workspace: search or filter styles, i
 
 - App-shell research layout with a compact style catalog, dossier, decision rail, and comparison table.
 - Search and tag filtering so the catalog can scale to many more styles.
-- Focused research dossier with `Overview`, `Tokens`, `Patterns`, and `Examples` tabs.
+- Bookmarkable `/styles/:slug` research dossiers with normalized `Overview`,
+  `Visual DNA`, `Reference implementation`, `Patterns`, and `Same-context`
+  sections, plus preserved `Tokens`, `Patterns`, and `Examples` tabs.
 - Examples tab with real-world references, component anatomy, layout examples,
   implementation notes, and do/don't guidance.
 - Compact style preview that keeps visual examples scannable without crowding the page.
@@ -84,8 +86,11 @@ src/
   App.tsx
   App.css
   main.tsx
+  domain/research/
+    normalized style records, validation, scenarios, and Explorer selectors
   data/
     designStyles.ts
+      legacy compatibility records and renderer/token fallbacks
 ```
 
 Key files:
@@ -124,4 +129,7 @@ Only the React app source and project configuration are intended to be pushed.
 
 ## Status
 
-This is an early research prototype. The current focus is visual exploration, style comparison, and interaction design rather than production data persistence or backend integration.
+This remains a client-side research prototype. The current focus is normalized
+research exploration and comparison foundations rather than production data
+persistence or backend integration. The next Spec 3 dossier slice is
+evaluation, product fit, related directions, and sources (`S3-DOS-002`).

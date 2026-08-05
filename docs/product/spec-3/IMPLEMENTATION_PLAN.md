@@ -542,8 +542,8 @@ Proof:
    `S3-DATA-003`.**
 2. Move Explorer search and classification filters to normalized data. **Completed
    by `S3-EXP-001`.**
-3. Add shareable secondary filters.
-4. Complete normalized slug dossier sections.
+3. Add shareable secondary filters. **Completed by `S3-EXP-002`.**
+4. Complete normalized slug dossier sections. **Completed by `S3-DOS-001`.**
 5. Implement pure Compare selection/query/context logic.
 6. Build `/compare` and same-context dashboard specimens.
 7. Normalize Evolution data and build `/evolution`.
@@ -595,6 +595,28 @@ Proof:
 - Browser QA at `1280x800` and `390x844`: combined filtering, clear state,
   URL persistence, responsive layout, no horizontal overflow, and no console
   warnings/errors.
+
+## Phase 14 — Normalized Dossier Sections
+
+Task: `S3-DOS-001`.
+
+Status: completed on 2026-08-05.
+
+- Added shared normalized dossier sections for Overview, Visual DNA, Reference
+  implementation, Patterns, and Same-context specimens.
+- Kept the local visual renderer as the implementation reference and preserved
+  the existing renderer-specific dossier tabs.
+- Joined normalized records to canonical scenario records for a stable shared
+  comparison baseline.
+
+Proof:
+
+- `npm test`: 10 files, 65 tests passed.
+- `npm run build`: passed; existing Vite `use client` and bundle-size warnings
+  remain non-blocking.
+- Browser QA at `1280x800` and `390x844`: section presence, responsive grids,
+  style selection, legacy `Examples` tab availability, no horizontal overflow,
+  and no console warnings/errors.
 
 ## Sprint 01 Exit Checklist
 

@@ -2,8 +2,9 @@
 
 ## Status
 
-Planning complete. Sprint 01 and the reviewed 13-style data migration are
-implemented; normalized dossier and decision-support UI remain future work.
+Planning complete. Sprint 01, the reviewed 13-style data migration, and the
+first normalized dossier sections are implemented; evaluation and broader
+decision-support UI remain future work.
 
 ## Source
 
@@ -53,7 +54,8 @@ Spec 3
   Sprint 01 foundation complete
   S3-DATA-003 reviewed migration complete
   S3-EXP-002 complete
-  next task: normalized dossier rendering (`S3-DOS-001`)
+  S3-DOS-001 normalized dossier sections complete
+  next task: dossier evaluation, fit, relationships, and sources (`S3-DOS-002`)
 ```
 
 ## Documents

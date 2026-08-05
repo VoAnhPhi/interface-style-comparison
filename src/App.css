@@ -1085,6 +1085,321 @@ p {
 	line-height: 1.55;
 }
 
+.normalized-dossier {
+	display: grid;
+	gap: 18px;
+	margin-top: 28px;
+	color: var(--dossier-ink, var(--text));
+}
+
+.normalized-dossier-intro,
+.normalized-section-heading,
+.normalized-scenario-heading,
+.normalized-implementation-meta,
+.normalized-dna-heading {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 18px;
+}
+
+.normalized-dossier-intro {
+	align-items: end;
+	border-top: 1px solid var(--line);
+	padding-top: 24px;
+}
+
+.normalized-dossier-intro h3,
+.normalized-section-heading h3 {
+	margin-top: 5px;
+	font-size: clamp(1.35rem, 2vw, 2rem);
+	letter-spacing: -0.03em;
+}
+
+.normalized-dossier-intro > p,
+.normalized-section-heading > span {
+	max-width: 310px;
+	color: var(--dossier-muted, var(--muted));
+	font-size: 0.78rem;
+	line-height: 1.55;
+	text-align: right;
+}
+
+.normalized-card-kicker,
+.normalized-section-index {
+	display: block;
+	color: var(--dossier-accent, var(--accent));
+	font-size: 0.68rem;
+	font-weight: 850;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.normalized-section-index {
+	font-family: var(--font-mono);
+	font-size: 0.65rem;
+}
+
+.normalized-section {
+	min-width: 0;
+	border: 1px solid var(--line-soft);
+	border-radius: var(--dossier-radius, var(--radius));
+	background: var(--dossier-surface, #ffffff);
+	padding: 22px;
+	scroll-margin-top: 136px;
+}
+
+.normalized-section-heading {
+	align-items: end;
+	margin-bottom: 18px;
+	border-bottom: 1px solid var(--line-soft);
+	padding-bottom: 14px;
+}
+
+.normalized-section-heading > div {
+	display: flex;
+	align-items: baseline;
+	gap: 12px;
+}
+
+.normalized-section-heading > span {
+	font-size: 0.7rem;
+}
+
+.normalized-overview-grid,
+.normalized-implementation-grid,
+.normalized-pattern-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.normalized-card,
+.normalized-dna-card,
+.normalized-scenario-card {
+	min-width: 0;
+	border: 1px solid var(--line-soft);
+	border-radius: calc(var(--dossier-radius, var(--radius)) - 2px);
+	background: color-mix(in srgb, var(--dossier-surface, #ffffff) 90%, var(--dossier-bg, #f8fafc));
+	padding: 16px;
+}
+
+.normalized-card-featured,
+.normalized-card-status,
+.normalized-implementation-note {
+	background: color-mix(in srgb, var(--dossier-accent, var(--accent)) 5%, var(--dossier-surface, #ffffff));
+}
+
+.normalized-card-featured {
+	grid-column: 1 / -1;
+}
+
+.normalized-card p,
+.normalized-dna-card p,
+.normalized-scenario-card p {
+	margin-top: 10px;
+	color: var(--dossier-ink, var(--text));
+	font-size: 0.88rem;
+	line-height: 1.62;
+}
+
+.normalized-card > small,
+.normalized-dna-card > small,
+.normalized-pattern-grid .normalized-card > small,
+.normalized-implementation-meta {
+	display: block;
+	margin-top: 13px;
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.63rem;
+	line-height: 1.5;
+}
+
+.normalized-list {
+	display: grid;
+	gap: 8px;
+	margin-top: 12px;
+	padding-left: 17px;
+	color: var(--dossier-ink, var(--text));
+	font-size: 0.82rem;
+	line-height: 1.55;
+}
+
+.normalized-list-numbered {
+	padding-left: 19px;
+}
+
+.normalized-status-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+	margin-top: 13px;
+}
+
+.normalized-status-list span,
+.normalized-implementation-meta span {
+	border: 1px solid color-mix(in srgb, var(--dossier-accent, var(--accent)) 24%, var(--line-soft));
+	border-radius: 999px;
+	background: var(--dossier-surface, #ffffff);
+	color: var(--dossier-accent, var(--accent));
+	padding: 6px 9px;
+	font-size: 0.67rem;
+	font-weight: 750;
+}
+
+.normalized-dna-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.normalized-dna-card {
+	display: grid;
+	align-content: start;
+	gap: 8px;
+}
+
+.normalized-dna-heading {
+	align-items: baseline;
+}
+
+.normalized-dna-heading span {
+	color: var(--dossier-muted, var(--muted));
+	font-size: 0.73rem;
+	font-weight: 760;
+}
+
+.normalized-dna-heading strong {
+	color: var(--dossier-accent, var(--accent));
+	font-size: 0.72rem;
+	text-transform: uppercase;
+}
+
+.normalized-dna-card p {
+	margin-top: 0;
+	font-size: 0.78rem;
+}
+
+.normalized-dna-card > small {
+	margin-top: 0;
+}
+
+.normalized-implementation-grid {
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+}
+
+.normalized-implementation-note > p {
+	max-width: 58ch;
+}
+
+.normalized-implementation-meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.normalized-implementation-meta span {
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	padding: 0;
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.63rem;
+	font-weight: 600;
+}
+
+.normalized-token-list {
+	display: grid;
+	gap: 0;
+	margin-top: 12px;
+}
+
+.normalized-token-list > div {
+	display: grid;
+	grid-template-columns: 86px minmax(0, 1fr);
+	gap: 12px;
+	border-bottom: 1px solid var(--line-soft);
+	padding: 9px 0;
+}
+
+.normalized-token-list > div:first-child {
+	padding-top: 0;
+}
+
+.normalized-token-list > div:last-child {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+.normalized-token-list dt {
+	color: var(--dossier-muted, var(--muted));
+	font-size: 0.72rem;
+	font-weight: 780;
+}
+
+.normalized-token-list dd {
+	min-width: 0;
+	color: var(--dossier-ink, var(--text));
+	font-size: 0.75rem;
+	line-height: 1.45;
+	overflow-wrap: anywhere;
+}
+
+.normalized-scenario-grid {
+	display: grid;
+	gap: 12px;
+}
+
+.normalized-scenario-heading {
+	align-items: center;
+}
+
+.normalized-scenario-heading h4 {
+	margin-top: 5px;
+	font-size: 1rem;
+}
+
+.normalized-scenario-heading code {
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.66rem;
+}
+
+.normalized-scenario-goal {
+	margin-top: 12px !important;
+	color: var(--dossier-muted, var(--muted)) !important;
+	font-size: 0.78rem !important;
+}
+
+.normalized-scenario-columns {
+	display: grid;
+	grid-template-columns: 1.15fr 1fr 1fr;
+	gap: 16px;
+	margin-top: 16px;
+}
+
+.normalized-scenario-columns .normalized-list {
+	font-size: 0.75rem;
+}
+
+.normalized-scenario-columns .normalized-list strong {
+	font-weight: 800;
+}
+
+.normalized-scenario-structure {
+	display: grid;
+	gap: 4px;
+	margin-top: 16px;
+	border-top: 1px solid var(--line-soft);
+	padding-top: 11px;
+	color: var(--dossier-muted, var(--muted));
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	line-height: 1.5;
+}
+
 .dossier-tabs {
 	position: sticky;
 	top: 74px;
@@ -8591,12 +8906,21 @@ td:last-child {
 	.enterprise-admin-content,
 	.enterprise-admin-hero,
 	.dossier-glass-layout,
-	.editorial-hero,
-	.quick-facts,
-	.patterns-view,
-	.example-list,
-	.example-guidance {
+		.editorial-hero,
+		.quick-facts,
+		.normalized-dossier-intro,
+		.patterns-view,
+		.example-list,
+		.example-guidance {
 		grid-template-columns: 1fr;
+	}
+
+	.normalized-dna-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.normalized-scenario-columns {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 
 	.preview-stage,
@@ -8751,6 +9075,36 @@ td:last-child {
 
 	.dossier-section {
 		scroll-margin-top: 174px;
+	}
+
+	.normalized-section {
+		padding: 16px;
+		scroll-margin-top: 174px;
+	}
+
+	.normalized-dossier-intro,
+	.normalized-section-heading,
+	.normalized-scenario-heading {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.normalized-dossier-intro > p,
+	.normalized-section-heading > span {
+		max-width: none;
+		text-align: left;
+	}
+
+	.normalized-overview-grid,
+	.normalized-implementation-grid,
+	.normalized-pattern-grid,
+	.normalized-dna-grid,
+	.normalized-scenario-columns {
+		grid-template-columns: 1fr;
+	}
+
+	.normalized-card-featured {
+		grid-column: auto;
 	}
 
 	.style-list {

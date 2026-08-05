@@ -154,3 +154,25 @@ After P1.4 closes, use:
 Do not start P1.5 while P1.4 still lacks asset provenance/dimensions or valid
 mobile QA evidence. This routing is the stored default for the next work
 sessions; a task-specific instruction can override it.
+
+### Active Skill Set: Spec 3 dossier slices
+
+The visual Foundation skill routing above is historical. For the current Spec 3
+work, use this sequence for `S3-DOS-002` and later dossier/decision surfaces:
+
+1. `agency-ux-architect` for information architecture, dossier navigation,
+   responsive behavior, and cross-link decisions.
+2. `agency-software-architect` for normalized view-model and renderer-boundary
+   changes.
+3. `agency-ui-designer` for hierarchy, evidence labeling, comparison clarity,
+   and accessibility.
+4. `agency-frontend-developer` for React/CSS implementation while preserving
+   local Font Awesome and approved visual renderers.
+5. `browser:control-in-app-browser` for desktop/mobile interaction, overflow,
+   and console QA.
+6. `agency-code-reviewer` followed by `agency-technical-writer` to close the
+   implementation and documentation gates.
+
+Use `design-taste-frontend` selectively for expressive visual direction and
+`imagegen` only when a new bitmap asset is explicitly required. Neither is
+needed for the normalized dossier contract itself.
